@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ghz.mapper.IUserMapper" >
+
+	<resultMap type="xmu.mall.usercenter.ghz.entity.User" id="user">
+		<id column="user_id" property="user_id"/>
+		<result column="user_name" property="user_name"/>
+	</resultMap>
+	
+	<select id="getUserById" resultMap="user" parameterType="java.lang.Integer">
+		select * from 142424_users where user_id = #{user_id}
+	</select>
+	
+	<update id="updateUserName">
+		update 142424_users set nickname = #{nickname} where user_id = #{user_id}
+	</update>
+	
+</mapper>

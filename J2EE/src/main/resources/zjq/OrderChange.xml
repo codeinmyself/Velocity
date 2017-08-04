@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderChange">
+
+    <!--用id获取某个订单信息-->
+    <select id="selectorderbyid" parameterType="String" resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info WHERE order_id=#{order_id}
+    </select>
+    <!--更改状态-->
+    <update id="updatestatus" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET order_status=#{order_status} WHERE order_id=#{order_id}
+    </update>
+    <!--更改地址-->
+    <update id="updateaddress" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET consignee=#{consignee},zipcode=#{zipcode},telephone=#{telephone},address=#{address} WHERE order_id=#{order_id}
+    </update>
+    <!--更改快递单号-->
+    <update id="updateexpresscode" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET expresscode=#{expressCode} WHERE order_id=#{order_id}
+    </update>
+    <!--更改备注-->
+    <update id="updateremark" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET remark=#{remark} WHERE order_id=#{order_id}
+    </update>
+    <!--更改定制时间-->
+    <update id="updatemaketime" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET make_time=#{make_time} WHERE order_id=#{order_id}
+    </update>
+    <!--更改发货时间-->
+    <update id="updateshippedtime" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET shipped_time=#{shipped_time} WHERE order_id=#{order_id}
+    </update>
+    <!--更改收货时间-->
+    <update id="updatereceivetime" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET receive_time=#{receive_time} WHERE order_id=#{order_id}
+    </update>
+    <!--更改取消时间-->
+    <update id="updatecanceltime" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        UPDATE 142550_order_info SET cancel_time=#{cancel_time} WHERE order_id=#{order_id}
+    </update>
+
+
+
+</mapper>

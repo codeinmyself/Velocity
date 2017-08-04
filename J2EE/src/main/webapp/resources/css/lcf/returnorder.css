@@ -1,0 +1,205 @@
+/*returnorder-list */
+.returnorder-list{}
+.returnorder-list em.color0{ color:#fa6400;}
+.returnorder-list .returnorder-list0{ margin-left:.714em;}
+.returnorder-list0 .border0{ border-bottom:1px solid #dcdcdc;padding: 0.5em;}
+.returnorder-list0 .returnorder-title{ padding: .5em 0;}
+.returnorder-list0 .returnorder-title span{ display: block;height: 1.8em;font-size: .857em;color: #323232;}
+.returnorder-list0 .returnorder-pic{ padding:.714em 0;}
+.returnorder-pic1 .returnorder-img{ float:left; width:3.5em; height:3.5em; border:1px solid #dcdcdc; margin-right:.714em;}
+.returnorder-pic1 .returnorder-m{ float:left; width:14.464em;}
+.returnorder-pic1 .returnorder-m span{ display:block; font-size:.857em; line-height:1.357em; overflow:hidden;}
+.returnorder-pic1 .returnorder-m span.returnorder-m0{ font-size:.857em; height:2.714em;}
+.returnorder-pic1 .returnorder-m span.returnorder-m1{ font-size:1.214em; color:#fa6400;}
+.returnorder-pic1 .returnorder-m span.returnorder-m1 em{ font-size:.785em; color:#969696; text-decoration:line-through;}
+.returnorder-list0 .returnorder-time {border-bottom: 1px solid #dcdcdc;height: 2.428em;line-height: 2.428em;}
+.returnorder-list0 .returnorder-time span {font-size: 0.875em;}
+.returnorder-list0 .returnorder-state {height: 2.428em;line-height: 2.428em;border-bottom: 1px solid #dcdcdc;}
+.returnorder-btn {height: 2.428em;line-height: 2.428em;}
+
+.returnorder-state span,.returnorder-state a{display:block; line-height:2.428em; font-size: 0.857em;}
+.returnorder-btn span,.returnorder-btn a{display:block; line-height:2.428em; font-size: 0.857em;}
+.returnorder-btn span{ float:left; width:10.714em;}
+.returnorder-btn a{ float:right;}
+
+.rcontent {background-color: #fff;height: 640px;}
+.innercontent {}
+.express {padding-top: 3em;height: 5em;text-align: center;  font-size: .857em;}
+.express span {border: 1px solid #729B01;margin: 8px;display: inline-block;width: 120px;position: relative;}
+.writerContent span {display: inline-block;  vertical-align: middle;}
+.tips .p0 {font-size: 0.857em;padding: 2em;}
+.submitcontent {text-align: center;min-width: 320px;  font-size: .857em;}
+.submitcontent .order-btn {width: 15em;height: 2.428em;line-height: 2.428em;background: #fa6400;font-size: 1em;text-align: center;color: #fff;margin: 1em;display: inline-block;}
+img.chooseComp {position: absolute;bottom: 0;right: 0;}
+.returninfo-img {
+  width: 3em;
+  height: 3em;
+}
+
+.returninfonumber {
+  font-size: 1em;
+  display: inline-block;
+}
+
+.returnimgSpan {	
+  margin: 10px 0 0 10px;
+  padding: 10px 0 0 10px;
+  display: inline-block;
+  width: 3em;
+  text-align: center;
+}
+.writerContent {
+  padding: 1em;
+  border-bottom: 1px solid #dcdcdc;
+  height: 1.2em;
+  font-size: 0.875em;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tips {width: 360px;height: 100px;color: #cccccc;margin: 0 auto;}
+
+.reinfocontent {
+  
+}
+
+.rostatusdiv {
+}
+
+.rostatus {
+  padding: 1em 0em 1em 2em;
+  margin: auto;
+  text-align: left;
+  font-size: .857em;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+
+a.order-btn.statusinfo {
+  display: inline-block;
+  vertical-align: text-top;
+    font-size: .857em;
+      margin-left: 3em;
+}
+
+.returntimer {
+  font-size: 0.857em;
+  color: red;
+  margin-left: 20px;
+}
+
+.rotracking {
+  font-size: .857em;
+}
+.roinfotable {
+  border: 1px solid #dcdcdc;
+  border-radius: 15px;
+  margin: 1em 1em;
+      min-width: 280px;
+  max-width: 600px;
+}
+
+.orders-info-list {
+  padding: .35em .714em;
+  color: #646464;
+  font-size: .857em;
+}
+
+ .roinfotable .order-title {
+  margin-left: 0.5em;
+}
+
+.orders-info-list span {
+  line-height: 1.628em;
+  font-size: .857em;
+}
+
+.r1 {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  line-height: 1.5em;
+  border-radius: 1.5em;
+  border: 1px solid #060606;
+}
+
+
+.ro-right {
+  margin: 2.2em auto 1em 0.5em;
+  display: inline-block;
+  min-width: 200px;
+  max-width: 500px;
+}
+
+.ro-left {
+  margin: 2.2em 1.357em 0 1.357em;
+  float: left;
+  text-align: center;
+}
+
+.ro1{height: 5em;}
+.rotracking  div:first-child{font-weight: bold;}
+
+.ro2{height: 5em;  font-weight: bold;}
+
+.r2 {
+  margin-left: 1.9em;
+  border-left: 0.5em solid #dcdcdc;
+  min-height: 5em;
+  margin-bottom: -2.2em;
+  margin-top: -1.3em;
+  max-width: 600px;
+}
+
+.r3 {
+  margin-left: 1.9em;
+  
+  min-height: 5em;
+  margin-bottom: -2.2em;
+  margin-top: -1.3em;
+  max-width: 600px;
+}
+
+.retips{
+	color: #fa6400;
+	display: inline-block;
+}
+
+
+.reAddrDetail {
+  display: inline-block;
+  font-weight: normal;
+}
+.reAddr {
+  padding: 2em 1.5em 1em 2.5em;
+  font-size: 0.75em;
+  min-width: 200px;
+  max-width: 600px;
+}
+
+.rodetail {
+  display: inline-block;
+  min-width: 50px;
+  max-width: 500px;
+}
+
+.dlbTitle1,.dlbTitle2{height:2.428em;line-height:2.428em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom: 1px solid #dcdcdc;}
+.dlbTitle2{padding:0 0.5em;}
+.w6{text-align:right;}
+.dlbTitle2_in{width:50%;float:left;}
+.lb-p-state {
+    position: absolute;
+    top: 3.535em;
+    left: 6.785em;
+    color: #969696;
+}
+.lb-p-num {
+    position: absolute;
+    top: 3.071em;
+    right: 0;
+    width: 1.571em;
+    height: 1.571em;
+    cursor: pointer;
+    padding-top: 0.535em;
+    padding-left: 1em;
+}

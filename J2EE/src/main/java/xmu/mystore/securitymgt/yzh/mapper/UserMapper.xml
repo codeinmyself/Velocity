@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.securitymgt.yzh.mapper.UserMapper" >
+	<select id="getUserByID" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.User">
+        SELECT * FROM 142528_users 
+        WHERE user_id = #{user_id}
+    </select>
+
+    <select id="getUserByMobile" parameterType="String" resultType="xmu.mystore.securitymgt.yzh.model.User">
+        SELECT * FROM 142528_users 
+        WHERE mobile_phone = #{mobile_phone}
+    </select>
+    <select id="getUserByUsername" parameterType="String" resultType="xmu.mystore.securitymgt.yzh.model.User">
+        SELECT user_id FROM 142528_users 
+        WHERE user_name = #{user_name}
+    </select>
+    
+    <select id="findUserByUsername" parameterType="String" resultType="xmu.mystore.securitymgt.yzh.model.User">
+        SELECT * FROM 142528_users 
+        WHERE user_name = #{user_name}
+    </select>
+    
+    <select id="getAllUsers" resultType="xmu.mystore.securitymgt.yzh.model.User">
+        SELECT * FROM 142528_users 
+    </select>
+    
+     <!-- 更新昵称 -->
+     <update id="updateUsername">
+		UPDATE 142528_users
+		SET
+		user_name = #{user_name}
+		WHERE user_id = #{user_id}
+	</update>
+	
+	<update id="changeUserStateById" >
+		UPDATE 142528_users
+		SET
+		enable = #{new_state}
+		WHERE user_id = #{user_id}
+	</update>
+</mapper>

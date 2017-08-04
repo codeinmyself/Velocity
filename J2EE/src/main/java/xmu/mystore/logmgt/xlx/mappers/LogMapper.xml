@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.logmgt.xlx.mapper.LogMapper">
+	<cache/>
+	<resultMap id="LogResultMap" type="xmu.mystore.logmgt.xlx.model.Log">
+		<id property="id" column="id"/>
+		<result property="createtime" column="createtime" javaType="java.util.Date" jdbcType="BIGINT"></result>
+		<result property="userid" column="userid"></result>
+		<result property="ExceptionCode" column="ExceptionCode"></result>
+		<result property="ExceptionDetails" column="ExceptionDetails"></result>
+		<result property="OperateObject" column="OperateObject"></result>
+		
+		<result property="methodname" column="methodname"></result>
+		<result property="description" column="description"></result>
+		<result property="success" column="success"></result>
+	</resultMap>
+	<select id="getLogsByTime" resultMap="LogResultMap">
+		select * from main_loginfo where createtime BETWEEN #{start_time} AND #{stop_time}
+	</select>
+	 <select id="getAllLogs" resultMap="LogResultMap">
+        select * from main_loginfo
+    </select>
+    <insert id="save">
+    	insert into main_loginfo(createtime,userid,ExceptionCode,ExceptionDetails,OperateObject,methodname,description,success) values(#{createtime,javaType=java.util.Date,jdbcType=BIGINT},#{userid},#{ExceptionCode},#{ExceptionDetails},#{OperateObject},#{methodname},#{description},#{success})
+    </insert>
+    
+</mapper>

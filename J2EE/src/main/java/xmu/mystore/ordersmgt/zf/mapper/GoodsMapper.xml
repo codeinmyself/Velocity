@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zf.mapper.GoodsMapper" >
+	<select id="getGoodsById" resultType="xmu.mystore.ordersmgt.zf.model.Goods" parameterType="long">
+		SELECT * FROM 142560_goods WHERE ID= #{id}
+	</select>
+	
+	<select id="getGoodsImageById" resultType="String" parameterType="long">
+		SELECT image_path FROM 142560_goods WHERE ID= #{id}
+	</select>
+</mapper>

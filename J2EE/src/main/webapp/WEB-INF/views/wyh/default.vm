@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
+    <title id="title1">$!page_title</title>  
+    <script>
+	function ajaxRequest() {
+		alert("qwe");
+        $.ajax({
+          url: "http://localhost:8080/SpringMVC/ajaxRequest",
+          type: "GET",
+          async: false,
+          data: {name:"wuyihao"},
+          dataType: "html",
+          success: function(data) {
+            alert(data);
+            $.each(data, function(index, element) {
+              alert(element.a);
+              alert(element.b);
+              alert(element.c);
+            });
+          },
+          error: function() {
+            alert("error");
+          }
+        });
+        alert("1");
+      }
+</script>
+</head>  
+<body>  
+	#set( $page_title = "this is the test page")
+#define($screen_content)
+    this is buisin content
+#end
+    $screen_content
+    <br/>
+    #foreach(${goods1} in ${goods})
+   		${goods1.id},${goods1.name}<br/>
+   	#end
+    <br/>
+    ${category.id},${category.name}
+    <br/>
+    ${stand.id},${stand.goodsId}
+    <br/>
+    ${brand.brandId},${brand.name}
+    <br/>
+    <input type="button" value="Cilck Me" onclick="ajaxRequest()" />
+    
+</body>  
+</html> 

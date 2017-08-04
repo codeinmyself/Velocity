@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ljd.mapper.UsersMapper">
+	<resultMap type="xmu.mall.usercenter.ljd.model.Users" id="UsersResult">
+		<id column="id" property="id" />
+		<result column="user_id" property="user_id" />
+		<result column="user_name" property="user_name" />
+		<result column="password" property="password" />
+		<result column="nickname" property="nickname" />
+		<result column="mobile_phone" property="mobile_phone" />
+		<result column="imagepath" property="imagepath" />
+	</resultMap>
+
+	<select id="selectByUserID" resultMap="UsersResult"
+		parameterType="xmu.mall.usercenter.ljd.model.Users">
+		SELECT * FROM 142477_users WHERE user_id=
+		#{user_id}
+	</select>
+
+	<update id="updateUsername" 
+		parameterType="xmu.mall.usercenter.ljd.model.Users">
+		update 142477_users
+		set
+		user_name=#{user_name}
+		WHERE user_id=#{user_id}
+	</update>
+	
+	<update id="updateNickname" 
+		parameterType="xmu.mall.usercenter.ljd.model.Users">
+		update 142477_users
+		set
+		nickname=#{nickname}
+		WHERE user_id=#{user_id}
+	</update>
+	
+	<update id="updateMobilephone" 
+		parameterType="xmu.mall.usercenter.ljd.model.Users">
+		update 142477_users
+		set
+		mobile_phone=#{mobile_phone}
+		WHERE user_id=#{user_id}
+	</update>
+
+</mapper>

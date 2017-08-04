@@ -1,0 +1,197 @@
+.circle {
+	-webkit-border-radius:50em;
+	-moz-border-radius:50em;
+	border-radius:50em;
+	max-width: 100%;
+}
+.template{
+	width:100%;
+	text-align:center;
+	vertical-align:middle;
+	background:#135480;	
+}
+.template *{
+	display:inline-block;
+}
+.span1{
+	display:block;
+	margin-top:10%;
+}
+.fontC{
+	font-size:3em;
+	
+}
+.allorder{
+	margin-right:0;
+	text-decoration:none;
+}
+@media screen and (orientation: portrait) {  
+  /* ˙∆¡ css*/  
+  .head{height:20em;}
+}   
+@media screen and (orientation: landscape) {  
+  /*∫·∆¡ css*/  
+  .head{height:6em;}
+  .span1{margin-top:3%;}
+}
+
+.div p img{
+	height:10%;
+}
+.div2{
+	position:relative;
+	top:30%;
+}
+.div2 *{
+	vertical-align:middle;
+}
+
+.div3 img{
+	width:19%;
+	vertical-align:middle;
+}
+.div3 span{
+	display:inline-block;
+	width:19%;
+	text-align:center;
+}
+.icon{
+	height:10%;
+}
+
+
+
+.addressTitle{
+	top:0px;
+	height:10%;
+	background:#135480;
+	width:100%;
+	text-align:center;
+	vertical-align:middle;
+	font-size:4em;
+	border-bottom:1px;
+}
+.addressTitle span{
+	vertical-align:middle;
+	margin-top:4%;
+	color:white;
+}
+.addressBody{
+	font-size:2.8em;
+}
+.addressBody *{
+	vertical-align:middle;
+}
+.addressBtn{
+	text-align:center;
+	font-size:3em;
+	width:50%;
+}
+
+
+.addAddress{
+	top:0px;
+	height:10%;
+	background:#135480;
+	width:100%;
+	text-align:center;
+	vertical-align:middle;
+	font-size:4em;
+	border-bottom:1px;
+}
+.addAddress span{
+	vertical-align:middle;
+	margin-top:4%;
+	color:white;
+}
+.in1{
+	float:right;
+	border:none;
+	width:58%;
+	height:6%;
+	font-size:1.1em;
+}
+label{
+	font-size:1.6em;
+}
+.addAddressBtn{
+	text-align:center;
+	font-size:4em;
+	width:100%;
+}
+.radioIn{
+	width:10%;
+	height:4%;
+}
+
+.userBody{
+	font-size:2.8em;
+}
+.file{
+
+}
+.file{
+	display:none;
+}
+
+.orderBody{
+	font-size:4em;
+}
+.div4{
+	
+}
+.div4 p *{
+	vertical-align:middle;
+}
+.div4 p{
+	margin:0 auto;
+}
+.divide{
+	height:1%;
+	width:100%;
+	background:#ccc;
+}
+a:link { 
+color: #999999; 
+text-decoration: none; 
+} 
+a:visited { 
+color: #999999; 
+text-decoration: none; 
+} 
+a:hover { 
+color: #999999; 
+} 
+#footer
+{
+	position: fixed;
+	position: absolute;
+	bottom: 0px;
+	width:100%;
+	height:6.4%;
+	background: white;
+	font-size: 0px
+}
+
+#footer div
+{
+	display: inline-block;
+	width: 20%;
+	height: 100%;
+	text-align: center;
+	font-size: 2px;
+	color:#5d5f6a;
+}
+
+#footer div a
+{
+	text-decoration: none;
+	font-size: 30px;
+	color:#232326;
+}
+
+#footer div a img
+{
+	width: 30%;
+	height:60%;
+}

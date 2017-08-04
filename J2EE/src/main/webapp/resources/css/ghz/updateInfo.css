@@ -1,0 +1,65 @@
+.back-arrow {
+	height: 30px;
+}
+
+.mdl-navigation__link {
+	width: 30px;
+}  
+
+.mdl-layout__header-row .mdl-navigation__link {
+	padding-left: 0;
+}
+
+.my_list {
+	padding-top: 0px;
+}
+
+.my_list hr {
+	border: 0 solid #aaaaaa;
+	background-color: #dddddd;
+	box-shadow: 0 0 1px #eeeeee;
+}
+
+.li_box {
+	width: 100%;
+	background: none;
+	border: none;
+	outline: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left_container {
+	display: flex;
+	align-items: center;
+	margin-left: 15px;
+	margin-right: 10px;
+}
+
+.left_container label{
+	font-size: 16px;
+}
+
+.right_container {
+	display: inline-block;
+	display: flex;
+	align-items: center;
+}
+
+.right_container > label {
+	font-size: 15px;
+	color: #999999;
+	padding-right: 10px;
+}
+
+.ic_arrow {
+	height: 20px;
+	width: 20px;
+}
+
+.user_header {
+	height: 55px;
+	width: 55px;
+	border-radius: 51%;
+}

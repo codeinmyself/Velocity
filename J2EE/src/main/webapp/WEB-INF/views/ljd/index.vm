@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>用户信息页</title>
+
+		<!-- Bootstrap -->
+		<link href="#springUrl('/resources/css/ljd/bootstrap.css')" rel="stylesheet">
+    	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" href="#springUrl('/resources/css/ljd/amazeui.min.css')" />
+		<link rel="stylesheet" href="#springUrl('/resources/css/ljd/style.css')" />
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/jquery.min.js')" ></script>
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/amazeui.min.js')" ></script>
+	</head>
+
+	<body>
+
+		<!-- 导航条-->
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#springUrl('/')">返回</a>
+	    	</div>	
+		</nav>
+
+		<div class="member">
+			<div class="member-pic">
+				<img src="#springUrl('/resources/images/ljd/default_photo.png')" />
+			</div>
+			<div >
+			<p >$user.nickname</p></div>
+			
+		</div>
+		<ul class="member-nav">
+			<li><a href="#springUrl('/user/address')"><i class="am-icon-map-marker"></i><span>收货地址</span></a></li>
+			<li><a href="#springUrl('/user/order_list')"><i class="am-icon-newspaper-o"></i><span>我的订单</span></a></li>
+			<li><a href="#springUrl('/user/collection')"><i class="am-icon-cart-arrow-down"></i><span>我的收藏</span></a></li>
+			<li><a href="#springUrl('/user/user_info')"><i class="am-icon-bell-o"></i><span>个人信息</span></a></li>
+			<li><a href=""><i class="am-icon-credit-card"></i><span>会员卡</span></a></li>
+			<li><a href=""><i class="am-icon-cc-mastercard"></i><span>优惠券</span></a></li>
+			<li><a href=""><i class="am-icon-dollar"></i><span>积分</a></li>
+		</ul>
+		<ul class="member-nav mt">
+			<li><a href=""><i class="am-icon-phone"></i>联系我们</a></li>
+		</ul>
+		
+		</div>
+
+
+		
+
+		
+		<h2></h2>
+		
+		<!-- 菜单实现-->
+		<!-- 
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a href="#springUrl('/user/collection')"><span class="glyphicon glyphicon-star"></span> 我的收藏</a></li>
+			<li role="presentation"><a href="#springUrl('/user/address')"><span class="glyphicon glyphicon-home"></span> 收货地址</a></li>
+			<li role="presentation"><a href="#springUrl('/user/user_info')"><span class="glyphicon glyphicon-cog"></span> 用户设置</a></li>
+		</ul>
+		-->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/bootstrap.min.js')"></script>
+		
+	</body>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.lxq.mapper.MyCollectMapper">
+	<resultMap type="xmu.mall.usercenter.lxq.model.Goods" id="MyCollectResult">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="serial_code" property="serial_code" />
+		<result column="weight" property="weight" />
+		<result column="stock_count" property="stock_count" />
+		<result column="pre_sale_number" property="pre_sale_number" />
+		<result column="store_id" property="store_id" />
+		<result column="mid_user_price" property="mid_user_price" />
+		<result column="market_price" property="market_price" />
+		<result column="real_price" property="real_price" />
+		<result column="redeem_point" property="redeem_point" />
+		<result column="brand_id" property="brand_id" />
+		<result column="stand_id" property="stand_id" />
+		<result column="add_time" property="add_time" />
+		<result column="last_modified_time" property="last_modified_time" />
+		<result column="description" property="description" />
+		<result column="image_path" property="image_path" />
+		<result column="is_dividable" property="is_dividable" />
+		<result column="default_express" property="default_express" />
+
+
+	</resultMap>
+
+	<select id="getGoodsListByUserId" resultMap="MyCollectResult"
+		parameterType="java.lang.Long">
+		SELECT * FROM main_goods WHERE main_goods.id in
+		(SELECT goods_id FROM main_user_collect_goods WHERE user_id = #{id})
+
+	</select>
+	
+	<insert id="addCollectByGoodsId" parameterType="java.lang.Long">
+         	insert into main_user_collect_goods
+         	(user_id,goods_id) values('1',#{goods_id})
+	</insert>
+	
+	<select id="hasCollection" resultMap="MyCollectResult" parameterType="xmu.mall.usercenter.lxq.model.UserCollectGoods">
+	       select * from main_goods where main_goods.id in
+	       (select goods_id from main_user_collect_goods where goods_id=#{goods_id} and user_id=#{user_id})
+	</select>
+
+
+	<delete id="deleteCollectByGoodsId" parameterType="java.lang.Long">
+		delete from
+		main_user_collect_goods where goods_id=#{id}
+	</delete>
+
+</mapper>

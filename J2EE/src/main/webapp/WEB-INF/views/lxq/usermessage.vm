@@ -1,0 +1,73 @@
+#tiles_insertTemplate({"template":"../layout/lxq/user_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "用户信息页"})#end
+	#tiles_putAttribute({"name":"body"})
+	
+	<article class="user-head">
+		<div class="user-bg-img">
+			<img src="#springUrl('/resources/images/lxq/user_bg.png')">
+			<div class="user-img">
+				<img src="#springUrl('/resources/images/lxq/user-img0.jpg')">
+			</div>
+		</div>
+		<div class="user-order">
+			<a href="#springUrl('/user/orderlist')" class="select-btn select-btn-t"><img src="#springUrl('/resources/images/lxq/indent.png')">我的订单 	<span>查看所有订单</span>	 <i class="icon icon-select"></i></a>
+		</div>
+		<div class="user-nav">
+			<a href="#springUrl('/user/wait_pay')" role="button">
+	    		<i class="icon icon-f1"></i>
+	    		待付款
+	    	</a>
+	    	<a href="#springUrl('/user/wait_re')">
+	    		<i class="icon icon-f2"></i>
+	    		待收货
+	    	</a>
+	    	<a href="#springUrl('/user/al_re')" >
+	    		<i class="icon icon-f3"></i>
+	    		已收货
+	    	</a>
+	    	<a href="#springUrl('/user/cancel')">
+	    		<i class="icon icon-f4"></i>
+	    		已取消
+	    	</a>
+	    	<a href="javascript:;">
+	    		<i class="icon icon-f5"></i>
+	    		售后
+	    	</a>
+		</div>
+	</article>
+	<article class="user-list">
+		<a href="#springUrl('/user/collect')" class="select-btn select-btn-t"><img src="#springUrl('/resources/images/lxq/collct.png')">我的收藏 	<span>2</span>	 <i class="icon icon-select"></i></a>
+		<a href="#springUrl('/user/set')" class="select-btn select-btn-t"><img src="#springUrl('/resources/images/lxq/set.png')">用户设置<i class="icon icon-select"></i></a>
+		<a href="#springUrl('/user/address_body')" class="select-btn select-btn-t"><img src="#springUrl('/resources/images/lxq/about.png')">收货地址<i class="icon icon-select"></i></a>
+		
+		<a href="javascript:;" class="select-btn select-btn-t"><img src="#springUrl('/resources/images/lxq/service.png')">联系客服<i class="icon icon-select"></i></a>
+<br/>
+	<br/>
+	</article>
+<!-- footer 底部菜单 -->
+    <footer>
+    	<a href="#springUrl('')">
+    		<i class="icon icon-f1"></i>
+    		首页
+    	</a>
+    	<a href="javascript:void(0)">
+    		<i class="icon icon-f2"></i>
+    		觅Me
+    	</a>
+    	<a href="#springUrl('/user/cart/index')">
+    		<i class="icon icon-f3"></i>
+    		购物车
+    	</a>
+    	<a href="#springUrl('/user/home')" class="pick">
+    		<i class="icon icon-f4"></i>
+    		我
+    	</a>
+    </footer>
+	
+	
+
+	
+		
+#end
+#end
+	

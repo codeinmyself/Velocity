@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>我的订单</title>
+
+		<!-- Bootstrap -->
+		<link href="#springUrl('/resources/css/pjx/bootstrap.css')" rel="stylesheet">
+    	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 导航条-->
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#springUrl('/user/index')">返回</a>
+	    	</div>	
+		</nav>
+		
+		<!-- 灰色巨幕实现
+		<div class="jumbotron">
+			<img id="img" src="#springUrl('/resources/images/pjx/defaultImage.png')" class="img-circle center-block" width = "140" height = "140">
+			<p class="text-center"></p>
+			<p class="text-center">$user.nickname</p>
+		</div>
+		-->
+		
+		<!-- 导航标签实现-->
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="#springUrl('/user/order_list')">所有订单</a></li>
+			<li role="presentation"><a href="#springUrl('/user/unpaid_order')">待付货</a></li>
+			<li role="presentation"><a href="#springUrl('/user/unshipped_order')">待发货</a></li>
+			<li role="presentation" class="active"><a href="#springUrl('/user/unreceivied_order')">待收货</a></li>
+			<li role="presentation"><a href="#springUrl('/user/receipt_order')">已收货</a></li>
+		</ul>
+		
+		#if($show_order_list)
+			#foreach($orderItem in $show_order_list)
+				<div class="panel panel-primary">
+					#set($hrefOrderCanelCode="/user/receive_order/"+$orderItem.order_id)
+					<div class="panel-heading">订单编号：$orderItem.order_sn</div>
+					#foreach($goods in $orderItem.GoodsList)
+	           			<div class="panel-body">商品名称：$goods.name 价格：$goods.price</div>
+					#end
+					<div class="panel-footer">
+						<p>实付款：$orderItem.order_price 状态：$orderItem.order_status</p>
+						<a class="btn btn-default" href="#springUrl($hrefOrderCanelCode)" role="button">确认收货</a>
+					</div>
+				</div>
+			#end
+		#end
+		
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script type="text/javascript" src="#springUrl('/resources/js/pjx/bootstrap.min.js')"></script>
+
+	</body>
+
+</html>

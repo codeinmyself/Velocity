@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Orders Management</title>
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zf/ShowOrders.css">
+    <link rel="stylesheet" href="resources/css/zf/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zf/Common.css">
+</head>
+<body>
+#include("top-nav.vm")
+<div id="title">
+    <div class="title-left">
+        <a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+        <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">订单列表</span>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div id="content">
+    <table id="list" class="content">
+        <thead>
+            <tr>
+                <td class="short" style="border-radius: 3px 0 0 0;"><input id="checkbox0" type="checkbox"></td>
+                <td class="middle">订单号</td>
+                <td class="middle">商品名称</td>
+                <td class="middle">下单时间</td>
+                <td class="short">收货人</td>
+                <td class="middle">用户名</td>
+                <td class="middle">总金额</td>
+                <td class="short">加急</td>
+                <td class="long">备注</td>
+				<td class="short">订单状态</td>
+                <td class="middle">发货时间</td>
+                <td class="long">操作</td>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="page-navigation">
+    <div class="page-navigation-div"><a href="javascript:lastpage()">上一页</a></div>
+    <div id="pageshow" class="page-navigation-div">第<input  type="number" class="page-input" min="1">页(共1164页)<a href="#" class="page-go">Go</a></div>
+    <div class="page-navigation-div"><a href="javascript:nextpage()">下一页</a></div>
+    <div style="clear: both"></div>
+</div>
+<div class="bottom-button">
+    <button onclick="javascript:urgent()">加急订单</button>
+    <button onclick="javascript:search()">高级搜索</button>
+    <button>导入订单</button>
+</div>
+#include("bottom.vm")
+<script type="text/javascript" src="resources/js/zf/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/zf/js/bootstrap.js"></script>
+<script type="text/javascript" src="resources/js/zf/resultOrders.js"></script>
+</body>
+</html>

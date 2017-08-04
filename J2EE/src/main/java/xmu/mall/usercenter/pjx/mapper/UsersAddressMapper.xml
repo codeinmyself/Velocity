@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.pjx.mapper.UsersAddressMapper">
+	<resultMap type="xmu.mall.usercenter.pjx.model.User_address" id="UsersAddressResult">
+		<id column="id" property="id" />
+		<result column="address_id" property="address_id" />
+		<result column="user_id" property="user_id" />
+		<result column="consignee" property="consignee" />
+		<result column="zipcode" property="zipcode" />
+		<result column="telephone" property="telephone" />
+		<result column="country" property="country" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="district" property="district" />
+		<result column="detail" property="detail" />
+		<result column="is_default" property="is_default" />
+	</resultMap>
+
+	<select id="selectByUserIDAndAddressID" resultMap="UsersAddressResult"
+		parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		SELECT * FROM 142477_user_address WHERE user_id=#{user_id} and address_id=#{address_id}
+	</select>
+	
+	<select id="selectAllByUserID" resultMap="UsersAddressResult"
+		parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		SELECT * FROM 142477_user_address WHERE user_id=#{user_id}
+	</select>
+
+	<update id="updateUserAddress" 
+		parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		update 142477_user_address
+		set
+		user_id=#{user_id}
+		consignee=#{consignee}
+		zipcode=#{zipcode}
+		telephone=#{telephone}
+		country=#{country}
+		province=#{province}
+		city=#{city}
+		district=#{district}
+		detail=#{detail}
+		is_default=#{is_default}
+		WHERE address_id=#{address_id}
+	</update>
+
+	<update id="cancelDefaultAddressByUserID" 
+		parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		update 142477_user_address
+		set
+		is_default=false
+		WHERE user_id=#{user_id}
+	</update>
+	
+	<update id="setDefaultAddressByUserIDAndAddressID" 
+		parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		update 142477_user_address
+		set
+		is_default=true
+		WHERE user_id=#{user_id} and address_id=#{address_id}
+	</update>
+
+	<delete id="deleteUserAddressBuAddressID" parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		delete from 142477_user_address where
+		address_id=#{address_id}
+	</delete>
+
+	<insert id="add" parameterType="xmu.mall.usercenter.pjx.model.User_address">
+		insert into
+		142477_user_address(user_id,consignee,zipcode,telephone,country,province,city,district,detail,is_default)
+		values(#{user_id},#{consignee},#{zipcode},#{telephone},#{country},
+			#{province},#{city},#{district},#{detail},#{is_default})
+	</insert>
+
+</mapper>

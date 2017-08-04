@@ -1,0 +1,7 @@
+#tiles_insertTemplate({"template":"../layout/yzh/template.vm"}) 
+#tiles_putAttribute({"name":"title", "value": "商城管理"})
+#end 
+#tiles_putAttribute({"name":"body"})
+<h2>从左侧选择管理内容</h2>
+#end 
+#end

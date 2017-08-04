@@ -1,0 +1,26 @@
+	.head
+	{
+		width: 100%;
+		background-color: white;
+		
+	}
+	
+	body{
+		display:flex;
+		flex-direction:column;
+		justify-content:space-between;
+		flex-grow:1;
+		height:600px;
+	}
+	
+	.main_container{
+		display:relative;
+		height:auto;
+	}
+	
+	.footer_container
+	{
+		  position:absolute;
+		  buttom:0;
+		  height:60px;
+	}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width; initial-scale=1.4; minimum-scale=1.0; maximum-scale=2.0"/>
+		<meta charset="utf-8">
+		<title>#tiles_insertAttribute({"name":"title"})#end</title>
+		<link href="#springUrl('/resources/css/cmy2/style.css')" rel="stylesheet" type="text/css" media="all" />
+	</head>
+	<header>
+		#tiles_insertAttribute({"name":"header"})#end
+	</header>	
+	<body class="basic_div">
+		#tiles_insertAttribute({"name":"body"})#end
+	</body>
+	<footer>
+		#tiles_insertAttribute({"name":"footer"})#end
+	</footer>
+</html>

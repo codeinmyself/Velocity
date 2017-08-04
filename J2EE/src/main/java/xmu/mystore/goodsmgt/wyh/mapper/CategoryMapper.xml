@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xmu.mystore.goodsmgt.wyh.mapper.CategoryMapper">
+	<resultMap id="categoryMapper" type="xmu.mystore.goodsmgt.wyh.model.Category">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="upperCategoryId" column="upper_category_id" />
+		<result property="rank" column="rank" />
+		<result property="type" column="type" />
+		<result property="priority" column="priority" />
+	</resultMap>
+	
+	<select id="getCategoryById" parameterType="java.lang.String" resultMap="categoryMapper">
+		select * from main_category where id=#{param1}   
+	</select>
+	
+	<select id="getAllCategory" resultMap="categoryMapper">
+		select * from main_category 
+	</select>
+	
+	<insert id="insertCategory" parameterType="xmu.mystore.goodsmgt.wyh.model.Category">
+		insert into main_category(id,name,upper_category_id,rank,priority,type)
+		values(#{category.id},#{category.name},#{category.upperCategoryId},
+		#{category.rank},#{category.priority},#{category.type})
+	</insert>
+	
+	<update id="updateCategory" parameterType="xmu.mystore.goodsmgt.wyh.model.Category">
+		update main_category set name =#{category.name},rank=#{category.rank} where id=#{category.id}
+	</update>
+	<delete id="deleteCategoryById" parameterType="java.lang.String">
+		delete from main_category where id=#{categoryId}
+	</delete>
+</mapper>

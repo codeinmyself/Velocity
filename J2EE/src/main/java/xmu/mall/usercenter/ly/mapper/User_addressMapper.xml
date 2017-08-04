@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ly.mapper.User_addressMapper" >
+	<resultMap type="xmu.mall.usercenter.ly.model.User_address" id="addressResult">
+		<id column="address_id" property="address_id"/>
+		<result column="user_id" property="user_id"/>
+		<result column="consignee" property="consignee"/>
+		<result column="zipcode" property="zipcode"/>
+		<result column="telephone" property="telephone"/>
+		<result column="country" property="country"/>
+		<result column="province" property="province"/>
+		<result column="city" property="city"/>
+		<result column="district" property="district"/>
+		<result column="detail" property="detail"/>
+		<result column="is_default" property="is_default"/>
+		<association property="country_name" javaType="String" column="country" select="xmu.mall.usercenter.ly.mapper.regionMapper.getRegionById"/>
+		<association property="province_name" javaType="String" column="province" select="xmu.mall.usercenter.ly.mapper.regionMapper.getRegionById"/>
+		<association property="city_name" javaType="String" column="city" select="xmu.mall.usercenter.ly.mapper.regionMapper.getRegionById"/>
+		<association property="district_name" javaType="String" column="district" select="xmu.mall.usercenter.ly.mapper.regionMapper.getRegionById"/>
+	</resultMap>
+	
+	<select id="getAddressById" resultMap="addressResult" parameterType="long">
+		SELECT * FROM 142560_user_address where address_id = #{id}
+	</select>
+	<select id="getAddressByUid" resultMap="addressResult" parameterType="long">
+		SELECT * FROM 142560_user_address where user_id = #{id} ORDER BY is_default DESC
+	</select>
+
+	<update id="changeToNotDefault">
+		UPDATE 142560_user_address SET is_default=0
+	</update>
+
+	<update id="changeToDefault"  parameterType="long">
+		UPDATE 142560_user_address SET is_default=1 WHERE address_id=#{id}
+	</update>
+
+	<delete id="deleteAddress" parameterType="long">
+		delete from 142560_user_address where address_id=#{id}
+	</delete>
+
+	<insert id="saveAddress" parameterType="xmu.mall.usercenter.ly.model.User_address"
+			useGeneratedKeys="true" keyProperty="address_id">
+		insert into 142560_user_address(user_id,consignee,zipcode,telephone,country,province,city,district,detail,is_default)
+		values(#{user_id},#{consignee},#{zipcode},#{telephone},#{country},#{province},#{city},#{district},#{detail},#{is_default})
+	</insert>
+
+	<update id="updateAddress" parameterType="xmu.mall.usercenter.ly.model.User_address">
+		UPDATE 142560_user_address SET consignee=#{consignee}, zipcode=#{zipcode}, telephone=#{telephone}, country=#{country},city=#{city},
+		   district=#{district}, detail=#{detail},is_default=#{is_default}  WHERE address_id=#{address_id}
+	</update>
+</mapper>

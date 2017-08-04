@@ -1,0 +1,58 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer">
+        <div class="searchbar">
+            <a href="Brand/addBrand"><button class="searchbtn" title="search" onclick="window.location.href('addBrand')"></button></a>
+        </div>
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>品牌名称</th>
+                    <th>品牌网址</th>
+                    <th>品牌简介</th>
+                    <th>是否显示</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody-result">
+                  #foreach($brand in $brandList)
+                  <tr>
+                      <td>$brand.name</td>
+                      <td>$brand.website</td>
+                      <td>$brand.description</td>
+                      #if($brand.type==true)
+                          <td class="mdl-data-table__cell--non-numeric">是</td>
+                      #else
+                          <td class="mdl-data-table__cell--non-numeric">否</td>
+                      #end
+                  #*<td><button type="button"  class="btn btn-default btn-xs" data-toggle="modal" data-target="#modifyGood" >修改</button><button type="button" class="btn btn-default btn-xs" onclick="deleteGood("+item.id+")">删除</button> </td>*#
+                      <td><button type="button"  class="btn btn-default btn-xs" onclick="window.location.href='Brand/modifyBrand?id=$brand.id'" >修改</button>
+                  </tr>
+                  #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="active listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/jquery-3.1.1.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/bootstrap.min.js')"></script>
+#end
+#end

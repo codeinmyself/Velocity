@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ghz.mapper.IAddressMapper" >
+
+	<resultMap type="xmu.mall.usercenter.ghz.entity.Address" id="address">
+		<id column="address_id" property="id"/>
+	</resultMap>
+	
+	<select id="getUserAddress" resultMap="address" >
+		select * from 142424_user_address where user_id = #{user_id}
+	</select>
+	
+	<select id="getAddress" resultMap="address">
+		select * from 142424_user_address where user_id = #{user_id} and address_id = #{address_id}
+	</select>
+	
+	<select id="getDefaultAddress" resultMap="address">
+		select * from 142424_user_address where user_id = #{user_id} and is_default = 1
+	</select>
+	
+	<update id="removeDefaultAddress">
+		update 142424_user_address set is_default = 0 where user_id = #{user_id} and is_default = 1;
+	</update>
+	
+	<update id="setDefaultAddress">
+		update 142424_user_address set is_default = 1 where user_id = #{user_id} and address_id = #{address_id}
+	</update>
+	
+	<insert id="addNewAddress" parameterType="xmu.mall.usercenter.ghz.entity.Address" useGeneratedKeys="true" keyProperty="address_id">
+	  insert into 142424_user_address(user_id, consignee, zipcode, telephone, detail) 
+	  	values(#{user_id}, #{consignee}, #{zipcode}, #{telephone}, #{detail})
+	</insert>
+	
+	<update id="updateNewAddress" parameterType="xmu.mall.usercenter.ghz.entity.Address">
+		update 142424_user_address set consignee = #{consignee}, zipcode = #{zipcode},
+		 telephone = #{telephone}, detail = #{detail}, is_default = true
+		 where address_id = #{id}
+	</update>
+	
+	<delete id="removeAddress">
+		delete from 142424_user_address where address_id = #{address_id};
+	</delete>
+	
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.lxq.mapper.UserAddressMapper">
+	<resultMap id="UserAddressBaseMap" type="xmu.mall.usercenter.lxq.model.UserAddress">
+		<id column="address_id" property="address_id" jdbcType="BIGINT" />
+		<result column="user_id" property="user_id" jdbcType="BIGINT" />
+		<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+		<result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
+		<result column="country" property="country" jdbcType="INTEGER" />
+		<result column="province" property="province" jdbcType="INTEGER" />
+		<result column="city" property="city" jdbcType="INTEGER" />
+		<result column="district" property="district" jdbcType="INTEGER" />
+		<result column="detail" property="detail" jdbcType="VARCHAR" />
+		<result column="is_default" property="is_default" jdbcType="TINYINT" />
+	</resultMap>
+
+	<insert id="addAddress" parameterType="xmu.mall.usercenter.lxq.model.UserAddress">
+		INSERT INTO main_user_address
+		(user_id,consignee,telephone,province,city,district,detail,is_default)
+		Values(
+		#{user_id},#{consignee},#{telephone},#{province},#{city},#{district},#{detail},#{is_default}
+		)
+	</insert>
+	<select id="getAddressesByUserId" parameterType="java.lang.Long"
+		resultMap="UserAddressBaseMap">
+		SELECT * FROM main_user_address WHERE user_id=#{user_id}
+	</select>
+	<select id="getAddressByAddressId" parameterType="java.lang.Long"
+		resultMap="UserAddressBaseMap">
+		SELECT * FROM main_user_address WHERE address_id=#{address_id}
+	</select>
+
+	<update id="updateAddressByAddress" parameterType="xmu.mall.usercenter.lxq.model.UserAddress">
+		UPDATE main_user_address
+		<set>
+			<if test="consignee != null">
+				consignee=#{consignee},
+			</if>
+			<if test="country != null">
+				country=#{country},
+			</if>
+			<if test="zipcode != null">
+				zipcode=#{zipcode},
+			</if>
+			<if test="telephone != null">
+				telephone=#{telephone},
+			</if>
+			<if test="province != null">
+				province=#{province},
+			</if>
+			<if test="city != null">
+				city=#{city},
+			</if>
+			<if test="district != null">
+				district=#{district},
+			</if>
+			<if test="detail != null">
+				detail=#{detail},
+			</if>
+			<if test="is_default != null">
+				is_default=#{is_default}
+			</if>
+		</set>
+		where address_id=#{address_id}
+	</update>
+
+	<update id="changeDefaultToZero" parameterType="java.lang.Long">
+		UPDATE main_user_address SET
+		is_default=0
+		where user_id=#{user_id}
+	</update>
+	<delete id="deleteAddress" parameterType="java.lang.Long">
+		DELETE FROM main_user_address WHERE address_id=#{address_id}
+	</delete>
+
+</mapper>

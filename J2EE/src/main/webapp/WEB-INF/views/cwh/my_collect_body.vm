@@ -1,0 +1,22 @@
+#tiles_insertTemplate({"template":"../layout/cwh/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "我的收藏"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/cwh/my_collect_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<div class="orderBody" onClick="">
+	<hr class="divide"/>
+	#foreach ($goods in $goodslist)
+		<div class="div4">
+			<a href="javascript:void(0);" onClick="gotoGoods($goods.getId())"><img src="#springUrl($goods.getImage_path())" class="icon" style="float:left;"/></a>
+			
+			<p style="margin-left:10%">[$goods.getName()]$goods.getDescription().substring(0,18)...</p>
+			
+			<p>￥$goods.getMarket_price()</p>
+			<p><button type="button" onClick="cancelCollect($user_id,$goods.getId())"style="float:right;margin-bottom:1%;margin-right:10%;font-size:1em;">取消关注</button></p>	
+		</div>
+		<hr class="divide"/>
+	#end
+</div>
+<br/>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/cwh/footer.vm") #end
+#end

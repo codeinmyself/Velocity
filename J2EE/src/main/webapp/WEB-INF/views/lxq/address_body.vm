@@ -1,0 +1,24 @@
+#tiles_insertTemplate({"template":"../layout/lxq/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "收货地址"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/lxq/address_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<div>
+<br/>
+<hr/>
+	#foreach($address in $addresses)
+		<div style="font-size:1em;" >	
+			<p>$address.getConsignee()&emsp;$address.getTelephone()#if($address.Is_default)<font color="red">[默认]</font>#end</p>
+			<p>$address.getProvince_name()$address.getCity_name()$address.getDistrict_name()$address.getDetail()&emsp;<input type="button" height="15px" value="修改" onclick="gotoEditAddress1($user_id,$address.getAddress_id())"></p>	
+		</div>
+		<hr/>
+	#end
+	<hr/>
+	<br/>
+	<div style="text-align:center;">
+		<button onClick="gotoEditAddress2($user_id)" class="addressBtn">+新增地址</button>
+	</div>
+</div>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/lxq/footer.vm")#end
+#end
+

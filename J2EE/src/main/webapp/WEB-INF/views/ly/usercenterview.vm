@@ -1,0 +1,73 @@
+<html>
+<head>
+<style type="text/css">
+.imgtest
+{
+text-align:center;
+background-color:#CC0033;
+margin:10px 5px;
+overflow:hidden;
+}
+p
+{
+font-size:12px;
+}
+.imgtest figure div
+{
+display:inline-block;
+margin:15px auto;
+width:100px;
+height:100px;
+border-radius:100px;
+border:2px solid #fff;
+overflow:hidden;
+-webkit-box-shadow:0 0 3px #ccc;
+box-shadow:0 0 3px #ccc;
+}
+.imgtest img
+{
+width:100%;
+min-height:100%;
+text-align:center;
+}
+img
+{
+height:39px;
+width:39px;
+}
+</style>
+</head>
+
+<body>
+<div class="imgtest">
+<figure>   
+<div>
+<img src="http://img1.skqkw.cn:888/2014/12/08/07/rf5rlvjegvz-10335.jpg" />
+</div>  
+</figure>
+</div>
+<p>用户信息页</p>
+<hr/>
+<p>订单部分</p>
+<table cellspacing="18px">
+<tr>
+<td><a href="alllist"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497637727901&di=759c25760793269c8002e6e20a2d6e1b&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fsoft%2Fimages%2F2013%2F0820%2F20130820025613800.jpg"/><p>我的订单</p></a></td>
+<td><a href="waitpay"><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1655557173,2745093489&fm=26&gp=0.jpg"/><p>待付款</p></a></td>
+<td><a href="waittake"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497639537111&di=9008840f9269dc35df285fc19535fc80&imgtype=0&src=http%3A%2F%2Fm.qqzhi.com%2Fupload%2Fimg_3_2918285292D3622077367_23.jpg"/><p>待收货</p></a></td>
+<td><a href="havetake"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497638187534&di=9f769948aab79d97cbd0af57212293e9&imgtype=0&src=http%3A%2F%2Fpic.colipu.com%2FProductBigImage%2F1_1036598.jpg"/><p>已收货</p></a></td>
+<td><a href="delete1"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497710433095&di=e6ca52204d5a9ac6cb88f560467f1a3a&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F14%2F82%2F93%2F24q58PICR6G_1024.jpg"/><p>已取消</p></a></td>
+</tr>
+</table>
+<hr/>
+<p>收藏商品</p>
+<a href="collect"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497639765091&di=1f54f8f8d100df6981a24acbcbd6f98e&imgtype=0&src=http%3A%2F%2Fimg.juimg.com%2Ftuku%2Fyulantu%2F140325%2F330706-1403250GA938.jpg"/><p>收藏商品</p></a>
+<hr/>
+<p>用户信息管理</p>
+<table cellspacing="18px">
+<tr>
+<td><a href="messagemanage"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497640262373&di=a906e3784e45e626384ca679f9cef838&imgtype=0&src=http%3A%2F%2Fcdns2.freepik.com%2Ffree-photo%2Fmale-user-outline-close-up-with-verification-symbol_318-39684.jpg"/><p>用户信息管理</p></a></td>
+<td><a href="addressmanage"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498235059&di=e59c41173271f98b66788421ee53d601&imgtype=jpg&er=1&src=http%3A%2F%2Fcdn2.freepik.com%2Fimage%2Fth%2F318-27954.jpg"/><p>用户地址管理</p></a></td>
+</tr>
+</table>
+</body>
+</html>

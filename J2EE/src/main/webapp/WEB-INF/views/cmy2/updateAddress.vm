@@ -1,0 +1,104 @@
+'
+#tiles_insertTemplate({"template":"../layout/cmy2/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+  
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/cmy2/header.vm")
+  	
+  		<script>
+  			function goto1(){
+  			var get=document.getElementsByName("orderRadio");
+  			k=0;
+  			for(i=0;i<get.length;i++){
+  				if(get[i].checked){
+  					window.location.href='lookupOrder?order_id='+get[i].value;
+  					k=1;
+  				}
+  			}
+  			if(k==0){
+  				alert("请选择要查看的订单");
+  			}
+  	}
+  		</script>
+  		
+  	
+  	#end
+  	
+	#tiles_putAttribute({"name":"body"})
+	
+	<div class="basic">
+		<div class="windows">
+			<div class="mainTop">
+			#set($turnuserInfo="/userinfo/userInfo?user_id=1")
+			<a href="userInfo?user_id=1" style="float:left;height:10px;margin-top:5px;margin-left:10px;color:white;text-decoration:none;">
+				首页
+				</a>
+				<br/>
+				收货地址
+				<a href="#" onClick="javascript :history.back(-1);" style="float:right;height:10px;margin-top:-30px;margin-right:10px;color:white;text-decoration:none;">
+				返回
+				</a>
+			</div>
+		<form action="updateResult">
+			<input type="hidden" class="" value="$useraddress.getAddress_id()" name="address_id">
+			<tr class="head">
+				<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+					&nbsp;&nbsp;&nbsp;收货人
+					#if($useraddress.getConsignee())
+						<input type="text" class="" value="$useraddress.getConsignee()" name="consignee"></input>
+					#else 
+						<input type="text" class="" value="" name="consignee"></input>
+					#end
+				</a>
+				
+				<HR style="border: 6 groove #ff0033" align=center width="100%" >
+			</tr>
+			<tr class="head">
+				<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+					手机号码
+					#if($useraddress.getTelephone())
+						<input type="text" class="" value="$useraddress.getTelephone()" name="telephone"></input>
+					#else
+						<input type="text" class="" value="" name="telephone"></input>
+					#end
+				</a>
+				<HR style="border: 6 groove #ff0033" align=center width="100%" >
+			</tr>
+			<tr class="head">
+				<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+					所在地区
+					#if($useraddress.getDistrict())
+						<input type="text" class="" value="$useraddress.getDistrict()" name="district"></input>
+					#else
+						<input type="text" class="" value="" name="district"></input>
+					#end
+				</a>
+				<HR style="border: 6 groove #ff0033" align=center width="100%" >
+			</tr>
+			<tr class="head">
+				<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+					详细地址
+					#if($useraddress.getDetail())
+						<input type="text" class="" value="$useraddress.getDetail()" name="detail"></input>
+					#else
+						<input type="text" class="" value="" name="detail"></input>
+					#end
+				</a>
+				<HR style="border: 6 groove #ff0033" align=center width="100%" >
+			</tr>
+			<tr>
+			<a href="" style="text-decoration:none;">
+				&nbsp;&nbsp;&nbsp;是否设为默认地址
+				 <input type="radio" name="isDefault" value="Y">是 <input type="radio" name="isDefault" value="N" checked>否 
+			</a>
+			</tr>
+			<input type="submit" class="button_text" value="更新"></input>
+		</form>	
+			
+		</div>
+	</div>
+	#end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/cmy2/footer.vm")
+  #end
+#end

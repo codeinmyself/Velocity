@@ -1,0 +1,60 @@
+#tiles_insertTemplate({"template":"../layout/yzh/template.vm"})#tiles_putAttribute({"name":"title", "value": "商店管理"})#end #tiles_putAttribute({"name":"body"})
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">所有商店</h2>
+  </div>
+  <div class="mdl-card__supporting-text" style="height:70%;">
+    <div class="row">
+      <!--表格-->
+      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width:100%;">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">商店名</th>
+            <th class="mdl-data-table__cell--non-numeric">商店地址</th>
+            <th class="mdl-data-table__cell--non-numeric">商店描述</th>
+            <th class="mdl-data-table__cell--non-numeric">状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          #foreach ($organization in $organizationList)
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+              <div style="width:80px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; ">
+                $organization.organization_name
+              </div>
+            </td>
+            
+            <td class="mdl-data-table__cell--non-numeric">
+              <div style="width:200px;overflow : hidden;text-overflow : ellipsis;">
+              	$organization.organization_address
+              </div>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <div id="state" style="width:80px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; ">
+                $organization.organization_description
+              </div>
+            </td>
+            
+            <td class="mdl-data-table__cell--non-numeric">
+              <div style="width:200px;overflow : hidden;text-overflow : ellipsis;">
+              	#if($organization.enable=="enable")
+              		#set($enable="可用")
+              	#else 
+              		#set($enable="不可用")
+              	#end
+                $enable
+              </div>
+            </td>
+            
+            <td><a href="Organization/changeOrganizationState?id=$organization.organization_id">修改状态</a></td>
+          </tr>
+          #end
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>
+#end 
+#end

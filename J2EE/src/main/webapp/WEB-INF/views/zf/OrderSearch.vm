@@ -1,0 +1,220 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Orders Management</title>
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zf/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zf/Common.css">
+    <style>
+        #title
+        {
+            width: 72%;
+            background-color: white;
+            box-shadow:7px 7px 7px #aaaaaa;
+            margin: 5% auto 0 auto;
+            border-radius: 3px;
+        }
+        .content
+        {
+            width: 72%;
+            background-color: white;
+            box-shadow:7px 7px 7px #aaaaaa;
+            margin: 20px 14% 0 14%;
+            border-radius: 3px;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        .left-content
+        {
+            width: 45%;
+            float: left;
+            padding: 100px;
+        }
+        .right-content
+        {
+            width: 45%;
+            float: left;
+            padding: 100px;
+        }
+        .long
+        {
+            width: 370px;
+        }
+        .total-input
+        {
+            font-family: "Microsoft YaHei UI";
+            border: none;
+            font-size: 16px;
+            border-bottom: solid 3px #135480;
+        }
+        .input-container
+        {
+            padding-bottom: 75px;
+        }
+        .input-container p
+        {
+            margin: 0;
+            font-family: "Microsoft YaHei UI";
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        .button-line
+        {
+            margin-top: 120px;
+        }
+        .button-line button
+        {
+            font-size: 16px;
+            font-family: "Microsoft YaHei UI";
+            padding: 5px 12px 5px 12px;
+            border-radius: 3px;
+            box-shadow:3px 3px 3px #aaaaaa;
+        }
+        .button-yes
+        {
+            background-color: #135480;
+            color: white;
+            margin-left: 30px;
+        }
+        .button-reset
+        {
+            background-color: white;
+            color: #135480;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    #include("top-nav.vm")
+<div id="title">
+    <div class="title-left">
+        <a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+        <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">订单搜索</span>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div class="content">
+    <div class="left-content">
+        <ul>
+            <!--这里就不去找日期控件了orz原谅我！-->
+            <li>
+                <div class="input-container">
+                    <input id="order_sn" class="total-input long" placeholder="请输入订单编号">
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+					<p>下单起始时间</p>
+					<input id="start-date" type='date' class='total-input long'/>
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+					<p>下单终止时间</p>
+                    <input id="end-date" type="date" class="total-input long" />
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <p>是否加急</p>
+                    <select id="isUrgency" class="total-input long">
+                        <option value="-1">请选择是否加急</option>
+						<option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <p>订单状态</p>
+                    <select id="order_status" class="total-input long">
+                        <option value="-1">请选择订单状态</option>
+                        <option value="0">未付款</option>
+                        <option value="1">已付款</option>
+                        <option value="2">已审核</option>
+                        <option value="3">已发货</option>
+                        <option value="4">已收货</option>
+                        <option value="5">取消</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="right-content">
+        <ul>
+            <li>
+                <div class="input-container">
+                    <input id="goods_name" class="total-input long" placeholder="请输入商品名称">
+                </div>
+            </li>
+            <li>
+                <div  class="input-container">
+                    <input id="consignee" class="total-input long" placeholder="请输入收货人">
+                </div>
+            </li>
+            <li>
+                <div class="button-line">
+                    <button class="button-yes" onclick="check()">确定</button>
+                    <button style="background-color: white;color: #135480;">重置</button>
+                    <button style="background-color: white;color: #135480;" onclick="javascript:history.go(-1);">返回</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div style="clear: both"></div>
+</div>
+#include("bottom.vm")
+<script type="text/javascript" src="resources/js/zf/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/zf/js/bootstrap.js"></script>
+<script type="text/javascript">
+	 /*window.onload=function () {
+            var date = new Date();
+            var seperator1 = "-";
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = year + seperator1 + month + seperator1 + strDate;
+            document.getElementById("start-date").value = currentdate;
+			document.getElementById("end-date").value = currentdate;
+        }*/
+		
+	function check(){
+		var order_sn = document.getElementById("order_sn").value;
+		var start_date = document.getElementById("start-date").value;
+		var end_date = document.getElementById("end-date").value;
+		var isUrgency = document.getElementById("isUrgency").value;
+		var order_status = document.getElementById("order_status").value;
+		var goods_name = document.getElementById("goods_name").value;
+		var consignee = document.getElementById("consignee").value;
+		//alert(goods_name);
+		if((order_sn==null||order_sn=="") && (start_date==null||start_date=="") && (end_date==null||end_date=="") && (isUrgency=="-1") &&(consignee==null||consignee=="") && (goods_name==null||goods_name=="") && (order_status=="-1")){
+			alert("无查询条件");
+			return;
+		}
+		$.ajax(
+                    {
+                        type: 'GET',
+                        contentType: 'application/json;charset=utf-8',
+                        url:'searchCondition?order_sn='+order_sn+'&start_date='+start_date+'&end_date='+end_date+'&isUrgency='+isUrgency+'&order_status='+order_status +'&goods_name=' + goods_name + '&consignee=' + consignee,
+                        success:function (data) {
+                            if(data == "success")
+                            {
+                                window.location.href='searchResult';
+                            }
+                        }
+                    }
+               )
+		
+	}
+
+</script>
+</body>
+</html>

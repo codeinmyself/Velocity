@@ -1,0 +1,62 @@
+<div>
+	<form action="searchResult">
+		<table class="manage">
+			<tr>
+				<td class="manage_title">订单基本信息</td>
+			</tr>
+			<tr>
+				<td class="manage_left">订单号</td>
+				<td class="manage_right"><input type="text" class="manage_input" name="orderSn"></input></td>
+			</tr>
+			<tr>
+				<td class="manage_left">订单状态</td>
+				<td class="manage_right">
+					<select name="orderStatus"> 
+						<option value="-1">(不选)</option>
+						<option value="0">未付款</option> 
+						<option value="1">已付款</option> 
+						<option value="2">定制中</option> 
+						<option value="3">已发货</option> 
+						<option value="4">已收货</option>
+						<option value="5">取消</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="manage_left">下单时间</td>
+				<td class="manage_right"><input type="text" class="manage_input" name="addTime"></input></td>
+			</tr>
+			
+			<tr>
+				<td class="manage_left">加急</td>
+				<td class="manage_right">
+					<select name="isUrgency">
+						<option value="">(不选)</option> 
+						<option value="Y">是</option> 
+						<option value="N">否</option> 
+					</select>
+				</td>
+			</tr>
+				
+			<tr>
+				<td class="manage_title">商品信息</td>
+			</tr>
+			
+			<tr>
+				<td class="manage_left">商品名称</td>
+				<td class="manage_right"><input type="text" class="manage_input" name="goodsName"></input></td>
+			</tr>
+			
+			<tr>
+				<td class="manage_title">收货人信息</td>
+			</tr>
+			<tr>
+				<td class="manage_left">收货人姓名</td>
+				<td class="manage_right"><input type="text" class="manage_input" name="consignee"></input></td>
+			</tr>
+			
+		</table>
+		<input type="submit" class="button"></input>
+	</form>
+</div>

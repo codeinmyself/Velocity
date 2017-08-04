@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <script src="../resources/js/ghz/info.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/commonStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/orderListStyle.css">
+</head>
+
+<body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header  header-color">
+            <div class="title_bar">
+                <nav class="my_back">
+                    <a class="mdl-navigation__link" href="home">
+                        <img src="../resources/images/ghz/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">我的订单</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <hr>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect my_tab">
+                <a href="?stat=all" id="all" class="mdl-layout__tab">全部</a>
+                <a href="?stat=forPay" id="forPay" class="mdl-layout__tab">待付款</a>
+                <a href="?stat=forSend" id="forSend" class="mdl-layout__tab">待发货</a>
+                <a href="?stat=forReceive" id="forReceive" class="mdl-layout__tab">待收货</a>
+                <a href="?stat=received" id="received" class="mdl-layout__tab">已收货</a>
+                <a href="?stat=cancel" id="cancel" class="mdl-layout__tab">已取消</a>
+            </div>
+        </header>
+        <script>set_tab();</script>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list order_list_ul">
+                	#foreach (${order} in ${orderList})
+                    <li class="line-spacer"></li>
+                    <hr>
+                    <li class="order_list">
+                        <div class="order_pre_info">
+                            <span>${order.order_sn}</span>
+                            <form id="form${order.order_id}" name="form${order.order_id}" method="post" action="removeOrder">
+                                <input type="hidden" name="order_id" value="${order.order_id}"/>
+                                <input type="hidden" name="stat" id = "stat?${order.order_id}"/>
+                                <script>
+			                    	document.getElementById("stat?${order.order_id}").value=GetQueryString('stat');
+			                    </script>
+                            	<span>
+                                ${order.getStatStr()}
+                                <label>|</label>
+                                	<button type="submit" class="ic_delete"><img src="../resources/images/ghz/ic_delete.png"></button>
+                            	</span>
+                            </form>
+                        </div>
+                        <button class="order_detail">
+                            <img src="../resources/images/ghz/default.jpg" class="item_img"></image>
+                            <span class="order_description">
+                            	订单介绍
+                                ##${order.description}
+                            </span>
+                        </button>
+                        <div class="order_after_info">
+                            <span>实付款：</span>
+                            <label>${order.order_price}</label>
+                        </div>
+                        <div class="operation_btn">
+                        #if (${order.order_status} == 0)
+                        	<form method="post" action="../user/orderindex/order/pay">
+                        		<input type="hidden" name="orderId" value="${order.order_id}"/>
+                        		<button type="submit" class="mdl-button mdl-js-button mdl-button--accent func_btn">付款</button>
+                        	<form>
+                    	#elseif(${order.order_status} == 3)
+                    		<form method="post" action ="confirmOrder">
+                                <input type="hidden" name="order_id" value="${order.order_id}"/>
+                    			<button type="submit" class="mdl-button mdl-js-button mdl-button--accent func_btn">确认收货</button>
+                    		<form>
+                    	#end
+                    	#if(${order.order_status} <= 4)
+                    		<form method="post" action="cancelOrder">
+                                <input type="hidden" name="order_id" value="${order.order_id}"/>
+                    			<button type="submit" class="mdl-button mdl-js-button mdl-button--accent func_btn">取消订单</button>
+                    		<form>
+                    	#end
+                    	</div>
+                    </li>
+                    #end
+                    <hr/>                    
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

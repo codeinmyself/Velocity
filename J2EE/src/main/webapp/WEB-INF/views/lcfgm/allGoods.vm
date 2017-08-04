@@ -1,0 +1,255 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer">
+        <div class="searchbar">
+            <a href="Goods/addGoods"><button class="searchbtn" title="search" onclick="window.location.href('addGoods')"></button></a>
+        </div>
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>商品编号</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>库存</th>
+                    <th>重量</th>
+                    <th>每包数量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody-result">
+                #foreach ($goods in $goodsList)
+                <tr>
+                    <td>$goods.id</td>
+                    <td>$goods.name</td>
+                    <td>￥ $goods.real_price</td>
+                    <td>$goods.stock_count</td>
+                    <td>$goods.weight g</td>
+                    <td>$goods.pre_sale_number</td>
+                    #*<td><button type="button"  class="btn btn-default btn-xs" data-toggle="modal" data-target="#modifyGood" >修改</button><button type="button" class="btn btn-default btn-xs" onclick="deleteGood("+item.id+")">删除</button> </td>*#
+                    <td><button type="button"  class="btn btn-default btn-xs" onclick="window.location.href='Goods/modifyGoods?id=$goods.id'" >修改</button><button type="button" class="btn btn-default btn-xs"  onclick="window.location.href='Goods/deleteGoods?id=$goods.id'">删除</button> </td>
+                </tr>
+                  #end
+                </tbody>
+            </table>
+            #*<div class="addbar">
+                <button type="button" id="addbtn" class="addbtn" data-toggle="modal" data-target="#addGood"></button>
+            </div>*#
+        </div>
+    </div>
+    <!-- 修改商品模态框（Modal） -->
+    <div class="modal fade modalstyle" id="modifyGood" tabindex="-1" role="dialog" aria-labelledby="modifyGoodLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modifyGoodLabel">修改商品</h4>
+                </div>
+                <form class="form-horizontal formstyle" role="form">
+                    <input type="hidden" name="id" value="$goods.id">
+                    <input type="hidden" name="serial_code" value="$goods.serial_code">
+                    <input type="hidden" name="store_id" value="$goods.store_id">
+                    <div class="modal-body">
+                        <div>
+                            <label for="name">名称</label>
+                            <input type="text" class="form-control" id="name" value="$goods.name">
+                        </div>
+                        <div>
+                            <label for="price">价格</label>
+                            <input type="text" class="form-control" id="price" placeholder="$233">
+                        </div>
+                        <div>
+                            <label for="category">分类</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="category">
+                                <option value="$category.id">$category.name</option>
+                                 #foreach($c in $categoryList)
+                                     <option value="$c.id">$c.name</option>
+                                     #end
+                            </select>
+                        </div>
+                        <div>
+                            <label for="brand">品牌</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="brand">
+                                <option value="$brand.id">$brand.name</option>
+                                #foreach($b in $brandList)
+                                    <option value="$b.id">$b.name</option>
+                                #end
+                            </select>
+                        </div>
+                        <div>
+                            <label for="stock_count">库存</label>
+                            <input type="text" class="form-control" id="stock_count" value="$goods.stock_count">
+                        </div>
+                        <div>
+                            <label for="weight">重量</label>
+                            <input type="text" class="form-control" id="weight" value="$goods.weight">
+                        </div>
+                        <div>
+                            <label for="package_number">每包数量</label>
+                            <input type="text" class="form-control" id="package_number" placeholder="1">
+                        </div>
+                        <div>
+                            <label for="divide">是否分单</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="divide">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                       <label>是否分单</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="modifyDivide" id="y_dividable" value="1" >是
+                            <input type="radio" name="modifyDivide" id="n_dividable" value="0" checked>否
+                        </label>
+                        <div>
+                            <label for="default_express">默认快递</label>
+                            <input type="text" class="form-control" id="default_express" placeholder="邮政">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" id="updateSubmit" class="btn btn-default">确认修改</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 修改商品模态框（Modal） -->
+    <!-- 增加商品模态框（Modal） -->
+    <div class="modal fade modalstyle" id="addGood" tabindex="-1" role="dialog" aria-labelledby="addGoodLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="addGoodLabel">新增商品</h4>
+                </div>
+                <form class="form-horizontal formstyle" role="form">
+                    <div class="modal-body">
+                        <div>
+                            <label for="serial_code">商品编号</label>
+                            <span class="form-control-static" id="serial_code">XXXXXXXXX</span>
+                        </div>
+                        <div>
+                            <label for="new_name">名称</label>
+                            <input type="text" class="form-control" id="new_name" onkeyup="validate()" placeholder="请输入商品名称">
+                            <span id="ver1"></span>
+                        </div>
+                        <div>
+                            <label for="new_price">价格</label>
+                            <input type="text" class="form-control" id="new_price" onkeyup="validate()" placeholder="请输入商品价格">
+                            <span id="ver2"></span>
+                        </div>
+                        <div>
+                            <label>分类</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="new_category">
+                                <option value="1">正常商品</option>
+                                <option value="2">散品</option>
+                                <option value="3">赠品</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="new_brand">品牌</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="new_brand">
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="new_stock_count">库存</label>
+                            <input type="text" class="form-control" id="new_stock_count" onkeyup="validate()" placeholder="请输入商品库存">
+                            <span id="ver3"></span>
+                        </div>
+                        <div>
+                            <label for="new_weight">重量</label>
+                            <input type="text" class="form-control" id="new_weight" onkeyup="validate()" placeholder="请输入商品重量">
+                            <span id="ver4"></span>
+                        </div>
+                        <div>
+                            <label for="new_package_number">每包数量</label>
+                            <input type="text" class="form-control" id="new_package_number" onkeyup="validate()" placeholder="请输入每包数量">
+                            <span id="ver5"></span>
+                        </div>
+                        <div>
+                            <label for="new_divide">是否分单</label>
+                            <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                            <select class="form-control" id="new_divide">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <%--<div class="radiostyle" id="new_divide">
+                        <label>是否分单</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="divide" value="1" checked>是
+                            <input type="radio" name="divide" value="0">否
+                        </label>
+                    </div>--%>
+                        <div>
+                            <label for="new_default_express">默认快递</label>
+                            <input type="text" class="form-control" id="new_default_express" placeholder="请输入商品默认快递">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" id="addSubmit" class="btn btn-default">确认新增</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 增加商品模态框（Modal） -->
+    <!-- 删除商品模态框（Modal） -->
+    <div class="modal fade modalstyle" id="deleteGood" tabindex="-1" role="dialog" aria-labelledby="deleteGoodLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="deleteGoodLabel">删除提示</h4>
+                </div>
+                <form class="form-horizontal formstyle" role="form" action="deleteGoods" method="get">
+                    <input type="hidden" name="id" value="$goods.id">
+                    <div class="modal-body">
+                        <h2>——确定删除该商品？</h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">关闭</button>
+                        <button type="submit" id="deleteSubmit" class="btn btn-default">确定</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 删除商品模态框（Modal） -->
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="active listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/jquery-3.1.1.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/bootstrap.min.js')"></script>
+<script type="text/javascript">
+  /*  function deleteGoods() {
+        document.getElementById("form").action = "deleteGoods";
+        document.getElementById("form").submit();
+    }*/
+</script>
+#end
+#end

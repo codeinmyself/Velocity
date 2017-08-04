@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        #if(${type} == "nickname")
+            修改昵称
+        #elseif(${type} == "tel")
+            修改手机号码
+        #elseif(${type} == "pwd")
+            修改登录密码
+        #end
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/updateInfo.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">
+                    #if(${type} == "nickname")
+                        修改昵称
+                    #elseif(${type} == "tel")
+                        修改手机号码
+                    #elseif(${type} == "pwd")
+                        修改登录密码
+                    #end
+                </span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                    <li>
+                        <form id="info-form" method="post" accept-charset="UTF-8">
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <input name="uid" type="hidden" value="${user.user_id}" />
+                                    #if(${type} == "nickname")
+                                        <label>新昵称</label>
+                                        <input class="nick-input" type="text" name="info" value="${user.nickname}"/>
+                                    #elseif(${type} == "tel")
+                                        <label> 新手机号码</label>
+                                        <input class="nick-input" type="text" name="info" value="${user.mobile_phone}"/>
+                                    #elseif(${type} == "pwd")
+                                        <label>新密码</label>
+                                        <input class="nick-input" type="password" name="info" />
+                                    #end
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="line-spacer"></li>
+                    <li>
+                        <div class="item-choose" >
+                            <button class="item-pay-btn item-choose-btn" id="save-info">保存</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+	<script src="resources/js/zf/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#save-info").click(function () {
+                if ("${type}" == "nickname")
+                    $("#info-form").attr("action", "saveNickName");
+                else if ("${type}" == "tel")
+                    $("#info-form").attr("action", "saveTel");
+                else
+                    $("#info-form").attr("action", "savePwd");
+                $("#info-form").submit();
+            });
+        });
+	</script>
+</body>
+</html>

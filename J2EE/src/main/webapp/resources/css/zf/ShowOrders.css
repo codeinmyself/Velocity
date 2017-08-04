@@ -1,0 +1,148 @@
+
+/**
+主体样式
+ */
+
+
+#content
+{
+    width: 96%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 20px 2% 0 2%;
+    color: white;
+    height: 62%;
+    border-radius: 3px;
+    overflow: scroll;
+}
+/*
+标题行
+*/
+#title
+{
+    width: 96%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 5% 2% 0 2%;
+    border-radius: 3px;
+}
+.title-left
+{
+    float: left;
+    color: #135480;
+}
+.title-left  span
+{
+    margin: 0;
+    font-size: 18px;
+}
+.title-right
+{
+    float: right;
+}
+/*
+列表内容
+*/
+.content
+{
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei UI";
+    width: 2100px;
+}
+.content thead
+{
+    background-color: #135480;
+}
+.content td
+{
+    height: 50px;
+    font-size: 15px;
+}
+.content thead > tr >td
+{
+    color: white;
+}
+.content tr > td
+{
+    color: #135480;
+    border-bottom:solid 1px #aaaaaa;
+}
+.content input
+{
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+
+
+
+/**
+    不同长度的表格列
+ */
+.long
+{
+    width: 300px;
+}
+.middle
+{
+    width: 180px;
+}
+.short
+{
+    width: 90px;
+}
+/**
+分页
+ */
+.page-navigation
+{
+    margin:30px 0 0 37%;
+}
+.page-navigation-div
+{
+    color: #135480;
+    box-shadow:3px 3px 3px #aaaaaa;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei UI";
+    margin-left: 10px;
+    float: left;
+}
+.page-navigation a
+{
+    text-decoration: none;
+}
+.page-input
+{
+    border: none;
+    border-bottom: solid 1px #aaaaaa;
+    width: 50px;
+    text-align: center;
+}
+.page-go
+{
+    margin-left: 20px;
+}
+/**
+底部按钮
+ */
+.bottom-button
+{
+    float: right;
+    color: white;
+}
+.bottom-button button
+{
+    background-color: #135480;
+    box-shadow:1px 1px 1px #aaaaaa;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei UI";
+    margin-right: 16px;
+}
+

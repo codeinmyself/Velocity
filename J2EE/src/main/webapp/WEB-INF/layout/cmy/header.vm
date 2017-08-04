@@ -1,0 +1,14 @@
+<div style="position:fixed;margin-top:-10px;width:100%;height:40px;background:#135480;">
+	<a href="#" onClick="javascript :history.back(-1);" 
+	style="float:left;margin-top:0px;margin-left:10px;color:white;
+	text-decoration:none;">
+		<img src="#springUrl('/resources/images/cmy/3.png')" alt="返回" style="height:30px;top:5px;margin-top:5px;margin-left:10px;">
+		<div style="height:40px;top:5px;margin-top:-25px;text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回</div>
+	</a>
+	<a href="searchOrder" style="float:right;margin-top:15px;
+	margin-right:50px;color:white;text-decoration:none;">搜索</a>
+	<a href="#springUrl('')" style="float:right;margin-top:10px;margin-right:50px;color:white;text-decoration:none;">
+		<img src="#springUrl('/resources/images/cmy/7.png')" alt="" style="height:20px;top:0px;margin-top:0px;margin-right:50px;">
+		<div style="height:40px;top:0px;margin-top:-20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商城主页</div>
+	</a>
+</div>

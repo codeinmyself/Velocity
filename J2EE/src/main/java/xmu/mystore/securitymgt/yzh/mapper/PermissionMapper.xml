@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.securitymgt.yzh.mapper.PermissionMapper" >
+	<!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+    <resultMap type="xmu.mystore.securitymgt.yzh.model.RolePermission" id="ResultMap4">
+       <id property="role_id" column="role_id"/>
+       <result property="role_name" column="role_name"/>
+       <result property="permission" column="permission"/>
+       <result property="permission_name" column="permission_name"/>
+       <result property="organization_name" column="organization_name"/>
+       <result property="permission_description" column="permission_description"/>
+    </resultMap>
+    
+	<select id="getAllPermissionByUserId" parameterType="Long" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission, 
+			142528_user_role user_role, 
+			142528_role role
+		where user_role.user_id = #{user_id} and 
+      		user_role.role_id = role.role_id AND
+      		permission.permission_id = role.permission_id
+    </select>
+	
+	<select id="getAllPermission" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission;
+    </select>
+    
+	<select id="getPermissionByPermissionId" parameterType="Long" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission
+		where permission.permission_id = #{permission_id}
+    </select>
+    		
+	<select id="getPermissionByTableNameAndPermission" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission
+		where permission.permission = #{permission} and
+				permission.permission_name = #{permission_name}
+    </select>
+</mapper>

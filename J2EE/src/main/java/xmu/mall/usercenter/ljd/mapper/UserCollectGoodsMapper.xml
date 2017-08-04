@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ljd.mapper.UserCollectGoodsMapper">
+	<resultMap type="xmu.mall.usercenter.ljd.model.User_collect_goods" id="UserCollectGoodsResult">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="serial_code" property="serial_code" />
+		<result column="weight" property="weight" />
+		<result column="stock_count" property="stock_count" />
+		<result column="pre_sale_number" property="pre_sale_number" />
+		<result column="store_id" property="store_id" />
+		<result column="mid_user_price" property="mid_user_price" />
+		<result column="market_price" property="market_price" />
+		<result column="real_price" property="real_price" />
+		<result column="redeem_point" property="redeem_point" />
+		<result column="brand_id" property="brand_id" />
+		<result column="stand_id" property="stand_id" />
+		<result column="add_time" property="add_time" />
+		<result column="last_modified_time" property="last_modified_time" />
+		<result column="description" property="description" />
+		<result column="image_path" property="image_path" />
+		<result column="is_dividable" property="is_dividable" />
+		<result column="default_express" property="default_express" />
+	</resultMap>
+
+	<delete id="delete" parameterType="xmu.mall.usercenter.ljd.model.User_collect_goods">
+		delete from 142477_user_collect_goods where
+		user_id=#{user_id} and goods_id=#{goods_id}
+	</delete>
+
+	<select id="getAllCollectionsByUserID" resultMap="UserCollectGoodsResult"
+		parameterType="java.lang.Long">
+		SELECT * FROM 142477_user_collect_goods WHERE user_id = #{user_id}
+	</select>
+
+</mapper>

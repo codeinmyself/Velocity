@@ -1,0 +1,111 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品详情页"})#end
+#tiles_putAttribute({"name":"body"})
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+<meta name="msapplication-TileColor" content="#0e90d2">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/assets/css/amazeui.min.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/assets/css/app.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/goodsDetailStyle.css')">
+<header>
+    <div class="gobackbar">
+        <div class="gobackbtn" onclick="window.history.back();"></div>
+    </div>
+    <div class="gocartbar">
+        <div class="gocartbtn"></div>
+    </div>
+</header>
+<main>
+#if($goods)
+    <img src="#springUrl($goods.image_path)"  alt="商品描述"/>
+    <div class="goodsinfo">
+        <h1>$goods.name</h1>
+        <span>市场价格：<span class="mprice">￥$goods.market_price</span></span><br>
+        <span>真实价格：<span class="rprice">￥$goods.real_price</span></span>
+        <div class="score">$goods.redeem_point 积分</div>
+        <div class="storage">库存 $goods.stock_count 份</div>
+        <hr>
+
+        <div class="descri">
+			#set($description = "<p>"+$goods.description.replaceAll("\r\n", "</p><p>")+"</p>")
+			$description
+		</div>
+    </div>
+#end
+</main>
+
+<footer>
+    <div class="bgPop"></div>
+    <div class="addCart" id="add">加入购物车</div>
+    <div class="adddetail">
+	#if($goods)
+        <input id="hiddenGoodsId" type="hidden" value="${goods.id}"/>
+        <div class="deletebar">
+            <div class="deletebtn"></div>
+        </div>
+        <img class="goodimage" src="#springUrl($goods.image_path)">
+        <h1>$goods.name</h1>
+        <div class="gw_num">
+            <em class="jian">-</em>
+            <input type="text" value="1" class="num"/>
+            <em class="add">+</em>
+        </div>
+        <div class="confirmaddCart" onclick="addGoodsToShoppingCart()">确认添加</div>
+	#end
+    </div>
+</footer>
+<script type="text/javascript" src="#springUrl('/resources/js/lcf/jquery-1.8.3.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/css/lcf/assets/js/amazeui.min.js')"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+//加的效果
+        $(".add").click(function(){
+            var n=$(this).prev().val();
+            var num=parseInt(n)+1;
+            if(num==0){ return;}
+            $(this).prev().val(num);
+        });
+//减的效果
+        $(".jian").click(function(){
+            var n=$(this).next().val();
+            var num=parseInt(n)-1;
+            if(num==0){ return}
+            $(this).next().val(num);
+        });
+    })
+    $(function () {
+        $('#add').click(function () {
+            $('.adddetail').slideToggle("slow");
+        });
+        $('.deletebar').click(function () {
+            $(".adddetail").fadeToggle();
+        });
+    })
+</script>
+#end
+#end
+

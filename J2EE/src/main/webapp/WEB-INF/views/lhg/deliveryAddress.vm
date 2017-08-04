@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="#springUrl('/resources/js/material.min.js')"></script>
+    <link rel="stylesheet" href="#springUrl('/resources/css/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/resources/css/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/balanceStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/addressStyle.css')">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href=""><img src="../images/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <!-- Title -->
+                <span class="mdl-layout-title">收货地址</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list cart-list">
+                    <li>
+                        <div class="address_info">
+                            <button type="button" class="address_btn">
+                                <div class="box">
+                                    <div class="right-arrow-container">
+                                        <img class="right-arrow" src="../images/ic_arrow_right.png"></img>
+                                    </div>
+                                    <div class="info">
+                                        <div class="personal_info address_choosed">
+                                            <label>收货地址1</label>
+                                            <label>123456</label>
+                                        </div>
+                                        <div class="personal_address">
+                                            <p>福建省厦门市厦大学生公寓</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="address_info">
+                            <button type="button" class="address_btn">
+                                <div class="box">
+                                    <div class="info">
+                                        <div class="personal_info">
+                                            <label>收货地址2</label>
+                                            <label>123456</label>
+                                        </div>
+                                        <div class="personal_address">
+                                            <p>福建省厦门市厦大学生公寓</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="address_info">
+                            <button type="button" class="address_btn">
+                                <div class="box">
+                                    <div class="info">
+                                        <div class="personal_info">
+                                            <label>收货地址3</label>
+                                            <label>123456</label>
+                                        </div>
+                                        <div class="personal_address">
+                                            <p>福建省厦门市厦大学生公寓</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <div class="item-choose">
+                <button class="item-pay-btn item-choose-btn">+ 新建地址</button>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

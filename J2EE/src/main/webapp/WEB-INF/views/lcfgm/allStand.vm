@@ -1,0 +1,59 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer">
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>商品编号</th>
+                    <th>商品状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody-result">
+                  #foreach($stand in $standList)
+                  <tr>
+                      <td>$stand.goods_id</td>
+                      <td>
+                          <input id="u_time" type="hidden" value="$stand.on_market_time">
+                          <input id="d_time" type="hidden" value="$stand.off_market_time">
+                          <span id="state">下架</span>
+                      </td>
+                      <script type="text/javascript">
+                          /*var up_time = new Date(document.getElementById("u_time").value + ' 00:00:00'.replace(/-/g, "/"));*/
+                          var up_time = new Date(document.getElementById("u_time").value);
+                          var down_time = new Date(document.getElementById("d_time").value);
+                          var now = new Date();
+                          if (up_time <= now && now <= down_time) {
+                              document.getElementById("state").innerHTML = "上架";
+                          }
+                      </script>
+                    <td><button type="button"  class="btn btn-default btn-xs" onclick="window.location.href='Stand/modifyStand?id=$stand.id'" >修改</button>
+                  </tr>
+                  #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="active listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/jquery-3.1.1.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/bootstrap.min.js')"></script>
+#end
+#end

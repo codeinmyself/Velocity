@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cmy.mapper.OrderGoods2Mapper">
+
+    <resultMap id="GoodsBaseMap" type="xmu.mall.usercenter.cmy.entity.OrderGoods">
+        <id column="goods_id" property="id" jdbcType="INTEGER"/>
+        <result column="goods_name" property="name" jdbcType="VARCHAR"/>
+        <result column="goods_number" property="num" jdbcType="INTEGER"/>
+        <result column="goods_price" property="price" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <select id="getAllGoodsByOrderId" parameterType="long" resultMap="GoodsBaseMap">
+        SELECT * FROM 142407_order_goods WHERE order_id=#{order_id}
+    </select>
+    
+    <select id="getAllGoodsByUserId" parameterType="long" resultMap="GoodsBaseMap">
+        SELECT 142407_order_goods.goods_id,142407_order_goods.goods_name,142407_order_goods.goods_number,142407_order_goods.goods_price FROM 142407_order_goods,142407_order_info WHERE 142407_order_info.order_id=142407_order_goods.order_id and 142407_order_info.user_id=${user_id}
+    </select>
+   
+   <select id="getSelectedGoodsByUserId" parameterType="long" resultMap="GoodsBaseMap">
+        SELECT 142407_order_goods.goods_id,142407_order_goods.goods_name,142407_order_goods.goods_number,142407_order_goods.goods_price FROM 142407_order_goods,142407_order_info 
+        WHERE 142407_order_info.order_id=142407_order_goods.order_id and 142407_order_info.user_id=${user_id} and 142407_order_info.order_status=${order_status}
+    </select>
+   
+   
+    
+</mapper>

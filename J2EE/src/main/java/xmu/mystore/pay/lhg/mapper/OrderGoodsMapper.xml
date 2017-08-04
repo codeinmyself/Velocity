@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.pay.lhg.dao.OrderGoodsDao">
+    <resultMap type="xmu.mystore.pay.lhg.model.OrderGoods" id="OrderGoodSResult">
+        <id column="id" property="id"/>
+        <result column="order_id" property="order_id"/>
+        <result column="goods_id" property="goods_id"/>
+        <result column="goods_name" property="goods_name"/>
+        <result column="goods_price" property="goods_price"/>
+    </resultMap>
+
+    <insert id="add" parameterType="xmu.mystore.pay.lhg.model.OrderGoods">
+        INSERT INTO
+            order_goods (order_id, goods_id, goods_name, goods_price)
+        VALUES (#{order_id}, #{goods_id}, #{goods_name}, #{goods_price})
+    </insert>
+
+    <delete id="delete" parameterType="xmu.mystore.pay.lhg.model.OrderGoods">
+        DELETE FROM
+            main_order_goods
+        WHERE
+            id = #{id}
+    </delete>
+
+    <select id="select" resultMap="OrderGoodSResult" parameterType="xmu.mystore.pay.lhg.model.OrderGoods">
+        SELECT *
+        FROM order_goods
+        WHERE id = #{id}
+    </select>
+</mapper>

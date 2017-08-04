@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ljd.mapper.RegionMapper">
+	<resultMap type="xmu.mall.usercenter.ljd.model.Region" id="RegionResult">
+		<id column="id" property="id" />
+		<result column="region_id" property="region_id" />
+		<result column="parent_id" property="parent_id" />
+		<result column="region_name" property="region_name" />
+		<result column="region_type" property="region_type" />
+		<result column="agency_id" property="agency_id" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="RegionResult"
+		parameterType="xmu.mall.usercenter.ljd.model.Region">
+		SELECT * FROM main_region
+	</select>
+
+	<select id="selectAllRegionByParentID" resultMap="RegionResult"
+		parameterType="xmu.mall.usercenter.ljd.model.Region">
+		SELECT * FROM main_region WHERE parent_id = #{parent_id}
+	</select>
+
+</mapper>

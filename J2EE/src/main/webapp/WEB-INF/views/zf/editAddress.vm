@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        #if(${type} == "new")
+        新增地址
+        #else
+        编辑地址
+        #end
+        </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/updateInfo.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">
+                    #if(${type} == "new")
+                        新增收货地址
+                    #else
+                        编辑收货地址
+                    #end
+                </span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                    <form id="add-form" method="post" accept-charset="UTF-8">
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>收货人&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input name="address_id" type="hidden" value="$address.address_id">
+                                    <input name="user_id" type="hidden" value="$address.user_id" />
+                                    <input class="nick-input" type="text" name="consignee" value="$address.consignee"/>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>联系电话</label>
+                                    <input class="nick-input" type="text" name="telephone" value="$address.telephone"/>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>邮政编码</label>
+                                    <input class="nick-input" type="text" name="zipcode" value="$address.zipcode"/>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div id="set-region" class="li_box">
+                                <div class="left_container">
+                                    <label>所在地区</label>
+                                </div>
+                                <div class="right_container">
+                                    <input type="hidden" name="province" value="$address.province">
+                                    <input type="hidden" name="province_name" value="$address.province_name"/>
+                                    <label>$address.province_name</label>
+                                    <input type="hidden" name="city" value="$address.city">
+                                    <input type="hidden" name="city_name" value="$address.city_name"/>
+                                    <label>$address.city_name</label>
+                                    <input type="hidden" name="district" value="$address.district">
+                                    <input type="hidden" name="district_name" value="$address.district_name"/>
+                                    <label>$address.district_name</label>
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>详细地址</label>
+                                    <input class="nick-input" type="text" name="detail" value="$address.detail"/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="line-spacer"></li>
+                        #if(${type} == "new" || !$address.is_default)
+                        <li>
+                            <div id="set-default" class="li_box">
+                                <div class="left_container">
+                                    <label>设为默认地址</label>
+                                </div>
+                                <div class="right_container">
+                                    <input type="checkbox" name="is_default" id="default-check" value="$address.is_default"/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="line-spacer"></li>
+                        #else
+                            <input type="hidden" name="is_default" value="$address.is_default"/>
+                        #end
+                        #if(${type} == "edit")
+                            <li>
+                                <div class="li_box">
+                                    <div class="left_container">
+                                        <label class="delete-address" onclick="window.location.href='deleteAddress?uid=$address.user_id&aid=$address.address_id'">删除地址</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="line-spacer"></li>
+                        #end
+                    </form>
+                </ul>
+            </div>
+        </main>
+		
+		<footer>
+            <div class="item-choose">
+                <button id="save" class="item-pay-btn item-choose-btn">保存收货地址</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="resources/js/zf/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#default-check").prop("checked", $address.is_default)
+
+            $("#save").click(function () {
+                if($address.address_id == -1)
+                    $("#add-form").attr("action", "saveAddress");
+                else
+                    $("#add-form").attr("action", "updateAddress");
+                $("#add-form").submit();
+            });
+
+            $("#set-default").click(function(){
+               var check = $(this).find("#default-check");
+               check.prop("checked", !check.is(':checked'));
+               check.attr("value", check.is(':checked'));
+            });
+
+            $("#set-region").click(function(){
+                $("#add-form").attr("action", "selectProvince");
+                $("#add-form").submit();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+#tiles_insertTemplate({"template":"../layout/lxq/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "收货地址"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/lxq/region_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<form method="get" action="region_back" onSubmit="changeRegion(this)">
+<br/>
+<br/>
+	<div style="font-size:1em;line-height:100%;">
+	<input id="hiddenSpringUrl" type="hidden" value="#springUrl('')"/>
+	<br/>
+		<label>省&emsp;:&emsp;</label>
+	<select id="selectprovince" style="font-size:1em;" onChange="selectCity()" required>
+		#if($address.getProvince_name())
+		<option style='font-size:0.5em;' value="$address.getProvince()">$address.getProvince_name()</option>
+		#else
+		<option style='font-size:0.5em;'>--请选择--</option>
+		#end
+		#foreach($region in $regions)
+			<option style='font-size:0.5em;' value="$region.getRegion_id()">$region.getRegion_name()</option>
+		#end
+	</select>
+		<hr/>
+		<label>市&emsp;:&emsp;</label>
+	<select id="selectcity" style="font-size:1em;" onChange="selectDistrict()" required>
+		#if($address.getCity_name())
+		<option style='font-size:0.5em;' value="$address.getCity()">$address.getCity_name()</option>
+		#end
+		#foreach($region1 in $regions1)
+			<option style='font-size:0.5em;' value="$region1.getRegion_id()">$region1.getRegion_name()</option>
+		#end
+	</select>
+		<hr/>
+		<label>区&emsp;:&emsp;</label>
+	<select id="selectdistrict" style="font-size:1em;" required>
+		#if($address.getDistrict_name())
+		<option style='font-size:0.5em;' value="$address.getDistrict()">$address.getDistrict_name()</option>
+		#end
+		#foreach($region2 in $regions2)
+			<option style='font-size:0.5em;' value="$region2.getRegion_id()">$region2.getRegion_name()</option>
+		#end
+	</select>
+		<hr/>
+	</div>
+	<hr/>
+	<input type="hidden" id="user_id" name="user_id" value="$user_id">
+	<input type="hidden" id="address_id" name="address_id" value="#if($address.getAddress_id())$address.getAddress_id()#end">
+	<input type="hidden" id="consignee" name="consignee" value="#if($address)$address.getConsignee()#end">
+	<input type="hidden" id="telephone" name="telephone" value="#if($address)$address.getTelephone()#end">
+	<input type="hidden" id="province" name="province" value="#if($address)$address.getProvince()#end">
+	<input type="hidden" id="city" name="city" value="#if($address)$address.getCity()#end">
+	<input type="hidden" id="district" name="district" value="#if($address)$address.getDistrict()#end">
+	<input type="hidden" id="detail" name="detail" value="#if($address)$address.getDetail()#end">
+	<input type="hidden" id="is_default" name="is_default" value="#if($address)$address.Is_default#end">
+
+	<div style="text-align:center;">
+		<button class="addAddressBtn">确定</button>
+	<div>
+</form>
+<br/>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/lxq/footer.vm")#end
+#end

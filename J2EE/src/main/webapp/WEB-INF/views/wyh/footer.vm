@@ -1,0 +1,4 @@
+<div>
+<span>我是footer</span>
+${message}
+</div>

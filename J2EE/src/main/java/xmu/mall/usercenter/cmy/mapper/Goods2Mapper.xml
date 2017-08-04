@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cmy.mapper.Goods2Mapper"> 
+	<resultMap id="GoodsBaseMap" type="xmu.mall.usercenter.cmy.entity.Goods">
+	
+	
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="serial_code" property="serial_code" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="stock_count" property="stock_count" jdbcType="INTEGER"/>
+        <result column="pre_sale_number" property="pre_sale_number" jdbcType="INTEGER"/>
+        <result column="store_id" property="store_id" jdbcType="VARCHAR"/>
+		<result column="mid_user_price" property="mid_user_price" jdbcType="DOUBLE"/>
+        <result column="market_price" property="market_price" jdbcType="DOUBLE"/>
+        <result column="real_price" property="real_price" jdbcType="DOUBLE"/>
+        <result column="redeem_point" property="redeem_point" jdbcType="INTEGER"/>
+        <result column="category_id" property="category_id" jdbcType="INTEGER"/>
+        <result column="brand_id" property="brand_id" jdbcType="INTEGER"/>
+        <result column="Stand_id" property="Stand_id" jdbcType="INTEGER"/>
+        <result column="add_time" property="add_time" jdbcType="VARCHAR"/>
+        <result column="last_modified_time" property="last_modified_time" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="image_path" property="image_path" jdbcType="VARCHAR"/>
+        <result column="is_dividable" property="is_dividable" jdbcType="VARCHAR"/>
+        <result column="default_express" property="default_express" jdbcType="VARCHAR"/>
+        
+    </resultMap>
+       
+    <select id="getGoodsByUserId" parameterType="long" resultMap="GoodsBaseMap">
+        SELECT 142407_goods.name,142407_goods.description,142407_goods.image_path FROM 142407_goods,142407_user_collect_goods WHERE 142407_user_collect_goods.user_id=${user_id} and 142407_goods.id=142407_user_collect_goods.goods_id
+    </select>
+ 
+</mapper>

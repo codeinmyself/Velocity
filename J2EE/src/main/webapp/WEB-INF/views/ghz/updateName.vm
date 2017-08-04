@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改昵称</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/commonStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/balanceStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/addressStyle.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="updateInfo"><img src="../resources/images/ghz/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">修改昵称</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" onclick="submit()">确定</a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <form action="setNickname" method="post" name="nickname_form" id="nickname_form">
+                <div class="page-content">
+                    <ul class="mdl-list cart-list">
+                        <li class="info-list">
+                            <div class="input-block">
+                                <input type="text" name="nickname" value="${user.nickname}" class="input-text" style="font-size: 14px;" />
+                            </div>
+                        </li>
+                        <li class="info-list" style="border: none;color: #bbbbbb">
+                            <div class="input-block">
+                                <label>4-20个字符，可由中英文、数字等符号组成</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <input type="submit" name="argsubmit" style="display:none" />
+            </form>
+        </main>
+    </div>
+    <script type="text/javascript">
+    function submit() {
+        document.getElementById("nickname_form").submit();
+    }
+    </script>
+</body>
+
+</html>

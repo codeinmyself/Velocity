@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderDetail">
+    <!--用于获取对应于订单id的所有商品订单映射关系-->
+    <select id="selectordermapgoods" parameterType="java.lang.Long" resultType="xmu.mystore.ordersmgt.zjq.model.Order_goods">
+        SELECT * FROM 142550_order_goods WHERE order_id= #{orderId};
+    </select>
+    <!--用于获取单个订单的信息-->
+    <select id="selectoneorder" parameterType="java.lang.Long" resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info WHERE order_id=#{orderId};
+    </select>
+
+
+</mapper>

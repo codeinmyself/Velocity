@@ -1,0 +1,48 @@
+#tiles_insertTemplate({"template":"../layout/cwh/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "我的订单"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/cwh/all_orders_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<div class="orderBody" onClick="">
+	<hr class="divide"/>
+	#if ($orders.size()==0)
+		<p>暂无订单</p>
+	#end
+	#foreach($order in $orders)
+		<div class="div4">
+			<p>
+				<span>YG 易购</span>
+				<!--<span style="margin-left:70%">删除</span>-->
+			</p>
+			<hr/>
+			#if ($order.getGoodslist().size()==1)
+				<p>
+					<a href="javascript:void(0);" onClick="gotoGoods($order.getGoodslist()[0].getId())"><img src="#springUrl($order.getGoodslist()[0].getImage_path())" class="icon" style=""/></a>
+					<span style="margin-left:5%">[$order.getGoodslist()[0].getName()]</span>	
+					<span>$order.getGoodslist()[0].getDescription().substring(0,20)...</span>		
+				</p>
+			#else
+				<p>
+				#foreach($goods in $order.getGoodslist())
+					<a href="javascript:void(0);" onClick="gotoGoods($goods.getId())"><img src="#springUrl($order.getGoodslist()[0].getImage_path())"<img src="#springUrl($goods.getImage_path())" class="icon"/></a>
+				#end	
+				</p>
+			#end
+			<hr/>
+			<p>
+				<span>实付款：￥$order.getTotal()</span>
+				#if($order.getState()==0)
+				<button type="button" onClick="changeStatus($order.getUserId(),$order.getId(),1)" style="float:right;font-size:1em;margin-right:10%">付款</span>
+				#elseif($order.getState()==1 ||$order.getState()==2 ||$order.getState()==3)
+				<button type="button" onClick="changeStatus($order.getUserId(),$order.getId(),4)" style="float:right;font-size:1em;margin-right:10%">收货</span>
+				#else 
+				<button onClick="gotoGoods($order.getGoodslist()[0].getId())" type="button" style="float:right;font-size:1em;margin-right:10%">再次购买</span>
+				#end		
+			</p>
+		</div>
+		<hr class="divide"/>
+	#end
+</div>
+<br/>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/cwh/footer.vm") #end
+#end

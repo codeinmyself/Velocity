@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/myinfo.css">
+</head>
+
+<body>
+    <header id="header" class="info_header">
+        <div class="base_info">
+        	<button type="button" class="info_setting_btn" onclick="window.location.href='updateInfo';">
+        		<img src="../resources/images/ghz/default.jpg" class="user_head"></img>
+        		#set($user=$session.getAttribute("user"))
+        		<label class="user_name"> ${user.user_name} </label>
+        	</button>
+        </div>
+        <div class="my_nav_bar">
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?stat=forPay';">
+                <img src="../resources/images/ghz/order_01.png"></img>
+                <label>待付款</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?stat=forSend';">
+                <img src="../resources/images/ghz/order_02.png"></img>
+                <label>待发货</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?stat=forReceive';">
+                <img src="../resources/images/ghz/order_03.png"></img>
+                <label>待收货</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?stat=received';">
+                <img src="../resources/images/ghz/order_04.png"></img>
+                <label>已收货</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?stat=cancel';">
+                <img src="../resources/images/ghz/order_05.png"></img>
+                <label>已取消</label>
+            </button>
+        </div>
+    </header>
+    <main class="mdl-layout__content body_container">
+        <div class="page-content">
+            <ul class="mdl-list btn_list">
+                <hr/>
+                <li class="setting_li">
+                    <div class="address_info">
+                        <button type="button" class="li_btn"  onclick="window.location.href='myCollection'">
+                            <div class="left_container">
+                                <img class="ic_left" src="../resources/images/ghz/ic_star.png"></img>
+                                <label>我的收藏</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../resources/images/ghz/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div class="address_info">
+                        <button type="button" class="li_btn" onclick="window.location.href='deliveryAddress'">
+                            <div class="left_container">
+                                <img class="ic_left" src="../resources/images/ghz/ic_location_pin.png"></img>
+                                <label>收货地址</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../resources/images/ghz/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div class="address_info">
+                        <button type="button" class="li_btn">
+                            <div class="left_container">
+                                <img class="ic_left" src="../resources/images/ghz/ic_settings.png"></img>
+                                <label>用户设置</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../resources/images/ghz/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

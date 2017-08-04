@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>地址管理</title>
+
+		<!-- Bootstrap -->
+		<link href="#springUrl('/resources/css/pjx/bootstrap.css')" rel="stylesheet">
+    	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 导航条-->
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#springUrl('/user/address')">返回</a>
+	    	</div>	
+		</nav>
+		
+		<!-- 选择国家-->
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="">
+				#if($provinceParent > 0)
+					#set($country = $provinceParent - 1)
+					$region_list.get($country).region_name
+				#else
+					选择国家
+				#end
+				<span class="caret"></span>
+			</button>
+
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				#if($region_list)
+					#foreach($region in $region_list)
+						#if($region.parent_id == $countryParent)
+							#set($hrefOrderCanelCode="/user/add_address/"+$countryParent+"/"+$region.region_id)
+							<li><a href="#springUrl($hrefOrderCanelCode)" role="button">$region.region_name</a></li>
+						#end
+					#end
+				#end
+			</ul>
+		</div>
+		
+		<!-- 选择省-->
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="">
+				#if($cityParent > 0)
+					#set($province = $cityParent - 1)
+					$region_list.get($province).region_name
+				#else
+					选择省
+				#end
+				<span class="caret"></span>
+			</button>
+			
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				#if($region_list)
+					#foreach($region in $region_list)
+						#if($region.parent_id == $provinceParent)
+							#set($hrefOrderCanelCode="/user/add_address/"+$countryParent+"/"+$provinceParent+"/"+$region.region_id)
+							<li><a href="#springUrl($hrefOrderCanelCode)" role="button">$region.region_name</a></li>
+						#end
+					#end
+				#end
+			</ul>
+		</div>
+		
+		<!-- 选择市-->
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="">
+				#if($districtParent > 0)
+					#set($city = $districtParent - 1)
+					$region_list.get($city).region_name
+				#else
+					选择市
+				#end
+				<span class="caret"></span>
+			</button>
+			
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				#if($region_list)
+					#foreach($region in $region_list)
+						#if($region.parent_id == $cityParent)
+							#set($hrefOrderCanelCode="/user/add_address/"+$countryParent+"/"+$provinceParent+"/"+$cityParent+"/"+$region.region_id)
+							<li><a href="#springUrl($hrefOrderCanelCode)" role="button">$region.region_name</a></li>
+						#end
+					#end
+				#end
+			</ul>
+		</div>
+		
+		<!-- 选择区-->
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="">
+				#if($district > 0)
+					#set($realdistrict = $district - 14)
+					$region_list.get($realdistrict).region_name
+				#else
+					选择区
+				#end
+				<span class="caret"></span>
+			</button>
+			
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				#if($region_list)
+					#foreach($region in $region_list)
+						#if($region.parent_id == $districtParent)
+							#set($hrefOrderCanelCode="/user/add_address/"+$countryParent+"/"+$provinceParent+"/"+$cityParent+"/"+$districtParent+"/"+$region.region_id)
+							<li><a href="#springUrl($hrefOrderCanelCode)" role="button">$region.region_name</a></li>
+						#end
+					#end
+				#end
+			</ul>
+		</div>
+		
+		<!-- 用户信息表单-->
+		<form action="" method="POST">
+			<div class="form-group">
+				<label for="lconsignee">收件人</label>
+				<input type="text" class="form-control" name="consignee" id="consignee" value="">
+			</div>
+			<div class="form-group">
+				<label for="lzipcode">邮编</label>
+				<input type="text" class="form-control" name="zipcode" id="zipcode" value="">
+			</div>
+			<div class="form-group">
+				<label for="ltelephone">手机号</label>
+				<input type="text" class="form-control" name="telephone" id="telephone" value="">
+			</div>
+			<div class="form-group">
+				<label for="ltelephone">详细地址</label>
+				<input type="text" class="form-control" name="detail" id="detail" value="">
+			</div>
+			<button type="submit" class="btn btn-default">提交</button>
+		</form>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script type="text/javascript" src="#springUrl('/resources/js/pjx/bootstrap.min.js')"></script>
+
+	</body>
+
+</html>

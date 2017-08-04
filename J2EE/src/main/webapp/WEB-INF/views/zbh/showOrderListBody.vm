@@ -1,0 +1,67 @@
+<div>
+	<form>   
+		<table id="myOrderList" class="order_table">
+			<tr>
+				<th>订单编号</th>
+				<!--<th>商品名称</th>测试数据库连接 不显示-->
+				<!--<th>订单号</th>-->
+				<th>下单时间</th>
+				<th>收货人</th>
+				<th>用户ID</th>
+				<th>订单总价</th>
+				<th>订单状态</th>
+				<th>收货地址</th>
+				<th>电话</th>
+				<th>备注</th>
+				<th>加急</th>
+			</tr>
+			#foreach($order in $orderList)
+			<tr>
+				<td>$order.orderSn</td>
+				<!--<th>商品名称</th>-->
+				<!--<td>$order.orderId</td>测试数据库连接 不显示-->
+				<td>$order.addTime</td>
+				<td>$order.consignee</td>
+				<td>$order.userId</td>
+				<td>$order.orderPrice</td>
+				#if($order.orderStatus==0)
+					<td>未付款</td>
+				#elseif($order.orderStatus==1)
+					<td>已付款</td>
+				#elseif($order.orderStatus==2)
+					<td>定制中</td>
+				#elseif($order.orderStatus==3)
+					<td>已发货</td>
+				#elseif($order.orderStatus==4)
+					<td>已收货</td>
+				#elseif($order.orderStatus==5)
+					<td>取消</td>
+				#else
+					<td>订单状态异常</td>
+				#end
+				<td>$order.address</td>
+				<td>$order.telephone</td>
+				<td>$order.remark</td>
+				<td>$order.isUrgency</td>
+				<td><a href="manageButton?orderId=$order.orderId" class="table_button" >管理</a></td>
+
+
+				#if($order.orderStatus==1)
+				<td><a href="checkOrderList?orderStatus=2&orderId=$order.orderId" onclick="if(confirm('确认订单?')==false)return false;" class="table_button">确认</a></td>
+				#else
+				<td><a class="table_button_gray">确认</a></td>
+				#end
+				
+				#if($order.orderStatus==2)
+				<td><a href="deliverOrder?orderStatus=3&orderId=$order.orderId" class="table_button">发货</a></td>
+				#else
+				<td><a class="table_button_gray">发货</a></td>
+				#end
+			</tr>
+			#end
+		</table>
+		<table width="70%" align="right">
+        <tr><td><div id="barcon" name="barcon"></div></td></tr>
+    	</table>
+	</form>
+</div>

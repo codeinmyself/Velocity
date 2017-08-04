@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cwh.mapper.IRegionMapper">
+
+    <resultMap id="RegionBaseMap" type="xmu.mall.usercenter.cwh.model.Region">
+        <id column="region_id" property="region_id" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parent_id" jdbcType="INTEGER"/>
+        <result column="region_name" property="region_name" jdbcType="VARCHAR"/>
+        <result column="region_type" property="region_type" jdbcType="INTEGER"/>
+    </resultMap>
+    
+    <select id="getRegionNameByRegionId" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT 142408_region.region_name
+        FROM 142408_region 
+        WHERE 142408_region.region_id=#{region_id}
+    </select>
+    <select id="getChildsByParentId" parameterType="java.lang.Integer" resultMap="RegionBaseMap">
+        SELECT * 
+        FROM 142408_region
+        WHERE 142408_region.parent_id=#{parent_id}
+    </select>
+
+</mapper>

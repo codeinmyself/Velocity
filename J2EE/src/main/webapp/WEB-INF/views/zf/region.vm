@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>选择地区</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/updateInfo.css">
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header header-color">
+        <div class="mdl-layout__header-row my_header">
+            <nav class="my-back">
+                <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                    <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                </a>
+            </nav>
+            <span class="mdl-layout-title">选择地区</span>
+            <div class="mdl-layout-spacer"></div>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <ul class="mdl-list my_list">
+                <form id="reg-form" method="post" accept-charset="UTF-8">
+                    <input name="address_id" type="hidden" value="$address.address_id">
+					<input name="user_id" type="hidden" value="$address.user_id" />
+                    <input type="hidden" name="consignee" value="$address.consignee"/>
+                    <input type="hidden" name="zipcode" value="$address.zipcode"/>
+                    <input type="hidden" name="telephone" value="$address.telephone"/>
+                    <input id="id-province" type="hidden" name="province" value="$address.province"/>
+                    <input id="name-province" type="hidden" name="province_name" value="$address.province_name"/>
+                    <input id="id-city" type="hidden" name="city" value="$address.city">
+                    <input id="name-city" type="hidden" name="city_name" value="$address.city_name"/>
+                    <input id="id-district" type="hidden" name="district" value="$address.district">
+                    <input id="name-district" type="hidden" name="district_name" value="$address.district_name"/>
+                    <input type="hidden" name="detail" value="$address.detail"/>
+                    <input type="hidden" name="is_default" value="$address.is_default"/>
+                    #foreach($reg in ${regions})
+                        <li>
+                            <div class="li_box select-${slt}">
+                                <div class="left_container">
+                                    <label class="region-name">$reg.region_name</label>
+                                    <input class="region-id" type="hidden" value="$reg.region_id" />
+                                </div>
+                                <div class="right_container">
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                    #end
+                </form>
+            </ul>
+        </div>
+    </main>
+</div>
+
+<script src="resources/js/zf/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".select-${slt}").click(function () {
+
+            $("#name-${slt}").attr("value", $(this).find(".region-name").html().trim());
+            $("#id-${slt}").attr("value", $(this).find(".region-id").attr("value"));
+            //alert($("#name-${slt}").attr("value"));
+
+            if("${slt}" == "province")
+                $("#reg-form").attr("action", "selectCity");
+            else if("${slt}" == "city")
+                $("#reg-form").attr("action", "selectDistrict");
+            else if("${slt}" == "district")
+                $("#reg-form").attr("action", "selectDone");
+
+            $("#reg-form").submit();
+        });
+    });
+</script>
+</body>
+</html>

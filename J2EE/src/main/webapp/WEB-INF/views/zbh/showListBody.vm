@@ -1,0 +1,24 @@
+<div>
+	<form>   
+		<table class="order_table">
+			<tr>
+				<th>openid</th>
+				<th>userid</th>
+
+			</tr>
+			#foreach($user in $userList)
+			<tr>
+				<td>$user.openid</td>
+				<td>$user.userId</td>
+
+
+
+
+
+
+			</tr>
+			#end
+		</table>
+
+	</form>
+</div>

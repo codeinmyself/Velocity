@@ -1,0 +1,219 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Orders Management</title>
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/zf/cssbootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zf/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zf/Common.css">
+    <link rel="stylesheet" href="resources/css/zf/OrderChange.css">
+</head>
+<body>
+    #include("top-nav.vm")
+<div id="title">
+    <div class="title-left">
+        <a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+        <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">修改订单信息</span>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div class="content">
+    <div class="container">
+        <ul>
+            <li>
+                <div class="title-container">
+                    <p class="title">修改订单状态</p>
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p id="test" class="change-normal content-container-span">订单编号</p>
+                    <input class="change-normal change-input cannotchange long" disabled="disabled" value="${order.order_sn}">
+                </div>
+            </li>
+            <li>
+
+                <div class="content-container">
+                    <p class="change-normal content-container-span">订单状态</p>
+                    <select id="select-list" class="change-normal change-select middle">
+                        <option >未付款</option>
+                        <option >已付款</option>
+                        <option >已审核</option>
+                        <option >已发货</option>
+                        <option >已收货</option>
+                        <option >取消</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                    <button class="change-button change-normal" onclick="updatestatus()">修改订单状态</button>
+            </li>
+            <li>
+                <div class="title-container">
+                    <p class="title">修改地址</p>
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">收货地址</p>
+                    <select class="same-line change-normal change-select short">
+                        <option>福建</option>
+                    </select>
+                    <select class="same-line change-select short">
+                        <option>厦门</option>
+                    </select>
+                    <select class="same-line change-select short">
+                        <option>思明区</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">收货人</p>
+                    <input id="consignee" class="change-normal change-input long" value="${order.consignee}">
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">邮编</p>
+                    <input id="zipcode" class="change-normal change-input long" value="${order.zipcode}">
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">联系电话</p>
+                    <input id="telephone" class="change-normal change-input long" value="${order.telephone}">
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">详细地址</p>
+                    <input id="address" class="change-normal change-input long" value="${order.address}">
+                </div>
+            </li>
+            <li>
+                <button onclick="updateaddress()" class="change-button change-normal">修改地址</button>
+            </li>
+            <li>
+                <div class="title-container">
+                    <p class="title">修改快递单号</p>
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">快递单号</p>
+                    <input id="expresscode" class="change-normal change-input long" value="#if(${order.expressCode}) ${order.expressCode} #else 无 #end">
+                </div>
+            </li>
+            <li>
+                <button onclick="updatexpresscode()" class="change-button change-normal">修改快递单号</button>
+            </li>
+            <li>
+                <div class="title-container">
+                    <p class="title">修改备注</p>
+                </div>
+            </li>
+            <li>
+                <div class="content-container">
+                    <p class="change-normal content-container-span">备注</p>
+                    <input id="remark" class="change-normal change-input long" value="${order.remark}">
+                </div>
+            </li>
+            <li>
+                <button onclick="updateremark()" class="change-button change-normal">修改备注</button>
+            </li>
+        </ul>
+    </div>
+</div>
+#include("bottom.vm")
+<script type="text/javascript" src="resources/js/zf/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/zf/js/bootstrap.js"></script>
+<script>
+        window.onload=function () {
+            var status=${order.order_status};
+            var selectlist=document.getElementById("select-list");
+            switch (status)
+            {
+                case 0:selectlist[0].selected=true;break;
+                case 1:selectlist[1].selected=true;break;
+                case 2:selectlist[2].selected=true;break;
+                case 3:selectlist[3].selected=true;break;
+                case 4:selectlist[4].selected=true;break;
+                case 5:selectlist[5].selected=true;break;
+            }
+        }
+        function updatestatus() {
+            var order_id=${order.order_id};
+            var status=$("#select-list option:selected").val();
+            $.ajax(
+                    {
+                        type: 'GET',
+                        contentType: 'application/json;charset=utf-8',
+                        url:'updateStatus?order_id='+order_id+'&status='+status,
+                        success:function (data) {
+                            if(data == "success")
+                            {
+                                alert("修改成功！");
+                            }
+                        }
+                    }
+                    )
+        }
+		
+        function updateaddress() {
+			var order_id=${order.order_id};
+            var consignee=document.getElementById("consignee").value;
+            var zipcode=document.getElementById("zipcode").value;
+            var telephone=document.getElementById("telephone").value;
+            var address=document.getElementById("address").value;
+            $.ajax(
+                    {
+                        type:'GET',
+                        url:'updateAddress?order_id='+order_id+'&consignee='+consignee+'&zipcode='+zipcode+'&telephone='+telephone+'&address='+address,
+						success:function (data) {
+							if(data == "success")
+                            {
+                                alert("修改成功！");
+                            }
+                        }
+                    }
+            )
+        }
+		
+		function updatexpresscode(){
+			var order_id=${order.order_id};
+			var expresscode=document.getElementById("expresscode").value;
+			$.ajax(
+                    {
+                        type:'GET',
+                        url:'updateExpressCode?order_id='+order_id+'&expresscode='+expresscode,
+						success:function (data) {
+							if(data == "success")
+                            {
+                                alert("修改成功！");
+                            }
+                        }
+                    }
+            )
+		}
+		
+		function updateremark(){
+			var order_id=${order.order_id};
+			var remark=document.getElementById("remark").value;
+			$.ajax(
+                    {
+                        type:'GET',
+                        url:'updateRemark?order_id='+order_id+'&remark='+remark,
+						success:function (data) {
+							if(data == "success")
+                            {
+                                alert("修改成功！");
+                            }
+                        }
+                    }
+            )
+		}
+</script>
+</body>
+</html>

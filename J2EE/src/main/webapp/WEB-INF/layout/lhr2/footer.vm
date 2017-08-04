@@ -1,0 +1,13 @@
+<div id="footer" style="position:fixed;">
+	<div><a href="#springUrl('')"><img src="#springUrl('/resources/images/zjh/index-footer-1.png')" /><br/>首页</a></div>
+	<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-2.png')" /><br/>分类</a></div>
+	<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-3.png')" /><br/>觅Me</a></div>
+	<div><a href="#springUrl('/user/cart/index')"><img src="#springUrl('/resources/images/zjh/index-footer-4.png')" /><br/>购物车</a></div>
+	<div><a href="#springUrl('/user/home')"><img src="#springUrl('/resources/images/zjh/index-footer-5.png')" /><br/>我的</a></div>
+</div>
+<!--
+<div style="bottom:0px;height:5%;position:fixed;line-height:5%;font-size:3em;" class="template">
+
+<p>2014级陈伟煌 2017.5</p>
+</div>
+--> 

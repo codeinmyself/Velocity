@@ -1,0 +1,74 @@
+'
+#tiles_insertTemplate({"template":"../layout/cmy2/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+  
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/cmy2/header.vm")
+  	#end
+  	
+	#tiles_putAttribute({"name":"body"})
+
+	
+	<div class="basic">
+		<div class="windows">
+			<div class="mainTop">
+				#set($turnuserInfo="/userinfo/userInfo?user_id=1")
+				<a href="userInfo?user_id=1" style="float:left;height:10px;margin-top:5px;margin-left:10px;color:white;text-decoration:none;">
+				首页
+				</a>
+				<br/>
+				用户设置
+				<a href="#" onClick="javascript :history.back(-1);" style="float:right;height:10px;margin-top:-30px;margin-right:10px;color:white;text-decoration:none;">
+				返回
+				</a>
+			</div>
+			<form action="userUpdateResult">
+				<input type="hidden" value="$user.getUser_id()" name="user_id">
+				<div class="head">
+					<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像
+						<img src="#springUrl('/resources/image/cmy/2.png')" alt="pic2" class="image imgSize2">
+					</a>
+					<HR style="border: 6 groove #ff0033" align=center width="100%" >
+				</div>
+				<div class="head">
+					<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+						#if($user.getUser_name())
+							&nbsp;&nbsp;&nbsp;用户名<input type="text" class="" value="$user.getUser_name()" name="user_name"></input>
+						#else
+							&nbsp;&nbsp;&nbsp;用户名<input type="text" class="" value="" name="user_name"></input>
+						#end
+					</a>
+					
+					<HR style="border: 6 groove #ff0033" align=center width="100%" >
+				</div>
+				<div class="head">
+					<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+						#if($user.getMobile_phone())
+							手机号码<input type="text" class="" value="$user.getMobile_phone()" name="mobile_phone"></input>
+						#else
+							手机号码<input type="text" class="" value="" name="mobile_phone"></input>
+						#end
+					</a>
+					<HR style="border: 6 groove #ff0033" align=center width="100%" >
+				</div>
+				<div class="head">
+					<a href="" style="float:left;margin-top:10px;margin-left:20px;margin-right:20px;text-decoration:none;height:30px">
+						#if($user.getNickname())
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称<input type="text" class="" value="$user.getNickname()" name="nickname"></input>
+						#else
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称<input type="text" class="" value="" name="nickname"></input>
+						#end
+					</a>
+					<HR style="border: 6 groove #ff0033" align=center width="100%" >
+				</div>
+				<input type="submit" class="button" value="确定"></input>
+			</form>
+			
+		</div>
+	</div>
+	#end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/cmy2/footer.vm")
+  #end
+#end

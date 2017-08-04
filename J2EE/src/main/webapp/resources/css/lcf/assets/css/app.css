@@ -1,0 +1,173 @@
+/* Write your styles */
+.infostyle
+{
+    padding-top: 0.5em;
+}
+.goods_image img
+{
+    height: 4rem;
+    width: 6rem;
+    border-style: solid;
+}
+.searchbar
+{
+    position: relative;
+    padding: 1em;
+
+}
+.searchbar input
+{
+    height: 2em;
+}
+.searchicon
+{
+    position: absolute;
+    top:1.2em;
+    right:1.5em;
+    width: 1.5em;
+    height:1.5em;
+    background: url("../../../../images/lcf/add.png");
+    background-size: contain;
+    cursor: pointer;
+}
+.filterbar
+{
+    padding: 1rem;
+}
+.filterbar>div>label:nth-child(1)
+{
+    width: 6rem;
+    margin-top: 0.4em;
+    color: #FFFFFF;
+    font-weight: 400;
+    line-height:2rem;
+    vertical-align:top;
+}
+.showlist
+{
+    display: block;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: #FFFFFF 0.1rem solid;
+}
+.topchoosedbar
+{
+    position: relative;
+    padding: 0.3rem 0.9rem;
+    margin: 0.2rem 0.2rem;
+    color: #FFFFFF;
+    font-weight: 400;
+    border-radius: 0.5em;
+    border: solid 0.1em #FFFFFF;
+}
+.choosedbar
+{
+    position: relative;
+    min-width: 4em;
+    padding: 0.3em 0.1em;
+    margin: 0.2em 0.2rem;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #777777;
+    font-weight: 400;
+    border-radius: 0.5em;
+}
+.choosingbar
+{
+    min-width: 4em;
+    padding: 0.2em 0em;
+    margin: 0.5em 0.2em;
+    border: solid 0.1em #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0.5em;
+    cursor:pointer;
+}
+.btnbar
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+
+}
+.resetbtn
+{
+    float: left;
+    width: 50%;
+    padding: 1rem 0;
+    background-color: #FFFFFF;
+    color: #777777;
+    cursor: pointer;
+}
+.donebtn
+{
+    float: right;
+    width: 50%;
+    padding: 1rem 0;
+    background-color: #FFB90F;
+    color: #EEE;
+    cursor: pointer;
+}
+.delete
+{
+    position: absolute;
+    top:0em;
+    right: 0em;
+    width: 0.8em;
+    height:0.8em;
+    background: url("../../../../images/lcf/delete.png");
+    background-size: contain;
+    cursor: pointer;
+}
+.goodsItem
+{
+    position: relative;
+}
+.goleft{
+    poition: absolute;
+    bottom: 0.5em;
+    left:0.5em;
+    color: #135480;
+    font-weight: 500;
+}
+.goright{
+    position: absolute;
+    bottom: 0.3em;
+    right:0.3em;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    background-color: #135480;
+}
+.gocart{
+    position: fixed;
+    bottom: 1em;
+    left:1em;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: #135480;
+    z-index: 100;
+}
+.bigcartbtn
+{
+    position: absolute;
+    bottom: 0.5em;
+    right:0.5em;
+    width: 1.5em;
+    height: 1.5em;
+    background: url("../../../../images/lcf/cart (2).png") no-repeat;
+    background-size: contain;
+}
+.cartbtn
+{
+    position: absolute;
+    bottom: 0.3em;
+    right:0.3em;
+    width: 1em;
+    height: 1em;
+    background: url("../../../../images/lcf/cart (2).png") no-repeat;
+    background-size: contain;
+}

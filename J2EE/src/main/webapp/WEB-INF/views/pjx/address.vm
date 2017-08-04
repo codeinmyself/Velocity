@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>地址管理</title>
+
+		<!-- Bootstrap -->
+		<link href="#springUrl('/resources/css/pjx/bootstrap.css')" rel="stylesheet">
+    	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 导航条-->
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#springUrl('/user/index')">返回</a>
+	    	</div>	
+		</nav>
+	
+		<!-- 灰色巨幕实现-->
+		<div class="jumbotron">
+			<img id="img" src="#springUrl('/resources/images/pjx/defaultImage.png')" class="img-circle center-block" width = "140" height = "140">
+			<p class="text-center"></p>
+			<p class="text-center">$user.nickname</p>
+		</div>
+		
+		<a class="btn btn-default" href="#springUrl('/user/add_address')" role="button">新增地址</a>
+		
+		<p class="text-center"></p>
+		
+		#if($address_list)
+			#foreach($address in $address_list)
+				<div class="panel panel-primary">
+					#set($hrefAddressDeleteCode="/user/delete_address/"+$address.address_id)
+					#set($hrefAddressDefaultCode="/user/default_address/"+$address.address_id)
+					#set($country = $address.country - 1)
+					#set($province = $address.province - 1)
+					#set($city = $address.city - 1)
+					#set($district = $address.district - 14)
+					<div class="panel-heading">$address.consignee  $address.telephone 
+						默认地址：$address.mydefault
+					</div>
+	           		<div class="panel-body">
+	           			$region_list.get($country).region_name 
+	           			$region_list.get($province).region_name 
+	           			$region_list.get($city).region_name 
+	           			$region_list.get($district).region_name 
+	           			$address.detail
+	           		</div>
+					<div class="panel-footer">
+						<a class="btn btn-default" href="#springUrl($hrefAddressDeleteCode)" role="button">删除</a>
+						<a class="btn btn-default" href="#springUrl($hrefAddressDefaultCode)" role="button">设为默认</a>
+					</div>
+				</div>
+			#end
+		#end
+		
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script type="text/javascript" src="#springUrl('/resources/js/pjx/bootstrap.min.js')"></script>
+
+	</body>
+
+</html>

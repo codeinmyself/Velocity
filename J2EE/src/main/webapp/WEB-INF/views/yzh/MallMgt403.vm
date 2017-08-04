@@ -1,0 +1,7 @@
+#tiles_insertTemplate({"template":"../layout/yzh/template.vm"}) 
+#tiles_putAttribute({"name":"title", "value": "商城管理"})
+#end 
+#tiles_putAttribute({"name":"body"})
+<h2>您没有权限查看或修改信息</h2>
+#end 
+#end

@@ -1,0 +1,56 @@
+#tiles_insertTemplate({"template":"../layout/cwh/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "用户设置"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/cwh/user_info_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript">
+        function preview1(file) {
+            var img = new Image(), url = img.src = URL.createObjectURL(file);
+            img.style.height="10em";
+            img.style.width="10em";
+            var $img = $(img);
+            img.onload = function() {
+                URL.revokeObjectURL(url)
+                $('#preview').empty().append($img)
+            }
+        }
+ 
+        $(function() {
+            $('[type=file]').change(function(e) {
+                var file = e.target.files[0];
+                $('#imagepath').val('/resources/images/cwh/'+file.name);
+                preview1(file);
+            })
+        })
+    </script>
+<div class="userBody" onClick="">
+	<form action="updateUser_info" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="user_id" name="user_id" value="$user.getUser_id()">
+		<label>用户:&emsp;</label>	
+		<input type="text" style="border:none;width:60%;font-size:1.6em;" name="user_name" value="$user.getUser_name()" required>
+		<hr/>
+		<label>头像:&emsp;</label>
+		<input type="hidden" id="imagepath" name="imagepath" value="$user.getImagepath()"/>
+		<span  id="preview">
+		<img src="#springUrl($user.getImagepath())" style="height:10em;width:10em"/>
+		</span>
+		&emsp;<a href="javascript:void(sDialog());">修改</a>
+		<input type="file" id="file" name="file" class="file"/>
+		<hr/>
+		<label>密码:&emsp;</label>
+		<input type="password" style="border:none;width:60%;font-size:1.6em;" name="password" value="$user.getPassword()" required>
+		<hr/>
+		<label>昵称:&emsp;</label>
+		<input type="text" style="border:none;width:60%;font-size:1.6em;" name="nickname" value="$user.getNickname()" required>
+		<hr/>
+		<label>手机:&emsp;</label>
+		<input type="text" style="border:none;width:60%;font-size:1.6em;" name="mobile_phone" value="$user.getMobile_phone()" required>
+		<hr/>
+		<div style="text-align:center;">
+			<button type="submit" style="font-size:2em;">更新用户信息</button>
+		</div>
+	</form>
+</div>
+<br/>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/cwh/footer.vm") #end
+#end

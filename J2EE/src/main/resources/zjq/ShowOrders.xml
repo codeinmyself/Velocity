@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ShowOrders">
+
+    <!--用于获取所有的订单信息-->
+    <select id="selectorderinfo"  resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info;
+    </select>
+    <!--用于获取所有的订单商品映射关系-->
+    <select id="selectordergoods"  resultType="xmu.mystore.ordersmgt.zjq.model.Order_goods">
+        SELECT * FROM 142550_order_goods;
+    </select>
+    <!--用于获取所有的用户-->
+    <select id="selectusers"  resultType="xmu.mystore.ordersmgt.zjq.model.Users">
+        SELECT * FROM 142550_user;
+    </select>
+    <!--修改订单状态-->
+    <update id="change" parameterType="xmu.mystore.ordersmgt.zjq.model.ForChange">
+        UPDATE 142550_order_info SET order_status=#{status} WHERE order_id=#{order_id}
+    </update>
+
+
+
+
+
+
+</mapper>

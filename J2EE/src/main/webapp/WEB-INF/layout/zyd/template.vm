@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>#tiles_insertAttribute({"name":"title"})#end</title>
+		<link href="../../resources/css/zyd/jquery.datetimepicker.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="../../resources/css/zyd/style.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="../../resources/js/zyd/my.js"></script>
+		<script type="text/javascript" src="../../resources/js/zyd/page.js"></script>
+	</head>
+	<header>
+		#tiles_insertAttribute({"name":"header"})#end
+	</header>	
+	<body class="basic_div" onLoad="goPage(1,12);">
+		#tiles_insertAttribute({"name":"body"})#end
+	</body>
+	<footer>
+		#tiles_insertAttribute({"name":"footer"})#end
+	</footer>
+	<script src="../../resources/js/zyd/jquery.js"></script>
+	<script src="../../resources/js/zyd/jquery.datetimepicker.full.js"></script>
+	<script src="../../resources/js/zyd/time.js"></script>
+</html>

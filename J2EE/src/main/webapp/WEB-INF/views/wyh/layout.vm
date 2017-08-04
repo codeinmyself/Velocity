@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
+    <title id="title1">$!page_title</title>  
+    <script>
+	function hello(tt){
+		alert(tt);
+	     document.getElementById("span2").innerHTML="";
+		 tt="foot.vm";
+		}
+</script>
+</head>  
+<body>
+    $screen_content
+    <button onclick="hello('${screen_content}')">Click Me</button>
+     $screen_content
+    <span id="span1">#parse("body.vm")</span>
+</body>  
+</html> 

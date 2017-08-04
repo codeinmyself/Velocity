@@ -1,0 +1,55 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer modalstyle">
+        <form action="addBrand" method="post">
+            <div class="modify-body positioncontrol">
+                <div>
+                    <label for="name">品牌名称</label>
+                    <input class="form-control" type="text" maxlength="20" required="required" id="name" name="name">
+                </div>
+                <div>
+                    <label for="website">品牌网址</label>
+                    <input class="form-control" type="text" id="website" name="website">
+                </div>
+                <div>
+                    <label for="description">品牌简介</label>
+                    <textarea type="text" rows= "5" maxlength="255" id="description" name="description" style="width: 250px"></textarea>
+                </div>
+                <div>
+                  <label for="type-checkbox">
+                      <input type="checkbox" id="type-checkbox" class="mdl-checkbox__input" name="type" value="1">
+                      <span class="mdl-checkbox__label">在前台显示</span>
+                  </label>
+                  <script type="text/javascript">
+                      if ($brand.type == 1)
+                      document.getElementById("type-checkbox").checked = true;
+                  </script>
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default" onclick="window.history.back();">返回</button>
+                    <button type="submit" id="addSubmit" class="btn btn-default">确认新增</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="active listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+
+#end
+#end

@@ -1,0 +1,8 @@
+<div class="addAddress">
+	#if ($address.getAddress_id())
+	<span style="float:left;"><a href="editAddress?user_id=$user_id&address_id=$address.getAddress_id()"><</a></span>
+	#else
+	<span style="float:left;"><a href="editAddress?user_id=$user_id"><</a></span>
+	#end
+	<span style="float:left;margin-left:28%">收货地址</span>
+</div>

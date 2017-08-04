@@ -1,0 +1,22 @@
+#tiles_insertTemplate({"template":"../layout/cwh/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "收货地址"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/cwh/address_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<div>
+	#foreach($address in $addresses)
+		<div style="font-size:2.8em;" onClick="gotoEditAddress1($user_id,$address.getAddress_id())">	
+			<img src="#springUrl('/resources/images/cwh/edit.png')" style="float:right;height:8%;margin-left:5%;margin-top:2%;margin-right:5%;"/>
+			<p>$address.getConsignee()&emsp;$address.getTelephone()#if($address.Is_default)<font color="red">[默认]</font>#end</p>
+			<p>$address.getProvince_name()$address.getCity_name()$address.getDistrict_name()$address.getDetail()</p>	
+		</div>
+		<hr/>
+	#end
+	<hr/>
+	<br/>
+	<div style="text-align:center;">
+		<button onClick="gotoEditAddress2($user_id)" class="addressBtn">+新增地址</button>
+	</div>
+</div>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/cwh/footer.vm")#end
+#end

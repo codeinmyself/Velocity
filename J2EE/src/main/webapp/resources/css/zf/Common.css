@@ -1,0 +1,23 @@
+/**
+    标题和body
+ */
+.title-left
+{
+    float: left;
+    color: #135480;
+}
+.title-left  span
+{
+    margin: 0;
+    font-size: 18px;
+}
+.title-right
+{
+    float: right;
+}
+body {
+    min-width: 1500px;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(232, 232, 232);
+}

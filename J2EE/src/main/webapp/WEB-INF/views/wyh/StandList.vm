@@ -1,0 +1,49 @@
+
+		<div style="background-color:white; width:96%; height:40px; position:relative; left:2%; top:20px;">
+            <img style=" position:absolute; left:10px; width:40px; height:40px;" src="#springUrl('/resources/images/wyh/0.jpg')" onclick="A()">
+            	
+            </img>
+            <span style="position:absolute; left:80px; top:8px; font-size:24px; color:rgb(0,153,255); font-weight:bold" > 商品上下架管理</span>
+            <span style="position:absolute; right:5%; ">
+            	<input style=" position:relative; top:5px; right:0px; height:20px; border-radius: 25px;　width: 270px; outline: none; padding-left:10px;" type="text" value="  请输入文字" onfocus="this.value=''" onblur="if(this.value==''){this.value='  请输入文字'}"/>
+                <img src="#springUrl('/resources/images/wyh/搜索.jpg')" style=" width:21px; height:21px; position:relative; top:11px;" onclick="alert('搜索');"/>
+            </span>
+            <!--<input type="button" value="click me" onclick="A()" />-->
+        </div>	
+
+
+		<div  style=" position:relative; left:2%; top:40px; width:96%; height:auto; padding:0; background-color:white; border:0; margin:0;">
+           <table style="width:100%; border-color:black; border: none; border-collapse:collapse;" >
+              <tr style="background-color:rgb(0,51,255); text-align:left; font-size:20px;
+              height:40px;">
+                <th id="first">商品编号</th>
+                <th>商品名称</th>
+                <th>上架时间</th>
+                <th>下架时间</th>
+                <th>预售数量</th>
+                <th>操作</th>
+              </tr>
+              #foreach(${stand} in ${stands})
+              <tr style=" border-top:outset;text-align:left; font-size:18px;
+              height:40px;">
+                  <th id="first">${stand.id}</th>
+                <th>
+                #foreach(${good} in ${goods})
+                	#if(${good.id} == ${stand.goodsId})
+                		#set($name=${good.name})
+                	#end
+                #end
+                ${name}
+                </th>
+                <th>${stand.onMarketTime}</th>
+                <th>${stand.offMarketTime}</th>
+                <th>${stand.preSaleCount}</th>
+                <th>
+                	<a href="StandUpdate?standId=${stand.id}"><span>修改</span></a>
+                </th>
+              </tr>
+              #end
+         
+              
+            </table>
+       	</div> 

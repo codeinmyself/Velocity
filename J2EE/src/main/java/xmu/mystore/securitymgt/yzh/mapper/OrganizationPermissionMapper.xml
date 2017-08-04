@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.securitymgt.yzh.mapper.OrganizationPermissionMapper">
+	<!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+    <resultMap type="xmu.mystore.securitymgt.yzh.model.OrganizationPermission" id="OrganizationResultMap">
+       <id property="op_id" column="op_id"/>
+       <result property="organization_id" column="organization_id"/>
+       <result property="organization_name" column="organization_name"/>
+       <result property="permission_id" column="permission_id"/>
+       <result property="permission.permission_id" column="permission_id"/>
+       <result property="permission.permission" column="permission"/>
+       <result property="permission.permission_name" column="permission_name"/>
+       <result property="organization_name" column="organization_name"/>
+       <result property="permission.permission_description" column="permission_description"/>
+       <result property="description" column="description"/>
+    </resultMap>
+	
+	<select id="getAllOrganizationPermission"
+		resultMap="OrganizationResultMap">
+		select  organization_permission.op_id as op_id,
+				organization.organization_id as organization_id, 
+				organization.organization_name as organization_name,
+				organization_permission.permission_id as permission_id, 
+				organization_permission.description as description, 
+				permission.permission as permission,
+				permission.permission_name as permission_name, 
+				permission.permission_description as permission_description 
+		from 142528_organization_permission organization_permission, 
+			142528_organization organization, 
+			142528_permission permission
+		where organization.organization_id =
+		organization_permission.organization_id
+		and permission.permission_id = organization_permission.permission_id
+	</select>
+
+	
+	<select id="getOrganizationPermissionByOp_Id" parameterType="Long"
+		resultMap="OrganizationResultMap">
+		select  organization_permission.op_id as op_id,
+				organization.organization_id as organization_id, 
+				organization.organization_name as organization_name,
+				organization_permission.permission_id as permission_id, 
+				organization_permission.description as description, 
+				permission.permission as permission,
+				permission.permission_name as permission_name, 
+				permission.permission_description as permission_description 
+		from 142528_organization_permission organization_permission, 
+			142528_organization organization, 
+			142528_permission permission
+		where organization_permission.op_id = #{op_id}
+		and organization.organization_id =
+		organization_permission.organization_id
+		and permission.permission_id = organization_permission.permission_id
+	</select>
+	
+	
+	<update id="modifyOrganizationPermission" parameterType="xmu.mystore.securitymgt.yzh.model.OrganizationPermission">
+		update 142528_organization_permission
+		set
+		permission_id=#{permission_id},
+		description=#{description}
+		where
+		op_id=#{op_id}
+	</update>
+	
+	
+	<delete id="deletePermissionByOp_id" parameterType="Long">
+		delete 
+		from 142528_organization_permission
+		where op_id=#{op_id} 
+	</delete>
+	
+	<insert id="addPermission" parameterType="xmu.mystore.securitymgt.yzh.model.OrganizationPermission">
+		insert 
+		into 142528_organization_permission (organization_id, permission_id, description)
+		values(#{organization_id}, #{permission_id}, #{description}) 
+	</insert>
+</mapper>

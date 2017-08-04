@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderService">
+
+    <!--根据用户ID获取订单-->
+    <select id="selectbyuserid" parameterType="long"  resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info WHERE user_id=#{user_id};
+    </select>
+    <!--获取某个状态的用户订单-->
+    <select id="selectbyuserandstatus" parameterType="xmu.mystore.ordersmgt.zjq.model.UserStatus" resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info WHERE user_id=#{user_id} AND order_status=#{status}
+    </select>
+    <!--修改为已发货订单-->
+    <update id="updatesend" parameterType="long">
+        UPDATE 142550_order_info SET order_status=4 WHERE order_id=#{order_id}
+    </update>
+    <!--修改为取消订单-->
+    <update id="updatecancel" parameterType="long">
+        UPDATE 142550_order_info SET order_status=5 WHERE order_id=#{order_id}
+    </update>
+
+
+
+
+
+
+</mapper>

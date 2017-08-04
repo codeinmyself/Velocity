@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.securitymgt.yzh.mapper.OrganizationMapper" >
+	
+	<select id="getAllOrganization" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.Organization">
+        SELECT * FROM 142528_organization
+    </select>
+	
+	<select id="getOrganizationByID" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.Organization">
+        SELECT * FROM 142528_organization 
+        WHERE organization_id = #{organization_id}
+    </select>
+    
+    <select id="getOrganizationByName" parameterType="String" resultType="xmu.mystore.securitymgt.yzh.model.Organization">
+        SELECT * FROM 142528_organization 
+        WHERE organization_name = #{organization_name}
+    </select>
+    
+    <update id="changeOrganizationStateById" >
+		UPDATE 142528_organization
+		SET
+		enable = #{new_state}
+		WHERE organization_id = #{organization_id}
+	</update>
+</mapper>

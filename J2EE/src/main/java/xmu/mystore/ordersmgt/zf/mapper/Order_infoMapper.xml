@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zf.mapper.Order_infoMapper" >	
+	<resultMap type="xmu.mystore.ordersmgt.zf.model.Order_info" id="orderResult">
+		<id column="order_id" property="order_id"/>
+		<result column="order_sn" property="order_sn"/>
+		<result column="order_status" property="order_status"/>
+		<result column="consignee" property="consignee"/>
+		<result column="address" property="address"/>
+		<result column="zipcode" property="zipcode"/>
+		<result column="telephone" property="telephone"/>
+		<result column="email" property="email"/>
+		<result column="goods_price" property="goods_price"/>
+		<result column="order_price" property="order_price"/>
+		<result column="remark" property="remark"/>
+		<result column="total_weight" property="total_weight"/>
+		<result column="signature_characters" property="signature_characters"/>
+		<result column="add_time" property="add_time"/>
+		<result column="pay_time" property="pay_time"/>
+		<result column="make_time" property="make_time"/>
+		<result column="shipped_time" property="shipped_time"/>
+		<result column="receive_time" property="receive_time"/>
+		<result column="cancel_time" property="cancel_time"/>
+		<result column="expressCode" property="expressCode"/>
+		<result column="isUrgency" property="isUrgency"/>
+		<association property="user" javaType="xmu.mystore.ordersmgt.zf.model.Users" column="user_id" select="xmu.mystore.ordersmgt.zf.mapper.UsersMapper.getUserById"/>
+		<collection property="goods" javaType="list" ofType="xmu.mystore.ordersmgt.zf.model.Order_goods" column="order_id" select="xmu.mystore.ordersmgt.zf.mapper.Order_goodsMapper.get"/>		
+	</resultMap>
+	
+	<!-- 获取所有订单 -->
+	<select id="getAllOrders" resultMap="orderResult">
+		SELECT * FROM 142560_order_info
+	</select>
+	
+	<!-- 获取用户所有订单 -->
+	<select id="getOrderByUser_id" resultMap="orderResult" parameterType="long">
+		SELECT * FROM 142560_order_info where user_id = #{id} ORDER BY order_status ASC
+	</select>
+	
+	<!-- 根据用户ID以及订单状态获取订单 -->
+	<select id="getOrdersByUserId_Status" resultMap="orderResult">
+		SELECT * FROM 142560_order_info where user_id = #{param1} AND order_status = #{param2}
+	</select>
+	
+	<!-- 根据订单ID获取订单 -->
+	<select id="getOrderById" resultMap="orderResult" parameterType="long">
+		SELECT * FROM 142560_order_info WHERE order_id= #{id}
+	</select>
+	
+	<!-- 根据订单编号获取订单 -->
+	<select id="getOrderBySn" resultMap="orderResult" parameterType="String">
+		SELECT * FROM 142560_order_info WHERE order_sn= #{sn}
+	</select>
+	
+	<!-- 根据商品名称获取订单 -->
+	<select id="getOrderByGoods_name" resultMap="orderResult" parameterType="String">
+		select * form 142560_order_info where order_id in (select order_id from order_goods where goods_name=#{name})
+	</select>
+	
+	<!-- 根据收货人获取订单 -->
+	<select id="getOrderByConsignee" resultMap="orderResult" parameterType="String">
+		SELECT * FROM 142560_order_info WHERE consignee= #{name}
+	</select>
+	
+	<!-- 根据是否加急获取订单 -->
+	<select id="getOrderByIsUrgency" resultMap="orderResult" parameterType="String">
+		SELECT * FROM 142560_order_info WHERE isUrgency= #{ur}
+	</select>
+	
+	<!-- 根据订单状态获取订单 -->
+	<select id="getOrderByStatus" resultMap="orderResult" parameterType="int">
+		SELECT * FROM 142560_Order_info WHERE order_status= #{st}
+	</select>
+	
+	<!-- 根据订单下单时间范围获取订单 -->
+	<select id="getOrderByOrder_time" resultMap="orderResult">
+		SELECT * FROM 142560_order_info WHERE add_time BETWEEN #{0} AND #{1}
+	</select>
+	
+	<!-- 确认收货 -->
+	<update id="receiveOrder">
+		 UPDATE 142560_order_info SET order_status=4, receive_time=#{param2} WHERE order_id=#{param1}	 
+	</update>
+	
+	<!-- 取消订单 -->
+	<update id="cancelOrder">
+		 UPDATE 142560_order_info SET order_status=5, cancel_time=#{param2} WHERE order_id=#{param1}	 
+	</update>
+	
+	<update id="updateOrder"  parameterType="xmu.mystore.ordersmgt.zf.model.Order_info">
+		 UPDATE 142560_order_info
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="remark!=null">remark=#{remark},</if>
+		  <if test="order_status!=null">order_status=#{order_status},</if>
+		  <if test="expressCode!=null">expressCode=#{expressCode},</if>
+		  <if test="consignee!=null">consignee=#{consignee},</if>
+		  <if test="address!=null">address=#{address},</if>
+		  <if test="zipcode!=null">zipcode=#{zipcode},</if>
+		  <if test="telephone!=null">telephone=#{telephone},</if>
+		  <if test="make_time!=null">make_time=#{make_time},</if>
+		  <if test="pay_time!=null">pay_time=#{pay_time},</if>
+		  <if test="shipped_time!=null">shipped_time=#{shipped_time},</if>
+		  <if test="recieve_time!=null">recieve_time=#{recieve_time},</if>
+		  <if test="cancel_time!=null">cancel_time=#{cancel_time},</if>
+		 </trim>
+		 WHERE order_id=#{order_id}
+	</update>
+	
+	<update id="checkOrder"  parameterType="xmu.mystore.ordersmgt.zf.model.Order_info">
+		 UPDATE 142560_order_info
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="order_status!=null">order_status=#{order_status},</if>
+		  <if test="make_time!=null">make_time=#{make_time},</if>
+		 </trim>
+		 WHERE order_id=#{order_id}
+	</update>
+	
+	
+	<update id="updateStatus"  parameterType="xmu.mystore.ordersmgt.zf.model.Order_info">
+		 UPDATE 142560_order_info
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="order_status!=null">order_status=#{order_status},</if>
+		 </trim>
+		 WHERE order_id=#{order_id}
+	</update>
+	
+	<update id="updateAddress"  parameterType="xmu.mystore.ordersmgt.zf.model.Order_info">
+		 UPDATE 142560_order_info
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="consignee!=null">consignee=#{consignee},</if>
+		  <if test="address!=null">address=#{address},</if>
+		  <if test="zipcode!=null">zipcode=#{zipcode},</if>
+		  <if test="telephone!=null">telephone=#{telephone},</if>
+		 </trim>
+		 WHERE order_id=#{order_id}
+	</update>
+
+</mapper>

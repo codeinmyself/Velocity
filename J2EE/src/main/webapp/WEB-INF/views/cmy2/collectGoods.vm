@@ -1,0 +1,45 @@
+'
+#tiles_insertTemplate({"template":"../layout/cmy2/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+  
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/cmy2/header.vm")
+  	#end
+  	
+	#tiles_putAttribute({"name":"body"})
+	
+	<div class="basic">
+		<div class="windows">
+			<div class="mainTop">
+				#set($turnuserInfo="/userinfo/userInfo?user_id="+$user_id)
+				<a href="userInfo?user_id=$user_id" style="float:left;height:10px;margin-top:5px;margin-left:10px;color:white;text-decoration:none;">
+				首页
+				</a>
+				<br/>
+				收货地址
+				<a href="#" onClick="javascript :history.back(-1);" style="float:right;height:10px;margin-top:-30px;margin-right:10px;color:white;text-decoration:none;">
+				返回
+				</a>
+			</div>
+				#foreach($g in $goods)
+					<div class="body1">	
+							<td><img src="#springUrl('/resources/image/cmy/2.png')" style="float:right;height:60px;margin-top:10px;margin-right:150px;"><br/><br/></td><br/>	
+							<br/><br/>
+							<td>&nbsp;&nbsp;商品名称: $g.getName()</td><br/>
+							<td>&nbsp;&nbsp;商品介绍: $g.getDescription()</td><br/><br/>
+							
+						<HR style="border: 6 groove #ff0033" align=center width="100%" >
+					</div>
+					#set($turnuserInfo="/userinfo/userInfo?user_id="+$user_id)
+					<a href="userInfo?user_id=$user_id" style="float:right;height:10px;margin-top:0px;margin-right:30px;color:black;text-decoration:none;">
+				删除
+				</a>
+				#end
+				
+		</div>
+	</div>
+	#end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/cmy2/footer.vm")
+  #end
+#end

@@ -1,0 +1,143 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>fill out order</title>
+    
+    
+    <style>
+        #title
+        {
+            width: 72%;
+            background-color: white;
+            box-shadow:7px 7px 7px #aaaaaa;
+            margin: 5% auto 0 auto;
+            border-radius: 3px;
+        }
+        .content
+        {
+            width: 72%;
+            background-color: white;
+            box-shadow:7px 7px 7px #aaaaaa;
+            margin: 20px 14% 0 14%;
+            border-radius: 3px;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        .left-content
+        {
+            width: 45%;
+            float: left;
+            padding: 100px;
+        }
+        .right-content
+        {
+            width: 45%;
+            float: left;
+            padding: 100px;
+        }
+        .long
+        {
+            width: 370px;
+        }
+        .total-input
+        {
+            font-family: "Microsoft YaHei UI";
+            border: none;
+            font-size: 16px;
+            border-bottom: solid 3px #135480;
+        }
+        .input-container
+        {
+            padding-bottom: 75px;
+        }
+        .input-container p
+        {
+            margin: 0;
+            font-family: "Microsoft YaHei UI";
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        .button-line
+        {
+            margin-top: 120px;
+        }
+        .button-line button
+        {
+            font-size: 16px;
+            font-family: "Microsoft YaHei UI";
+            padding: 5px 12px 5px 12px;
+            border-radius: 3px;
+            box-shadow:3px 3px 3px #aaaaaa;
+        }
+        .button-yes
+        {
+            background-color: #135480;
+            color: white;
+            margin-left: 30px;
+        }
+        .button-reset
+        {
+            background-color: white;
+            color: #135480;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    #include("topNav.vm")
+<div id="title" align="center">
+            <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">填写订单</span>
+
+</div>
+
+<div id="consignee">
+	<form>
+	<tr>
+		<td style="font-family: 'Microsoft YaHei UI';padding-left: 10px">${consignee.user_name}</td>  |  
+		<td style="font-family: 'Microsoft YaHei UI';padding-left: 8px">${consignee.mobile_phone}</td>
+	</tr>
+	<tr>
+		<td style="font-family: 'Microsoft YaHei UI';padding-left: 8px">${consignee.address}</td>
+	</tr>
+    </form>
+	
+</div>
+		
+
+<div id="goods">
+	<!-- cart -->
+	#foreach($item in $goods)
+		<div class="left-content">
+			<pic/>
+                <span>{$item.toString()}</span>
+        </div>
+		<br/>
+	#end
+</div>
+
+<div id="privilege" class="content">
+	<br/>(waiting for implement..)
+	<br/>
+</div>
+
+<div id="totle" class="content">
+    <span>总计金额：{$order.order_price}</span>
+</div>
+
+<div id="submit" class="buttom">
+    <form id="subForm" action="#springUrl('/liulei/payOrder')" method="post">
+		<input type="hidden" name="sm" id="" value="$order.id"/>
+	</form>
+    <button id="submit" class="button-yes" onclick="submitOrder()">提交订单</button>
+</div>
+
+<script type="text/javascript" src="resources/jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
+<script>
+function submitOrder()
+{
+document.getElementById("subForm").submit();
+}
+</script>
+</body>
+</html>

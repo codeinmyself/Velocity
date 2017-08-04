@@ -1,0 +1,49 @@
+#tiles_insertTemplate({"template":"../layout/lxq/user_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "个人信息修改"})#end
+	#tiles_putAttribute({"name":"body"})
+	</br>
+	<div class = "container">
+			<div class = "row">
+			<div class = "col-md-2">
+			<a class="btn btn-default" href="#springUrl('/user/home')" role="button">返回</a>
+			</div>
+	</div>
+	</br>
+	<div class="panel panel-primary">
+    	<div class="panel-heading">
+        	<h3 class="panel-title">我的信息</h3>
+    	</div>
+    	<div class="panel-body">
+    	<form class="form-inline">
+  		<div class="form-group">
+    		<label for="exampleInputName2">用户名：</label>
+    		<text>$userMessageService.user_name</text>
+  		</div>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		<div class="form-group">
+    		<label for="exampleInputName2">用户ID：</label>
+    		<text>$userMessageService.user_id</text>
+  		</div>
+  		
+		</form>
+		
+		<form class="form-inline" action="#springUrl('/user/changenickname')" method="post">
+  		<div class="form-group">
+    		<label for="exampleInputName2">&nbsp;昵称：&nbsp;&nbsp;&nbsp;</label>
+    		<input type="text" class="form-control" name="InputName"  value = $userMessageService.nickname>
+    		&nbsp;&nbsp;&nbsp;<input name="button"  type="submit" value="更改">
+  		</div>
+  		</form>
+  		 
+	<form class="form-inline" action="#springUrl('/user/changetel')" method="post">
+  		<div class="form-group">
+    		<label for="exampleInputEmail2">&nbsp;电话：&nbsp;&nbsp;&nbsp;</label>
+    		<input type="text" class="form-control" name="InputTel" value = $userMessageService.mobile_phone>
+    		&nbsp;&nbsp;&nbsp;<input name="button"  type="submit" value="更改">
+  		</div>
+ 
+    	</form>
+    	</div>
+    </div>
+    #end
+#end

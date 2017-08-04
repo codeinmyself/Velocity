@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.lxq.mapper.CollectMapper">
+	<resultMap type="xmu.mall.usercenter.lxq.model.UserCollectGoods" id="CollectResult">
+	<id column="rec_id" property="res_id"/>
+	<result column="goods_id" property="goods_id"/>
+	<result column="user_id" property="user_id"/>
+	<result column="add_time" property="add_time"/>
+	</resultMap>
+	
+	<select id="selectCollectByGoodsIdAndUserId" resultMap="CollectResult" parameterType="xmu.mall.usercenter.lxq.model.UserCollectGoods">
+	  select * from main_user_collect_goods where goods_id=#{goods_id} and user_id=#{user_id}
+	</select>
+	</mapper>
+	

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.ghz.mapper.ICollectionMapper" >
+
+	<resultMap type="xmu.mystore.ordersmgt.zf.model.Goods" id="goodsResult">
+		<id column="id" property="id" />
+	</resultMap>
+	
+	<select id="getUserCollection" resultMap="goodsResult" >
+		select distinct * from 142560_user_collect_goods as A, 142560_goods as B 
+		where A.user_id = #{user_id} and A.goods_id = B.id
+	</select>
+	
+</mapper>

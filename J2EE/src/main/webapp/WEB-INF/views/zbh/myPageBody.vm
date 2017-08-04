@@ -1,0 +1,36 @@
+<div>
+	<form>
+		<table class="manage">
+			<tr>
+				<td class="manage_title">用户个人信息</td>
+			</tr>
+			<!--
+			<tr>
+				<td class="manage_left">openid</td>
+				<td class="manage_right">$user.openid</td>
+				<input type="hidden" name="id" value="$user.openid"/>
+			</tr>
+			-->
+			<tr>
+				<td class="manage_left">用户名</td>
+				<td class="manage_right">$user.userName</td>
+			</tr>
+			<tr>
+				<td class="manage_left">注册时间</td>
+				<td class="manage_right">$user.regTime</td>
+			</tr>
+			<tr>
+				<td class="manage_left">真实姓名</td>
+				<td class="manage_right">$user.realName</td>
+			</tr>
+			<tr>
+				<td class="manage_left">联系电话</td>
+				<td class="manage_right">$user.mobilePhone</td>
+			</tr>
+			<tr>
+				<td class="manage_left">地址</td>
+				<td class="manage_right">$user.address</td>
+			</tr>
+		</table>
+	</form>
+</div>

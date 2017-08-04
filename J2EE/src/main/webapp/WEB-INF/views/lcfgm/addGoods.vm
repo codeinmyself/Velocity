@@ -1,0 +1,105 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer modalstyle">
+      <form action="addGoods" method="post">
+          <div class="modify-body positioncontrol">
+              <div>
+                  <label for="serial_code">商品编码</label>
+                  <input type="text" class="form-control" maxlength="10" id="serial_code" name="serial_code">
+              </div>
+              <div>
+                  <label for="name">商品名</label>
+                  <input type="text" class="form-control" maxlength="10" required="required" id="name" name="name">
+              </div>
+              <div>
+                  <label for="description">商品描述</label>
+                  <textarea type="text" rows="5" maxlength="255" id="description" name="description" style="width: 250px"></textarea>
+              </div>
+              <div>
+                  <label>品类</label>
+                  <select class="form-control" id="category">
+                    #foreach($c in $categoryList)
+                        <option value="$c.id">$c.name</option>
+                    #end
+                  </select>
+              </div>
+              <div>
+                  <label for="brand">品牌</label>
+                  <select class="form-control" id="brand">
+                    #foreach($b in $brandList)
+                        <option value="$b.id">$b.name</option>
+                    #end
+                  </select>
+              </div>
+              <div>
+                  <label for="weight">重量 kg</label>
+                  <input class="form-control" type="text" required="required" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?" id="weight" name="weight">
+              </div>
+              <div>
+                  <label for="stock_count">库存量</label>
+                  <input class="form-control" required="required" id="stock_count" name="stock_count" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label for="pre_sale_number">预售量</label>
+                  <input class="form-control" required="required" id="pre_sale_number" name="pre_sale_number" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label for="store_id">商店id</label>
+                  <input class="form-control" type="text" required="required" id="store_id" name="store_id">
+              </div>
+              <div>
+                  <label for="mid_user_price">中介价</label>
+                  <input class="form-control" required="required" id="mid_user_price" name="mid_user_price" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label for="market_price">市场价</label>
+                  <input class="form-control" required="required" id="market_price" name="market_price" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label for="real_price">真实价格 元</label>
+                  <input class="form-control" required="required" id="real_price" name="real_price" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label for="redeem_point">积分</label>
+                  <input class="form-control" required="required" id="redeem_point" name="redeem_point" type="text" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" pattern="-?[0-9]*(\.[0-9]+)?">
+              </div>
+              <div>
+                  <label class="mdl-textfield__label" for="default_express">默认快递</label>
+                  <input class="form-control" type="text" id="default_express" name="default_express">
+              </div>
+              <div>
+                  <label for="divide">是否分单</label>
+                  <!--input type="text" class="form-control" id="orderStatus" placeholder="待付款"-->
+                  <select class="form-control" id="divide">
+                      <option value="1">是</option>
+                      <option value="0">否</option>
+                  </select>
+              </div>
+              <div class="pull-right">
+                  <button type="button" class="btn btn-default" onclick="window.history.back();">返回</button>
+                  <button type="submit" id="addSubmit" class="btn btn-default">确认新增</button>
+              </div>
+        </div>
+      </form>
+    </div>
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="active listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+
+#end
+#end

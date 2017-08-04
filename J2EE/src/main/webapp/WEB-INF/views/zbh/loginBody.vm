@@ -1,0 +1,20 @@
+<div>
+	<form action="loginConfirm">
+		<table class="">
+			<tr>
+				<td class="manage_title">账号登录</td>
+			</tr>
+
+			<tr>
+				<td class="manage_left">手机号码</td>
+				<td class="manage_right"><input type="text" class="manage_input"  name="mobilePhone"></input></td>
+			</tr>
+			<tr>
+				<td class="manage_left">密码</td>
+				<td class="manage_right"><input type="password" class="manage_input"  name="password"></input></td>
+			</tr>	
+		</table>
+		<input type="submit" class="button" name="登录"></input>
+		<a href="userRegister">没有账号？点击注册</a>
+	</form>
+</div>

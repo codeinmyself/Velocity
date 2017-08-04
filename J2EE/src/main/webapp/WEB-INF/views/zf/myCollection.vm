@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>我的收藏</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/cartStyle.css">
+		<link rel="stylesheet" href="resources/css/zf/updateInfo.css">
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">我的收藏</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list cart-list">
+					#foreach($collect in ${collections})
+                    <li class="mdl-list__item mdl-list__item--three-line" style="margin-left:10px;">
+                        <span class="item_img">
+                            <img src="resources/images/zf/$collect.goods.image_path" class="item_img"></image>
+                        </span>
+                        <span class="mdl-list__item-primary-content item-second">
+                            <span class="item_text">$collect.goods.name</span>
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height">
+									$collect.goods.description
+                            </span>
+                            <span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                                <span class="item-price">￥$collect.goods.market_price</span>
+                                <span>
+                                    <button class="mdl-button mdl-js-button item-button" onclick="window.location.href='deleteCollect?uid=$collect.user_id&cid=$collect.rec_id'">删除</button>
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+					#end
+                </ul>
+            </div>
+        </main>
+</div>
+</body>
+</html>

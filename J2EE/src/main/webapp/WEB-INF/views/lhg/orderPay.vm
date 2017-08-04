@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>支付订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="#springUrl('/resources/js/material.min.js')"></script>
+    <link rel="stylesheet" href="#springUrl('/resources/css/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/resources/css/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/payStyle.css')">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <span class="mdl-layout-title">订单支付</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                    <li>
+                        <div class="li_box  price_info">
+                            <div class="left_container">
+                                <label>总价：<label>${order.order_price}</label></label>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="wechat">
+                                <label>微信支付</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../images/ic_arrow_right.png"></img>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="bank" checked>
+                                <label>银联支付</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../images/ic_arrow_right.png"></img>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="apple-pay">
+                                <label>Apple Pay</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="../images/ic_arrow_right.png"></img>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                </ul>
+            </div>
+        </main>
+        <form action="orderPay_submit" method="get" accept-charset="utf-8">
+            <input type="hidden" name="order_id" value="${order.order_id}"></input>
+        </form>
+        <footer>
+            <div class="item-choose">
+                <button class="item-pay-btn item-choose-btn">支付</button>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

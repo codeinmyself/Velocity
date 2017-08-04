@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cwh.mapper.IUser_AddressMapper"> 
+	<resultMap id="User_AddressBaseMap" type="xmu.mall.usercenter.cwh.model.User_Address">
+        <id column="address_id" property="address_id" jdbcType="BIGINT"/>
+        <result column="user_id" property="user_id" jdbcType="BIGINT"/>
+        <result column="consignee" property="consignee" jdbcType="VARCHAR"/>
+        <result column="zipcode" property="zipcode" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="country" property="country" jdbcType="INTEGER"/>
+        <result column="province" property="province" jdbcType="INTEGER"/>
+        <result column="city" property="city" jdbcType="INTEGER"/>
+        <result column="district" property="district" jdbcType="INTEGER"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        <result column="is_default" property="is_default" jdbcType="TINYINT"/>
+    </resultMap>
+    
+	<insert id="addAddress" parameterType="xmu.mall.usercenter.cwh.model.User_Address">
+	    INSERT INTO 142408_user_address 
+	    (user_id,consignee,zipcode,telephone,country,province,city,district,detail,is_default)
+	    Values(
+	    #{user_id},#{consignee},#{zipcode},#{telephone},#{country},#{province},#{city},#{district},#{detail},#{is_default}
+	    )
+	</insert>
+    <select id="getAddressesByUserId" parameterType="java.lang.Long" resultMap="User_AddressBaseMap">
+        SELECT * FROM 142408_user_address WHERE user_id=#{user_id}
+    </select>
+    <select id="getAddressByAddressId" parameterType="java.lang.Long" resultMap="User_AddressBaseMap">
+        SELECT * FROM 142408_user_address WHERE address_id=#{address_id}
+    </select>
+    
+    <update id="updateAddressByAddress" parameterType="xmu.mall.usercenter.cwh.model.User_Address">
+        UPDATE 142408_user_address SET
+        consignee=#{consignee},
+        zipcode=#{zipcode},
+        telephone=#{telephone},
+        country=#{country},
+        province=#{province},
+        city=#{city},
+        district=#{district},
+        detail=#{detail},
+        is_default=#{is_default}
+        where address_id=#{address_id}
+    </update>
+    <update id="changeDefaultToZero" parameterType="java.lang.Long">
+        UPDATE 142408_user_address SET
+        is_default=0
+        where user_id=#{user_id}
+    </update>
+    <delete id="deleteAddress" parameterType="java.lang.Long">
+        DELETE FROM 142408_user_address WHERE address_id=#{address_id}
+    </delete>
+    
+</mapper>

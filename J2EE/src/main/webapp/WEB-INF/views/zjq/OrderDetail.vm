@@ -1,0 +1,118 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Middle-Software-JPA</title>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zjq/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zjq/Common.css">
+    <link rel="stylesheet" href="resources/css/zjq/OrderDetail.css">
+</head>
+<body>
+    #include("zjq/top-nav.vm")
+    <div id="title">
+        <div class="title-left">
+            <a href="OrderManage"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+            <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">订单列表/订单管理</span>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="detail-title">
+                        <p>订单基本信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">订单号</p>
+                        <p class="detail-normal-body">${ordersn}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">订单状态</p>
+                        <p class="detail-normal-body">${orderstatus}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-title">
+                        <p>商品信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-head">商品名称</p>
+                        <p class="price-head">单价</p>
+                        <p class="price-head">数量</p>
+                        <p class="price-head">小计</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                #foreach($good in $!goodslist)
+                    #set($total=$!good.goods_number*$!good.goods_price)
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-body">$!good.goods_name</p>
+                        <p class="price-body">$!good.goods_price</p>
+                        <p class="price-body">$!good.goods_number</p>
+                        <p class="price-body">￥$total</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                #end
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-body"></p>
+                        <p class="price-body"></p>
+                        <p class="price-body"></p>
+                        <p class="price-body">总计：￥${goodsprice}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-title">
+                        <p>收货人信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">收货人姓名</p>
+                        <p class="detail-normal-body">${consignee}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">详细地址</p>
+                        <p class="detail-normal-body">${address}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">邮件编码</p>
+                        <p class="detail-normal-body">${zipcode}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">联系方式</p>
+                        <p class="detail-normal-body">${telephone}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<script type="text/javascript" src="resources/jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

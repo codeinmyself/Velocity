@@ -1,0 +1,17 @@
+#tiles_insertTemplate({"template":"../layout/yzh/template.vm"}) 
+#tiles_putAttribute({"name":"title", "value": "商城管理"})
+#end 
+#tiles_putAttribute({"name":"body"})
+
+<div id="content" style="overflow: scroll;"> 
+	<timelog> 
+		<form action="searchLog" method="post">
+				开始日期：<input type="date" name="start">
+				结束日期：<input type="date" name="end">
+			<button type="submit" value="查询" class="left">查询</button>
+		</form>
+	</timelog>
+</div>	
+
+#end 
+#end

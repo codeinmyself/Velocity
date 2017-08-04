@@ -1,0 +1,61 @@
+#tiles_insertTemplate({"template":"../layout/yzh/template.vm"})#tiles_putAttribute({"name":"title", "value": "修改商店权限"})#end #tiles_putAttribute({"name":"body"})
+
+<form id="form" class="col s12" action="modifyOrganizationPermission" method="post">
+  <input type="hidden" name="op_id" value="$organizationPermission.op_id">
+  <input type="hidden" name="organization_id" value="$organizationPermission.organization_id">
+  <input type="hidden" name="permission_id" value="$organizationPermission.permission_id">
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">修改商店权限</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div class="row">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="organization_name" name="organization_name" value="$organizationPermission.organization_name" disabled="true">
+          <label class="mdl-textfield__label" for="serial_code">商店名称</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" maxlength="40" required="required" id="permission.permission" name="permission.permission" value="$organizationPermission.permission.permission">
+            <label class="mdl-textfield__label" for="name">权限</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="permission.permission_name" name="permission.table_name" value="$organizationPermission.permission.permission_name">
+            <label class="mdl-textfield__label" >资源名称</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" type="text" rows= "5" maxlength="255" id="description" name="description">$organizationPermission.description</textarea>
+            <label class="mdl-textfield__label" for="description">权限描述</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <button type="button" onclick="modifyOrganizationPermission();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        修改
+      </button>
+      <button type="button" onclick="deleteOrganizationPermission();" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        删除
+      </button>
+      <script type="text/javascript">
+        function deleteOrganizationPermission() {
+          document.getElementById("form").action = "deleteOrganizationPermission";
+          document.getElementById("form").submit();
+        }
+        
+        function modifyOrganizationPermission() {
+          document.getElementById("form").action = "modifyOrganizationPermission";
+          document.getElementById("form").submit();
+        }
+        
+      </script>
+    </div>
+  </div>
+</form>
+#end #end

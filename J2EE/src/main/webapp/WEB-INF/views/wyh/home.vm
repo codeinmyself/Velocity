@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台管理</title>
+<script>
+##history.go(1);
+	function clear(){
+		var temp0=document.getElementById("span0");
+		var temp1=document.getElementById("span1");
+		var temp2=document.getElementById("span2");
+		var temp3=document.getElementById("span3");
+		var temp4=document.getElementById("span4");
+		temp0.disabled=true;
+		temp0.style.display="none";
+		temp1.disabled=true;
+		temp1.style.display="none";
+		temp2.disabled=true;
+		temp2.style.display="none";
+		temp3.disabled=true;
+		temp3.style.display="none";
+		temp4.disabled=true;
+		temp4.style.display="none";
+	}
+	window.onload=function(){
+		clear();
+		var temp=document.getElementById("span0");
+		 temp.disabled=true;
+		 temp.style.display="block";
+	}
+	function hello(number){
+		clear();
+		var string="span"+number;
+	     var temp=document.getElementById(string);
+		 temp.disabled=true;
+		 temp.style.display="block";
+		}
+</script>
+<style type="text/css">
+#button1 {
+    width: 135px;
+    height: 30px;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    letter-spacing: 8px;
+    padding-left: 12px;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #66B5E6, #2e88c0);
+    background: -moz-linear-gradient(top, #66B5E6, #2e88c0);
+    background: linear-gradient(top, #66B5E6, #2e88c0);
+    background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+    border: 1px solid #2576A8;
+    box-shadow: 0 1px 2px #B8DCF1 inset, 0 -1px 0 #316F96 inset;
+    color: #fff;
+    text-shadow: 1px 1px 0.5px #22629B;
+}
+#button1:hover {
+    background: -webkit-linear-gradient(top, #8DC9EF, #4E9FD1);
+    background: -moz-linear-gradient(top, #8DC9EF, #4E9FD1);
+    background: linear-gradient(top, #8DC9EF, #4E9FD1);
+    background: -ms-linear-gradient(top, #8DC9EF, #4E9FD1);
+}
+</style>
+</head>
+	
+<body style=" padding:0px; margin:0px; border:0px; background-color:rgb(240,240,240); ">
+	<!-- 头上那条-->
+    <div  style="white-space:nowrap; width:100%; height:80px;  background-image:url(image/背景2.jpg); background-repeat:repeat;
+    background-size:100px 80px; background:none; background-color:lightblue;">
+    
+    	<span style="position:relative; left:43%; top:16px; font-family:'隶书'; font-size:38px;"> 后台管理</span>
+    </div>
+    <div style="white-space:nowrap; width:100%;height:auto;">
+        <!-- 左边这栏-->
+        <div  align="center" style="white-space:nowrap; float:left;background-color:transpate; width:300px; height:530px; border-right-style:outset; border-right-width:thin; ">
+            
+            <img src="#springUrl('/resources/images/wyh/背景2.jpg')" style=" position:relative; top:10px; width:100px; height:100px; border-radius:50px 50px 50px 50px;" />
+           <br/>
+            <br/>
+             <br/>
+            <button id="button1" value="" onclick="hello(1)">上下架列表</button>
+            <a href="AddPage?a=Stand"><button id="button1" value="">上下架添加</button></a>
+            <br/>
+            <br/>
+            <button id="button1" value="" onclick="hello(2)">商品列表</button>
+            <a href="AddPage?a=Goods"><button id="button1" value="">商品添加</button></a>
+             <br/>
+            <br/>
+            <button id="button1" value="" onclick="hello(3)">品牌列表</button>
+            <a href="AddPage?a=Brand"><button id="button1" value="">品牌添加</button></a>
+            <br/>
+            <br/>
+            <button id="button1" value="" onclick="hello(4)">品类列表</button>
+            <a href="AddPage?a=Category"><button id="button1" value="" onclick="">品类添加</button></a>
+            <br/>
+            <br/>
+            
+        </div>
+        <!--主要内容-->
+        <div style="background-color:white; position:absolute; top:95px; left:23%; width:1030px; height:500px;">
+        	<span id="span0" style="font-size:24px; "> Welcome</span>
+        	<span id="span1""> #parse("wyh/StandList.vm")</span>
+        	<span id="span2"> #parse("wyh/GoodsList.vm")</span>
+        	<span id="span3" style="display:none;" disable=true> #parse("wyh/BrandList.vm")</span>
+        	<span id="span4" style="display:none;" disable=true> #parse("wyh/CaterogyList.vm")</span>
+        </div>	
+    
+    </div>
+</body>
+</html>

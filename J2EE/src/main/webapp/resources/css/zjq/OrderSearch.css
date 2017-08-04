@@ -1,0 +1,76 @@
+#title
+{
+    width: 72%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 5% auto 0 auto;
+    border-radius: 3px;
+}
+.content
+{
+    width: 72%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 20px 14% 0 14%;
+    border-radius: 3px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+.left-content
+{
+    width: 45%;
+    float: left;
+    padding: 100px;
+}
+.right-content
+{
+    width: 45%;
+    float: left;
+    padding: 100px;
+}
+.long
+{
+    width: 370px;
+}
+.total-input
+{
+    font-family: "Microsoft YaHei UI";
+    border: none;
+    font-size: 16px;
+    border-bottom: solid 3px #135480;
+}
+.input-container
+{
+    padding-bottom: 75px;
+}
+.input-container p
+{
+    margin: 0;
+    font-family: "Microsoft YaHei UI";
+    font-size: 14px;
+    color: #aaaaaa;
+}
+.button-line
+{
+    margin-top: 120px;
+}
+.button-line button
+{
+    font-size: 16px;
+    font-family: "Microsoft YaHei UI";
+    padding: 5px 12px 5px 12px;
+    border-radius: 3px;
+    box-shadow:3px 3px 3px #aaaaaa;
+}
+.button-yes
+{
+    background-color: #135480;
+    color: white;
+    margin-left: 30px;
+}
+.button-reset
+{
+    background-color: white;
+    color: #135480;
+    margin-left: 60px;
+}

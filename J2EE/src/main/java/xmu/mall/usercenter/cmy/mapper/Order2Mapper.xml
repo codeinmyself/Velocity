@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cmy.mapper.Order2Mapper">
+
+	<!-- 属性id表示resultMap的表示,type表示你需要你需要映射的POJO -->
+	<resultMap id="OrderDataMap" type="xmu.mall.usercenter.cmy.entity.Order_info">
+
+		<!-- property表示POJO的属性名称，column表示数据库SQL的列名，id对应对象的主键 -->
+
+		<id column="order_id" property="order_id" jdbcType="INTEGER" />
+		<result column="order_sn" property="order_sn" jdbcType="VARCHAR" />
+		<result column="user_id" property="user_id" jdbcType="INTEGER" />
+		<result column="order_status" property="order_status" jdbcType="INTEGER" />
+		<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="goods_price" property="goods_price" jdbcType="DOUBLE" />
+		<result column="order_price" property="order_price" jdbcType="DOUBLE" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="total_weight" property="total_weight" jdbcType="DOUBLE" />
+		<result column="signature_characters" property="signature_characters" jdbcType="VARCHAR" />
+		<result column="add_time" property="add_time" jdbcType="INTEGER" />
+		<result column="pay_time" property="pay_time" jdbcType="INTEGER" />
+		<result column="make_time" property="make_time" jdbcType="INTEGER" />
+		<result column="shipped_time" property="shipped_time" jdbcType="INTEGER" />
+		<result column="receive_time" property="receive_time" jdbcType="INTEGER" />
+		<result column="cancel_time" property="cancel_time" jdbcType="INTEGER" />
+		<result column="expressCode" property="expressCode" jdbcType="VARCHAR" />
+		<result column="isUrgency" property="isUrgency" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getAllOrder" resultMap="OrderDataMap">
+		SELECT  *
+		 FROM 142407_order_info
+	</select>
+
+	<select id="getOrderByOrderId" parameterType="long" resultMap="OrderDataMap">
+		SELECT  distinct 142407_order_info.order_id,142407_order_info.order_sn,
+		142407_order_info.total_weight,142407_order_info.Zipcode,
+		142407_order_info.add_time,142407_order_info.make_time,142407_order_info.shipped_time,142407_order_info.consignee,142407_order_info.address,
+		142407_order_info.telephone,142407_order_info.order_price,142407_order_info.user_id,142407_order_info.order_status,
+		142407_order_info.remark,142407_order_info.expressCode,142407_order_info.isUrgency,142407_users.user_name
+		 FROM 142407_order_info,142407_users  where 142407_order_info.order_id=#{order_id} and 142407_users.user_id=142407_order_info.user_id
+	</select>
+	
+	<update parameterType="xmu.mall.usercenter.cmy.entity.Order_info"
+		id="updateOrder">
+		update 142407_order_info set
+		order_status=#{order_status},
+		remark=#{remark},
+		expressCode=#{expressCode},
+		isUrgency=#{isUrgency},
+		address=#{address},
+		telephone=#{telephone},
+		consignee=#{consignee},
+		make_time=#{make_time},
+		shipped_time=#{shipped_time} 
+		where order_id=#{order_id}
+	</update>
+	
+
+
+</mapper>

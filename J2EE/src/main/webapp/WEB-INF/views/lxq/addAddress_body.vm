@@ -1,0 +1,41 @@
+#tiles_insertTemplate({"template":"../layout/lxq/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "收货地址"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/lxq/addAddress_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<form action="updateAddress" method="get">
+	<div class="addressBody">
+		<input type="hidden" id="user_id" name="user_id" value="$user_id">
+		<input type="hidden" id="address_id" name="address_id" value="#if($address.getAddress_id())$address.getAddress_id()#end">
+		<label>收货人:&emsp;</label>
+		<input type="text" class="in1" id="consignee" name="consignee" value="#if($address)$address.getConsignee()#end" required/>
+		<hr/>
+		<label>手机号码:&emsp;</label>
+		<input type="text" class="in1" id="telephone" name="telephone" value="#if($address)$address.getTelephone()#end" required/>
+		<hr/>
+		<label>所在地区:&emsp;</label>
+		<a href="javascript:void(0);" onClick="gotoRegion($user_id)">
+			<span>#if($address) $province_str $city_str $district_str #else &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;#end</span>
+			<span style="float:right;margin-top:2%;margin-right:2%"></span>
+			<input type="hidden" id="province" name="province" value="#if($address)${address.getProvince()}#end">
+			<input type="hidden" id="city" name="city" value="#if($address)$address.getCity()#end">
+			<input type="hidden" id="district" name="district" value="#if($address)$address.getDistrict()#end">
+		</a>
+		<hr/>
+		<label>详细地址:&emsp;</label>
+		<input type="text" class="in1" id="detail" name="detail" value="#if($address)$address.getDetail()#end" required/>
+		<hr/>
+		<label>设为默认地址:&emsp;
+		<input type="radio" class="radioIn" id="is_default" name="is_default" value="1" #if($address.Is_default)checked#end/>是
+		<input type="radio" class="radioIn" id="is_default" name="is_default" value="0" #if(!$address.Is_default)checked#end/>否</label>
+		<hr/>
+	</div>
+	<hr/>
+	<div style="text-align:center;">
+		<button type="submit" class="addAddressBtn">保存收货地址</button>
+	<div>
+</form>
+<br/>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/lxq/footer.vm")#end
+#end
+

@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="renderer" content="webkit">
+	    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+	    <script type="text/javascript" src="#springUrl('/resources/js/lxq/bootstrap.js')"></script>
+	    <script type="text/javascript" src="#springUrl('/resources/js/lxq/bootstrap.min.js')"></script>
+	    <script type="text/javascript" src="#springUrl('/resources/js/lxq/npm.js')"></script>
+	    <script type="text/javascript" src="#springUrl('/resources/js/lxq/jquery.min.js')"></script>
+	    
+	    <link rel="stylesheet" href="#springUrl('/resources/css/lxq/bootstrap.css')">
+	   	<link rel="stylesheet" href="#springUrl('/resources/css/lxq/bootstrap.min.css')">
+	   	 <link rel="stylesheet" href="#springUrl('/resources/css/lxq/bootstrap-theme.css')">
+	   	 <link rel="stylesheet" href="#springUrl('/resources/css/lxq/bootstrap-theme.min.css')">
+	   	 <link rel="stylesheet" href="#springUrl('/resources/css/lxq/userIndex.css')">
+	   	 <link rel="stylesheet" href="#springUrl('/resources/css/lxq/style.css')">
+	   	 <link rel="stylesheet" href="#springUrl('/resources/css/lxq/bass.css')">
+		<title>#tiles_insertAttribute({"name":"title"})#end</title>
+	</head>
+	<body>
+		<input id="hiddenSpringUrl" type="hidden" value="#springUrl('')"/>
+		#tiles_insertAttribute({"name":"body"})#end
+	</body>
+</html>

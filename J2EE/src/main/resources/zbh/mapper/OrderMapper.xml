@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zbh.mappers.OrderMapper">
+
+    <resultMap id="OrderBaseMap" type="xmu.mystore.ordersmgt.zbh.model.Order">
+        <id column="order_id" property="orderId" jdbcType="INTEGER"/>
+        <result column="order_sn" property="orderSn" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="order_status" property="orderStatus" jdbcType="INTEGER"/>
+        <result column="consignee" property="consignee" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="zipcode" property="zipcode" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="goods_price" property="goodsPrice" jdbcType="DOUBLE"/>
+        <result column="order_price" property="orderPrice" jdbcType="DOUBLE"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/> 
+        <result column="total_weight" property="totalWeight" jdbcType="DOUBLE"/>
+   		<result column="isUrgency" property="isUrgency" jdbcType="VARCHAR"/>
+        <result column="add_time" property="addTime" jdbcType="VARCHAR"/>
+        <result column="pay_time" property="payTime" jdbcType="INTEGER"/>
+        <result column="make_time" property="makeTime" jdbcType="INTEGER"/>
+        <result column="shipped_time" property="shippedTime" jdbcType="INTEGER"/>
+        <result column="receive_time" property="receiveTime" jdbcType="INTEGER"/>
+        <result column="cancel_time" property="cancelTime" jdbcType="INTEGER"/>
+        <result column="expressCode" property="expressCode" jdbcType="VARCHAR"/>
+        
+    </resultMap>
+	<select id="showAllOrder" resultMap="OrderBaseMap">
+		SELECT * FROM 142537_order_info
+	</select>
+
+	<select id="getOrderByOrderId" parameterType="String" resultMap="OrderBaseMap">
+		SELECT * FROM 142537_order_info WHERE order_sn = #{orderSn};
+	</select>
+	
+	<select id="getOrderByUser_id" parameterType="String" resultMap="OrderBaseMap">
+		SELECT * FROM 142537_order_info WHERE user_id = #{user_id};
+	</select>
+	
+	<select id="getOrderByStatus" parameterType="String" resultMap="OrderBaseMap">
+		SELECT * FROM 142537_order_info WHERE user_id = #{0} AND order_status = #{1};
+	</select>
+	
+	<update id="receiveOrder" parameterType="xmu.mystore.ordersmgt.zbh.model.Order">
+        update 142537_order_info set 
+        order_status= 4 ,
+        receive_time = #{1}
+        where order_id=#{0}
+    </update>
+    
+    <update id="cancelOrder" parameterType="xmu.mystore.ordersmgt.zbh.model.Order">
+        update 142537_order_info set 
+        order_status= 5 ,
+        cancel_time = #{1}
+        where order_id=#{0}
+    </update>
+	
+	
+	<select id="showOrder" parameterType="xmu.mystore.ordersmgt.zbh.model.Order" resultMap="OrderBaseMap">
+        SELECT * FROM 142537_order_info WHERE order_status!=-2
+        <if test="orderSn != ''">
+        	AND order_sn LIKE CONCAT('%','${orderSn}','%' ) 
+        </if>
+        <!--  
+        <if test="addTime != -1">
+        	AND add_time = #{addTime}
+        </if>
+         -->
+        <if test="consignee != ''">
+        	AND consignee LIKE CONCAT('%','${consignee}','%' ) 
+        </if>
+        <if test="orderStatus != -1">
+        	AND order_status = #{orderStatus}
+        </if> 
+        <if test="isUrgency != ''">
+        	AND isUrgency =#{isUrgency}
+        </if>
+    </select>
+    
+    <select id="getOrderById" parameterType="long" resultMap="OrderBaseMap">
+        SELECT * FROM 142537_order_info WHERE order_id = #{oid};
+    </select>
+    
+    <update id="updateOrder" parameterType="xmu.mystore.ordersmgt.zbh.model.Order">
+        update 142537_order_info set 
+        order_sn=#{orderSn},
+        address=#{address},
+        order_status=#{orderStatus},
+        expressCode=#{expressCode},
+        remark=#{remark},
+        isUrgency=#{isUrgency}
+        where order_id=#{orderId}
+    </update>
+</mapper>

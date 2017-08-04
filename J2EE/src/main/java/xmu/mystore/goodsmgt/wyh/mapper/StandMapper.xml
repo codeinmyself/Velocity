@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xmu.mystore.goodsmgt.wyh.mapper.StandMapper">
+	<resultMap id="standMapper" type="xmu.mystore.goodsmgt.wyh.model.Stand">
+		<id property="id" column="id" />
+		<result property="goodsId" column="goods_id" />
+		<result property="midUserPrice" column="mid_user_price" />
+		<result property="marketPrice" column="market_price" />
+		<result property="realPrice" column="real_price" />
+		<result property="onMarketTime" column="on_market_time" />
+		<result property="offMarketTime" column="off_market_time" />
+		<result property="preSaleCount" column="pre_sale_count" />
+	</resultMap>
+	
+	<select id="getStandById" parameterType="java.lang.String" resultMap="standMapper">
+		select * from main_stand where id=#{param1}   
+	</select>
+	
+	<select id="getStandByGoodsId" parameterType="java.lang.String" resultMap="standMapper">
+		select * from main_stand where goods_id=#{goodsId}   
+	</select>
+	
+	<select id="getAllStand" resultMap="standMapper">
+		select * from main_stand 
+	</select>
+	
+	<insert id="insertStand" parameterType="xmu.mystore.goodsmgt.wyh.model.Stand">
+		insert into main_stand(id,goods_id,mid_user_price,market_price,real_price
+		,on_market_time,off_market_time,pre_sale_count)
+		values(#{stand.id},#{stand.goodsId},#{stand.midUserPrice},
+		#{stand.marketPrice},#{stand.realPrice},#{stand.onMarketTime},
+		#{stand.offMarketTime},#{stand.preSaleCount})
+	</insert>
+	
+	<update id="updateStand" parameterType="java.lang.String">
+		update main_stand set on_market_time=#{onMarketTime},off_market_time=#{offMarketTime},
+		pre_sale_count=#{preSaleCount} where id=#{standId}
+	</update>
+	
+</mapper>

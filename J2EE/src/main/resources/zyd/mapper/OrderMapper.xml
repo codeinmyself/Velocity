@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zyd.mapper.OrderMapper">
+    <resultMap id="OrderBaseMap" type="xmu.mystore.ordersmgt.zyd.entities.Order">
+        <id column="order_id" property="id" jdbcType="INTEGER"/>
+        <result column="add_time" property="time" jdbcType="VARCHAR"/>
+        <result column="consignee" property="consignee" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="telephone" property="phone" jdbcType="VARCHAR"/>
+        <result column="order_price" property="total" jdbcType="DOUBLE"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="order_status" property="state" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="expressCode" property="awb" jdbcType="VARCHAR"/>
+        <result column="isUrgency" property="isUrgency" jdbcType="VARCHAR"/>
+        <result column="order_sn" property="order_sn" jdbcType="VARCHAR"/>
+        <result column="shipped_time" property="shipped_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllOrder" resultMap="OrderBaseMap">
+        SELECT * FROM 142558_order_info
+    </select>
+    
+    <select id="getOrderById" parameterType="long" resultMap="OrderBaseMap">
+        SELECT * FROM 142558_order_info WHERE order_id = #{oid};
+    </select>
+    
+    <select id="getOrder" parameterType="xmu.mystore.ordersmgt.zyd.entities.Order" resultMap="OrderBaseMap">
+        SELECT * FROM 142558_order_info WHERE order_status!=-1
+        <if test="id != 0">
+        	AND order_id = #{id}
+        </if>
+        <if test="order_sn != ''">
+        	AND order_sn LIKE CONCAT('%','${order_sn}','%' ) 
+        </if>
+        <if test="time != ''">
+        	AND add_time LIKE CONCAT('%','${time}','%' ) 
+        </if>
+        <if test="consignee != ''">
+        	AND consignee LIKE CONCAT('%','${consignee}','%' ) 
+        </if>
+        <if test="address != ''">
+        	AND address LIKE CONCAT('%','${address}','%' ) 
+        </if>
+        <if test="phone != ''">
+        	AND telephone LIKE CONCAT('%','${phone}','%' ) 
+        </if>
+        <if test="total != -1">
+        	AND goods_price = #{total}
+        </if>
+        <if test="userId != 0">
+        	AND user_id = #{userId}
+        </if>
+        <if test="state != -1">
+        	AND order_status = #{state}
+        </if>
+        <if test="remark != ''">
+        	AND remark LIKE CONCAT('%','${remark}','%' ) 
+        </if>
+        <if test="awb != ''">
+        	AND expressCode LIKE CONCAT('%','${awb}','%' ) 
+        </if>      
+        <if test="isUrgency != ''">
+        	AND isUrgency =#{isUrgency}
+        </if>
+    </select>
+    
+    <update id="updateOrder" parameterType="xmu.mystore.ordersmgt.zyd.entities.Order">
+        update 142558_order_info set 
+        consignee=#{consignee},
+        telephone=#{phone},
+        address=#{address},
+        order_status=#{state},
+        expressCode=#{awb},
+        remark=#{remark},
+        isUrgency=#{isUrgency}
+        where order_id=#{id}
+    </update>
+    <!-- 
+    <update id="updateTime" parameterType="xmu.mystore.ordersmgt.zyd.entities.IdTime">
+        update order_info set 
+        shipped_time=#{time}
+        where order_id=#{id}
+    </update>
+     -->
+    <update id="updateTime">
+        update 142558_order_info set 
+        shipped_time=#{time}
+        where order_id=#{id}
+    </update>
+    <update id="updateReceiveTime">
+        update 142558_order_info set 
+        receive_time=#{time}
+        where order_id=#{id}
+    </update>
+    <update id="updateCancelTime">
+        update 142558_order_info set 
+        cancel_time=#{time}
+        where order_id=#{id}
+    </update>
+    <update id="updatePayTime">
+        update 142558_order_info set 
+        pay_time=#{time}
+        where order_id=#{id}
+    </update>
+</mapper>

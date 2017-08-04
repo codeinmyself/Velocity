@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="xmu.mystore.logmgt.yzh.mapper.LogMapper">
+	
+	<select id="getAllLog" resultType="xmu.mystore.logmgt.yzh.model.Log">
+		SELECT * FROM 142528_log_info order by request_time DESC limit 100
+	</select>
+	
+	<select id="getLogByTime" resultType="xmu.mystore.logmgt.yzh.model.Log">
+		SELECT * FROM 142528_log_info
+		WHERE request_time BETWEEN #{start} AND #{end}
+	</select>
+	
+	<insert id="addLog" parameterType="xmu.mystore.logmgt.yzh.model.Log">
+		INSERT INTO `142528_log_info` (username, local_ip, remote_ip, request_url, request_method, request_time, resolve_class, resolve_method, result, description, operator_object)
+        VALUES(#{username},#{local_ip},#{remote_ip},#{request_url},#{request_method},now(),#{resolve_class},#{resolve_method},#{result}, #{description}, #{operator_object})
+   </insert>
+   
+</mapper>

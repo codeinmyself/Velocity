@@ -1,0 +1,94 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Middle-Software-JPA</title>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zjq/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zjq/Common.css">
+    <link rel="stylesheet" href="resources/css/zjq/OrderSearch.css">
+</head>
+<body>
+    #include("zjq/top-nav.vm")
+<div id="title">
+    <div class="title-left">
+        <a href="OrderManage"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+        <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">订单搜索</span>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div class="content">
+    <div class="left-content">
+        <ul>
+            <!--这里就不去找日期控件了orz原谅我！-->
+            <li>
+                <div class="input-container">
+                    <input id="order_sn" class="total-input long" placeholder="请输入订单编号">
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <input id="add_time_begin" class="total-input long" placeholder="请输入下单时间">
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <input id="add_time_end" class="total-input long" placeholder="请输入下单时间">
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <p>加急</p>
+                    <select id="isUrgency" class="total-input long">
+                        <option>请选择是否加急</option>
+                        <option>加急</option>
+                        <option>不加急</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <p>订单状态</p>
+                    <select id="order_status" class="total-input long">
+                        <option>请选择订单状态</option>
+                        <option>未付款</option>
+                        <option>已付款</option>
+                        <option>定制中</option>
+                        <option>已发货</option>
+                        <option>已收货</option>
+                        <option>取消</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="right-content">
+        <ul>
+            <li>
+                <div class="input-container">
+                    <input id="goods_name" class="total-input long" placeholder="请输入商品名称">
+                </div>
+            </li>
+            <li>
+                <div class="input-container">
+                    <input id="consignee" class="total-input long" placeholder="请输入收货人">
+                </div>
+            </li>
+            <li>
+                <div class="button-line">
+                    <button onclick="search()" class="button-yes">确定</button>
+                    <button onclick="reset()" class="button-reset">重置</button>
+                    <button onclick="goback()" class="button-reset">返回</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div style="clear: both"></div>
+</div>
+
+<script type="text/javascript" src="resources/jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="resources/js/zjq/OrderSearch.js"></script>
+</body>
+</html>

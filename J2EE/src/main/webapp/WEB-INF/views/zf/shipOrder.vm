@@ -1,0 +1,242 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Orders Management</title>
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/bootstrap/zf/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/css/zf/top-nav.css">
+    <link rel="stylesheet" href="resources/css/zf/Common.css">
+    <link rel="stylesheet" href="resources/css/zf/OrderDetail.css">
+	<style>
+		.change-button {
+            font-size: 18px;
+            color: white;
+            background-color: #135480;
+            box-shadow: 2px 2px 2px #aaaaaa;
+            border-radius: 7px;
+            padding: 6px;
+        }
+        
+        .change-normal {
+			margin-top: 20px;
+            margin-left: 320px;
+        }
+    </style>
+</head>
+<body>
+    #include("top-nav.vm")
+    <div id="title">
+        <div class="title-left">
+            <a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-menu-left" style="vertical-align: -2px;padding: 12px 5px 12px 30px"></span></a>
+            <span style="font-family: 'Microsoft YaHei UI';padding-left: 8px">发货</span>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="detail-title">
+                        <p>订单基本信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">订单号</p>
+                        <p class="detail-normal-body">${order.order_sn}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">订单状态</p>
+                        <p class="detail-normal-body">
+							#if($order.order_status == 0)
+    							未付款
+    						#elseif($order.order_status == 1)
+    							已付款
+    						#elseif($order.order_status == 2)
+    							已审核
+    						#elseif($order.order_status == 3)
+    							已发货
+    						#elseif($order.order_status == 4)
+    							已收货
+    						#else
+    							已取消
+    						#end
+						</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				<li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">是否加急</p>
+                        <p class="detail-normal-body">
+							#if(${order.isUrgency} == "Y")
+								是
+							#else
+								否
+							#end
+						</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				<li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">订单总重</p>
+                        <p class="detail-normal-body">${order.total_weight}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				<li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">备注</p>
+                        <p class="detail-normal-body">${order.remark}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				
+				<li>
+                    <div class="detail-title">
+                        <p>用户信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">用户名</p>
+                        <p class="detail-normal-body">${order.user.user_name}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">联系电话</p>
+                        <p class="detail-normal-body">${order.user.mobile_phone}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				
+                <li>
+                    <div class="detail-title">
+                        <p>商品信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-head">商品名称</p>
+                        <p class="price-head">单价</p>
+                        <p class="price-head">数量</p>
+                        <p class="price-head">小计</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                #foreach($good in ${order.goods})
+                    #set($total=$!good.goods_number*$!good.goods_price)
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-body">$!good.goods_name</p>
+                        <p class="price-body">$!good.goods_price</p>
+                        <p class="price-body">$!good.goods_number</p>
+                        <p class="price-body">￥$total</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                #end
+                <li>
+                    <div class="detail-normal">
+                        <p class="price-body"></p>
+                        <p class="price-body">商品总价：￥${order.goods_price}</p>
+                        <p class="price-body"></p>
+                        <p class="price-body">订单总价：￥${order.order_price}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-title">
+                        <p>收货人信息</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">收货人姓名</p>
+                        <p class="detail-normal-body">${order.consignee}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">详细地址</p>
+                        <p class="detail-normal-body">${order.address}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">邮件编码</p>
+                        <p class="detail-normal-body">${order.zipcode}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">联系方式</p>
+                        <p class="detail-normal-body">${order.telephone}</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				
+				<li>
+                    <div class="detail-title">
+                        <p>快递单号</p>
+                    </div>
+                </li>
+				<li>
+                    <div class="detail-normal">
+                        <p class="detail-normal-head">请输入快递单号：</p>
+                        <p class="detail-normal-body">
+							<input id="expresscode">
+						</p>
+                        <div style="clear: both"></div>
+                    </div>
+                </li>
+				
+				<li>
+                    <div class="detail-title">
+                        
+                    </div>
+                </li>
+				<li>
+					<button onclick="ship()" class="change-button change-normal">确认发货</button>
+				</li>
+            </ul>
+        </div>
+    </div>
+	#include("bottom.vm")
+<script type="text/javascript" src="resources/js/zf/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="resources/bootstrap/zf/js/bootstrap.js"></script>
+<script>
+	function ship(){
+		var expresscode=document.getElementById("expresscode").value;
+		if(expresscode == null || expresscode == ""){
+			alert("请输入快递单号！");
+			return;
+		}
+		var order_id=${order.order_id};
+		$.ajax(
+                    {
+                        type:'GET',
+                        url:'Ship?order_id='+order_id+'&expresscode='+expresscode,
+						success:function (data) {
+							if(data == "success")
+                            {
+                                alert("发货成功！");
+								window.location.href="/OrdersManagement/";
+                            }
+                        }
+                    }
+            )
+	}
+</script>
+</body>
+</html>

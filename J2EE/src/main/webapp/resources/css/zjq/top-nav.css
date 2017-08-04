@@ -1,0 +1,54 @@
+/**
+nav样式
+ */
+.nav
+{
+    background-color: #135480;
+    font-family: "Microsoft YaHei UI";
+    width: 100%;
+    box-shadow:7px 7px 7px #aaaaaa;
+}
+.nav-left
+{
+    float: left;
+    margin: 0 0 0 15%;
+}
+.nav-right
+{
+    margin: 0 15% 0 0;
+    float: right;
+}
+.nav ul,li
+{
+    display: inline;
+}
+.nav-left li > a
+{
+    display: inline-block;
+    text-decoration: none;
+    line-height: 50px;
+    color: white;
+    padding: 5px 17px 5px 17px;
+    font-size: 18px;
+}
+.nav-left li > a:hover
+{
+    background-color: white;
+    color: #135480;
+}
+.nav-right li > span
+{
+    line-height: 50px;
+    color: white;
+    padding: 2px 5px 2px 5px;
+    font-size: 24px;
+    vertical-align: -3px;
+}
+.nav-right li > a
+{
+    display: inline-block;
+    line-height: 50px;
+    color: white;
+    padding: 5px 12px 5px 12px;
+    font-size: 12px;
+}

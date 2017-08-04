@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>账户与安全</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/updateInfo.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">账户与安全</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>用户名</label>
+                                </div>
+                                <div class="right_container">
+                                    <label>$user.user_name</label>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box" onclick="window.location.href='updateInfo?uid=${user.user_id}&type=tel'">
+                                <div class="left_container">
+                                    <label>修改手机号码</label>
+                                </div>
+                                <div class="right_container">
+                                    <label>$user.mobile_phone</label>
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box" onclick="window.location.href='updateInfo?uid=${user.user_id}&type=pwd'">
+                                <div class="left_container">
+                                    <label>修改登录密码</label>
+                                </div>
+                                <div class="right_container">
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>注销账户</label>
+                                </div>
+                                <div class="right_container">
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="line-spacer"></li>
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>安全中心</label>
+                                </div>
+                                <div class="right_container">
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+						<hr />
+                        <li>
+                            <div class="li_box">
+                                <div class="left_container">
+                                    <label>我的日历</label>
+                                </div>
+                                <div class="right_container">
+                                    <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="line-spacer"></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

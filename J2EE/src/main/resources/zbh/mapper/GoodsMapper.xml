@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zbh.mappers.GoodsMapper">
+
+    <resultMap id="GoodsBaseMap" type="xmu.mystore.ordersmgt.zbh.model.Goods">
+        <id column="goods_id" property="id" jdbcType="INTEGER"/>
+        <result column="goods_name" property="name" jdbcType="INTEGER"/>
+        <result column="goods_number" property="num" jdbcType="VARCHAR"/>
+        <result column="goods_price" property="price" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <select id="getGoodsByOrderid" parameterType="long" resultMap="GoodsBaseMap">
+        SELECT * FROM 142537_order_goods WHERE order_id=#{oid}
+    </select>
+</mapper>

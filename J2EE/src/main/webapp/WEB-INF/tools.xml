@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	you under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+
+<!-- 这个文件是velocity视图中可能会用到的工具配置 -->
+<!-- 比如，日期格式化，数学运算等等 -->
+<!-- 由于velocity视图不允许编写java代码，所以这边的工具相当于把一个java工具类配置成一个变量使用 -->
+<tools>
+	<data type="boolean" key="VIEW_TOOLS_AVAILABLE" value="true" />
+	<toolbox scope="request">
+		<tool class="org.apache.velocity.tools.view.CookieTool" />
+		<tool class="org.apache.velocity.tools.view.ImportTool" />
+		<tool class="org.apache.velocity.tools.view.IncludeTool" />
+		<tool class="org.apache.velocity.tools.view.LinkTool" />
+		<tool class="org.apache.velocity.tools.view.PagerTool" />
+		<tool class="org.apache.velocity.tools.view.ParameterTool" />
+		<tool class="org.apache.velocity.tools.view.ViewContextTool" />
+		<!-- This is not directly useable. <tool class="org.apache.velocity.tools.view.AbstractSearchTool"/> -->
+		<!-- move this to request scope -->
+		<tool class="org.apache.velocity.tools.generic.ResourceTool" />
+	</toolbox>
+	<toolbox scope="session" createSession="false">
+		<tool class="org.apache.velocity.tools.view.BrowserTool" />
+	</toolbox>
+	<toolbox>
+	<!-- 这边配置了日期格式化工具 -->
+		<tool>
+			<key>dateTool</key>
+			<scope>application</scope>
+			<class>org.apache.velocity.tools.generic.DateTool</class>
+			<parameter name="format" value="yyyy-MM-dd" />
+		</tool>
+		<!--数学工具-->
+		<tool>
+			<key>mathTool</key>
+			<scope>application</scope>
+			<class>org.apache.velocity.tools.generic.MathTool</class>
+		</tool>
+	</toolbox>
+</tools>

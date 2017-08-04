@@ -1,0 +1,7 @@
+<div class="addAddress">
+	<span style="float:left;"><a href="address_body?user_id=$user_id"><</a></span>
+	<span style="float:left;margin-left:28%">收货地址</span>
+	#if ($address.getAddress_id())
+	<span style="float:right;margin-right:2%;"><a href="javascript:void(0);" onClick="gotoDelete($user_id,$address.getAddress_id())">删除</a></span>
+	#end
+</div>

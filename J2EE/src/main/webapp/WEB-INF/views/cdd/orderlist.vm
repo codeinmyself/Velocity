@@ -1,0 +1,174 @@
+#tiles_insertTemplate({"template":"../layout/cdd/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+  
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/cdd/header.vm")
+  	<script type="text/javascript">
+	<!--
+	function getLocalTime(nS) {     
+
+		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");  
+		
+		}
+
+function make()
+	{
+		var se=confirm("是否确认？");
+		return se;
+	}
+	
+
+	//--> 
+	</script>
+	<script type="text/javascript">
+	<!--	 
+        function goto3($page.getTotalPage()) {
+        alert("aa");
+	    var pageNum=document.getElementsByName("pageNum");
+  		if(pageNum[0].value<=totalPage&&pageNum[0].value>=0)
+  			window.location.href='jumpPage?currentPage='+pageNum[0].value;
+  		
+	}
+		//--> 
+	</script>
+  #end
+  
+  #tiles_putAttribute({"name":"body"})
+    <div class=>
+   
+		<form>
+			<table class="order_table" width=100% height=60%>
+			<caption>订单列表</caption>
+				<tr>
+					<th >订单号</th>
+				
+					
+					<th>收货人</th>			
+				
+			
+			        <th>用户名</th>
+					<th>用户ID</th>
+					<th>总金额</th>
+					
+					
+
+					<th>下单时间</th>
+					<th>发货时间</th>
+					<th>快递单号</th>
+					<th>是否加急</th>
+					
+					<th>订单状态</th>
+					
+					<th>操作</th>
+					<th>订单操作</th>
+				</tr>
+				
+	     		#foreach($order in $orderlist)
+				<tr>
+					<td>$order.getOrder_id()</td>
+					
+				    
+					<td>$order.getConsignee()</td>
+				
+				    <td>$order.getUser_name() </td>     
+					<td>$order.getUser_id()</td>
+					<td>$order.getOrder_price()</td>
+
+					<td><script type="text/javascript">document.write(getLocalTime($order.getAdd_time()));</script></td>
+					
+					#if($order.getOrder_status()==3||$order.getOrder_status()==4)
+						<td><script type="text/javascript">document.write(new Date().toLocaleString());</script></td>
+					#else
+						<td></td>
+					#end
+					
+					#if($order.getOrder_status()==3||$order.getOrder_status()==4)
+					  <td>$order.getExpressCode()</td>
+					#else
+					  <td></td>  
+					#end
+					
+					#if($order.getIsUrgency()=='Y')<td>加急</td>
+					#else<td>不加急</td>
+					#end
+					
+						#if($order.getOrder_status()==0)
+						<td>未付款</td> 
+					#elseif($order.getOrder_status()==1)
+						<td>已付款</td>
+					#elseif($order.getOrder_status()==2)
+						<td>定制中</td>
+					#elseif($order.getOrder_status()==3)
+						<td>已发货</td>
+					#elseif($order.getOrder_status()==4)
+						<td>已收货</td>
+					#else
+						<td>取消</td>
+					#end
+					
+					
+					<td>
+						<div>
+							<a href="lookupOrder?order_id=$order.getOrder_id()" class="table_button" >查看</a>
+						</div>
+						<div>
+							<a href="modifyOrder?order_id=$order.getOrder_id()" class="table_button" >修改</a>
+						</div>																	
+					</td>	
+					
+					
+					#if($order.getOrder_status()==0)
+						<td>
+							<div>
+								<a class="table_button_unable" >等待付款。。</a>
+							</div>
+						</td> 
+					#elseif($order.getOrder_status()==1)
+						<td>
+							<div>
+								<a href="updatePayedStatus?order_id=$order.getOrder_id()"  class="table_button" ()" onclick="return make();" >确认</a>
+							</div>
+						</td>
+					#elseif($order.getOrder_status()==2)
+						<td>
+							<div>
+								<a href="sendOrder?order_id=$order.getOrder_id()" class="table_button" >发货</a>
+								
+							</div>
+						</td>
+					#elseif($order.getOrder_status()==3)
+						<td><a class="table_button_unable" >发货成功</a></td>
+					#elseif($order.getOrder_status()==4)
+						<td><a class="table_button_unable" >订单完成</a></td>
+					#else
+						<td>订单取消</td>
+					#end		
+				
+			
+				</tr>
+				#end
+
+			</table>
+		</form>	 
+		</div>
+		#if($page.isHasPrePage())
+			<div class="bottom_right_test"><a href="prePage?currentPage=$page.getCurrentPage()"  class="table_button" ><<</a></div>
+		#else
+			<div class="bottom_right_test"><a class="table_button_unable" ><<</a></div>
+		#end
+		
+	  
+		<div class="bottom_cur_page"><input type="text" value="$page.getCurrentPage()" name="pageNum"></input></div>
+		
+		#if($page.isHasNextPage())
+			<div class="bottom_right_test_sec"><a href="nextPage?currentPage=$page.getCurrentPage()"  class="table_button" >>></a></div>
+		#else
+			<div class="bottom_right_test_sec"><a class="table_button_unable" >>></a></div>
+		#end
+		<br/><br/>
+	
+  #end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/cdd/footer.vm")
+  #end
+#end

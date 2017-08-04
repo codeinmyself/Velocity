@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xmu.mystore.goodsmgt.wyh.mapper.GoodsMapper">
+	<resultMap id="goodsMapper" type="xmu.mystore.goodsmgt.wyh.model.Goods">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="serial_code" property="serial_code" />
+		<result column="weight" property="weight" />
+		<result column="stock_count" property="stock_count" />
+		<result column="pre_sale_number" property="pre_sale_number" />
+		<result column="store_id" property="store_id" />
+		<result column="mid_user_price" property="mid_user_price" />
+		<result column="market_price" property="market_price" />
+		<result column="real_price" property="real_price" />
+		<result column="redeem_point" property="redeem_point" />
+		<result property="category_id" column="category_id" />
+		<result column="brand_id" property="brand_id" />
+		<result column="stand_id" property="stand_id" />
+		<result column="add_time" property="add_time" />
+		<result column="last_modified_time" property="last_modified_time" />
+		<result column="description" property="description" />
+		<result column="image_path" property="image_path" />
+		<result column="is_dividable" property="is_dividable" />
+		<result column="default_express" property="default_express" />
+	</resultMap>
+	
+	<select id="getGoodsById" parameterType="java.lang.String" resultMap="goodsMapper">
+		select * from main_goods where id=#{param1}   
+	</select>
+	
+	<select id="getGoodsByName" parameterType="java.lang.String" resultMap="goodsMapper">
+		select * from main_goods where name like '%#{name}%'   
+	</select>
+	
+	<select id="getGoodsByGoodsCode" parameterType="java.lang.String" resultMap="goodsMapper">
+		select * from main_goods where serial_code=#{serialCode}   
+	</select>
+	
+	<select id="getAllGoods" resultMap="goodsMapper">
+		select * from main_goods 
+	</select>
+	
+	<select id="getGoodsByStandAndBrand" parameterType="java.lang.Integer" resultMap="goodsMapper">
+		SELECT * FROM (SELECT * FROM main_goods LIMIT #{begin},#{step}) AS a WHERE a.stand_id=#{standId} AND a.brand_id=#{brandId} ;  
+	</select>
+	
+	<select id="getGoodsByStand" parameterType="java.lang.Integer" resultMap="goodsMapper">
+		SELECT * FROM (SELECT * FROM main_goods LIMIT #{begin},#{step}) AS a WHERE a.stand_id=#{standId} ;  
+	</select>
+	
+	<select id="getGoodsByBrand" parameterType="java.lang.Integer" resultMap="goodsMapper">
+		SELECT * FROM (SELECT * FROM main_goods LIMIT #{begin},#{step}) AS a WHERE a.brand_id=#{brandId} ;  
+	</select>
+	
+	<select id="getGoodsByNumber" parameterType="java.lang.Integer" resultMap="goodsMapper">
+		SELECT * FROM main_goods LIMIT #{begin},#{step} ;  
+	</select>
+	
+	<update id="updateGoodsNameById" parameterType="java.lang.Integer">
+		update main_goods set name="香蕉" where id = #{id}
+	</update>
+	
+	<update id="updateGoodsById" parameterType="xmu.mystore.goodsmgt.wyh.model.Goods">
+		update main_goods set name=#{goods.name},brand_id=#{goods.brand_id},serial_code=#{goods.serial_code}
+		stock_count=#{goods.stock_count},market_price=#{goods.market_price},
+		mid_user_price=#{goods.mid_user_price},weight=#{goods.weight},
+		default_express=#{goods.default_express},
+		last_modified_time=#{goods.last_modified_time}  where id = #{goods.id}
+	</update>
+	
+	<insert id="insertGoods" parameterType="xmu.mystore.goodsmgt.wyh.model.Goods">
+		insert into main_goods(id,name,serial_code,weight,stock_count,pre_sale_number,store_id,
+		mid_user_price,market_price,real_price,redeem_point,category_id,brand_id,stand_id,add_time,
+		last_modified_time,description,image_path,is_dividable,default_express)
+		values(#{goods.id},#{goods.name},#{goods.serial_code},#{goods.weight},#{goods.stock_count}
+		,#{goods.pre_sale_number},#{goods.store_id},#{goods.mid_user_price},#{goods.market_price},#{goods.real_price}
+		,#{goods.redeem_point},#{goods.category_id},#{goods.brand_id},#{goods.stand_id},#{goods.add_time}
+		,#{goods.last_modified_time},#{goods.description},#{goods.image_path},#{goods.is_dividable},#{goods.default_express})
+	</insert>
+	
+	<delete id="deleteGoodsById" parameterType="java.lang.String" >
+		DELETE FROM main_goods where id= #{goodsId} 
+	</delete>
+</mapper>

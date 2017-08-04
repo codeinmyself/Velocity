@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.pay.lhg.dao.UserAddressDao">
+    <resultMap type="xmu.mystore.pay.lhg.model.UserAddress" id="UserAddressSResult">
+        <id column="address_id" property="address"/>
+        <result column="user_id" property="user_id"/>
+        <result column="consignee" property="consignee"/>
+        <result column="zipcode" property="zipcode"/>
+        <result column="telephone" property="telephone"/>
+        <result column="country" property="country"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="detail" property="detail"/>
+        <result column="isdefault" property="isdefault"/>
+    </resultMap>
+
+    <insert id="add" parameterType="xmu.mystore.pay.lhg.model.UserAddress">
+        INSERT INTO
+            main_user_address (user_id, consignee, zipcode, telephone, country, province, city, district, detail, is_default)
+        VALUES (#{user_id}, #{consignee}, #{zipcode}, #{telephone}, #{country}, #{province}, #{city}, #{district},
+                #{detail}, #{isdefault})
+    </insert>
+
+    <delete id="delete" parameterType="xmu.mystore.pay.lhg.model.UserAddress">
+        DELETE FROM
+            main_user_address
+        WHERE
+            address_id = #{address}
+    </delete>
+
+    <update id="update" parameterType="xmu.mystore.pay.lhg.model.UserAddress">
+        UPDATE main_user_address
+        SET
+            user_id   = #{user_id},
+            consignee = #{consignee},
+            zipcode   = #{zipcode},
+            telephone = #{telephone},
+            country   = #{country},
+            province  = #{province},
+            city      = #{city},
+            district  = #{district},
+            detail    = #{detail},
+            is_default = #{isdefault}
+        WHERE user_id = #{user_id}
+    </update>
+
+    <select id="select" resultMap="UserAddressSResult"
+            parameterType="xmu.mystore.pay.lhg.model.UserAddress">
+        SELECT *
+        FROM main_user_address
+        WHERE address_id =
+              #{address}
+    </select>
+
+    <select id="selectAll" resultMap="UserAddressSResult">
+        SELECT *
+        FROM main_user_address
+        WHERE
+            user_id = #{user_id}
+    </select>
+</mapper>

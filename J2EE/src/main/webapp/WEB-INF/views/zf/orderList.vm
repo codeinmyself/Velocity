@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/orderListStyle.css">
+</head>
+
+<body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header  header-color">
+            <div class="title_bar">
+                <nav class="my_back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">我的订单</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <hr>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect my_tab">
+                <a href="javascript:orderlist('all')" id="all" class="mdl-layout__tab">全部</a>
+                <a href="javascript:orderlist('pay')" id="pay" class="mdl-layout__tab">待付款</a>
+                <a href="javascript:orderlist('receive')" id="receive" class="mdl-layout__tab">待收货</a>
+                <a href="javascript:orderlist('done')" id="done" class="mdl-layout__tab">已完成</a>
+                <a href="javascript:orderlist('cancel')" id="cancel" class="mdl-layout__tab">已取消</a>
+            </div>
+        </header>
+        
+        <main class="mdl-layout__content">
+            <div id="order_list" class="page-content">
+				#foreach($order in ${orders})
+                <ul class="mdl-list order_list_ul">
+                    <li class="line-spacer"></li>
+                    <hr>
+                    <li class="order_list">
+                        <div class="order_pre_info">
+                            <span>订单编号：$order.order_sn</span>
+                            <span>
+                                #if($order.order_status == 0)
+        							待付款
+        						#elseif($order.order_status == 1)
+        							已付款
+        						#elseif($order.order_status == 2)
+        							店家已审核
+        						#elseif($order.order_status == 3)
+        							店家已发货
+        						#elseif($order.order_status == 4)
+        							已收货
+        						#else
+        							已取消
+        						#end
+                                <label>|</label>
+                                <button class="ic_delete"><img src="resources/images/zf/ic_delete.png"></button>
+                            </span>
+                        </div>
+						#foreach($good in $order.goods)
+                        <button class="order_detail">
+                            <img src="resources/images/zf/$good.image" class="item_img"></image>
+                            <span class="order_description">
+                                $good.goods_name
+                            </span>
+                        </button>
+                        <div class="line-spacer-goods"></div>
+						#end
+                        <div class="order_after_info">
+                            <span>订单总价：</span>
+                            <label>$order.order_price</label>
+                        </div>
+                        <hr/>
+						#if($order.order_status == 0)
+        					<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn" onclick="javascript:cancelorder($order.order_id)">取消订单</button>
+        				#elseif($order.order_status == 1)
+							<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn">我要催单</button>
+        				#elseif($order.order_status == 2)
+        					<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn">我要催单</button>
+        				#elseif($order.order_status == 3)
+        					<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn" onclick="javascript:finishorder($order.order_id)">确认收货</button>
+        				#elseif($order.order_status == 4)
+        					<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn">再次购买</button>
+        				#else
+        					<button type="button" class="mdl-button mdl-js-button mdl-button--accent func_btn">重新购买</button>
+        				#end
+                        
+                    </li>
+                    <hr/>
+                </ul>
+				#end
+            </div>
+        </main>
+    </div>
+	<script src="resources/js/zf/material.min.js"></script>
+	<script src="resources/js/zf/jquery-3.1.1.js"></script>
+    <script src="resources/js/zf/info.js"></script>
+	<script>set_tab();</script>
+</body>
+
+</html>

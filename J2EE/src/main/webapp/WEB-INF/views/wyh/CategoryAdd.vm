@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>品类添加</title>
+	<style type="text/css">
+	body{
+		background: #e8e8e8;
+		margin: 0;
+		padding: 0;
+		width: 80%
+		font-size: 14px;
+	}
+	.up{
+		margin: 40px 100px 20px 100px;
+		background: #ffffff;
+		color: #004090;
+		font-size: 20px;
+		font-weight: bold;
+		border-radius: 5px;
+		box-shadow: 0px 2px 10px #707070;
+	}
+	span{
+		display: block;
+		padding: 10px 0px;
+	}
+	.down{
+		text-align:center;
+		margin: 0px 100px;
+		background: #ffffff;
+		border-radius: 5px;
+		box-shadow: 0px 2px 10px #707070;
+	}
+	input,select,button{
+		margin: 20px 0px 15px 0px;
+		outline: none;
+		border: none;
+	}
+	input,select{
+		height: 30px;
+		width: 250px;
+		border-left: 0px;
+		border-right: 0px;
+		border-top: 0px;
+		border-bottom: 2px solid #004090;
+	}
+	label{
+		width: 100px;
+		vertical-align: middle;
+		display: inline-block;
+		margin: 20px 0px 15px 0px;
+		font-size: 16px;
+	}
+	.check{
+		width: 50px;
+		height: 20px;
+		margin-left:130px;
+		vertical-align: middle;
+	}
+	.left,.right{
+		font-weight: bold;
+		padding: 3px 12px;
+		border-radius: 5px;
+		box-shadow: 2px 2px 10px #707070;
+		font-size: 18px;
+	}
+	.left{
+		margin-right: 65px;
+		color: #ffffff;
+		background: #0058c0;
+	}
+	.right{
+		margin-left: 65px;
+		color: #0058c0;
+		background: #ffffff;
+	}
+	</style>
+	
+	</head>
+<body>
+<div class="contain">
+<div class="up">
+	<span>商品品类</span>
+</div>
+<div class="down">
+	<form action="CategoryAddResult" method="post" > 
+	<input type="text" name="name" value="" placeholder="请输入品类名称"></input><br>
+	<select name="">
+		<option value="上级分类" selected="selected">上级分类</option>
+		<option value="下级分类">下级分类</option>
+	</select><br>
+	<input type="text" name="rank" value="" placeholder="请输入品类显示顺序(0—250)"></input><br>
+	<label>是否显示</label>
+	<input type="checkbox" name="" value="" class="check"></input><br>
+	<button type="submit" value="确定" class="left">确定</button>
+	<button type="reset" value="重置" class="right">重置</button><br>
+	</form>
+</div>
+</div>
+</body>
+</html>

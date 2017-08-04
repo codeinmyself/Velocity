@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>支付订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="#springUrl('/resources/js/liulei/material.min.js')"></script>
+    <script src="#springUrl('/resources/js/liulei/myCart.js')"></script>
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/balanceStyle.css')">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href=""><img src="#springUrl('/resources/images/liulei/ic_arrow_back.png')" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">支付订单</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <form action="userAdress/addOrder" method="get">
+            <input type="hidden" name="user_id" value="$user.user_id"></input>
+            <div class="address_info">
+                <button type="button" class="address_btn">
+                    <div class="box">
+                        <div class="info">
+                            <div class="personal_info">
+                                <label>$user.user_name</label>
+                                <label>$user.mobile_phone</label>
+                            </div>
+                            <div class="personal_address">
+                                <div class="ic-location">
+                                    <img class="right-arrow" src="#springUrl('/resources/images/liulei/ic_location.png')"></img>
+                                </div>
+                                <p>福建省厦门市思明区厦大学生公寓</p>
+                            </div>
+                        </div>
+                        <div class="right-arrow-container">
+                            <img class="right-arrow" src="#springUrl('/resources/images/liulei/ic_arrow_right.png')"></img>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </form>
+		<li class="line-spacer"></li>
+                    <li class="mdl-list__item mdl-list__item--three-line choose-invoice">
+                        <span class="item-second choose-invoice-left">
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height choose-invoice-text">
+			订单商品列表
+                            </span>
+                        </span>
+                        
+                    </li>
+		
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list cart-list">
+					
+                    <li class="mdl-list__item mdl-list__item--three-line">
+                        <span class="item_img">
+                            <img src="#springUrl('/resources/images/liulei/default.jpg')" class="item_img"></image>
+                        </span>
+                        <span class="mdl-list__item-primary-content item-second">
+                        <span class="item_text">$goods.name</span>
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height">
+                                $goods.description
+                            </span>
+                        <span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                            <span class="item-price">$goods.real_price</span>
+                        </span>
+                        </span>
+                    </li>
+					
+                    <li class="line-spacer"></li>
+                    <li class="mdl-list__item mdl-list__item--three-line choose-invoice">
+                        <span class="item-second choose-invoice-left">
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height choose-invoice-text">
+                            是否开具发票
+                            </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+                            <input type="checkbox" id="list-switch-1" class="mdl-switch__input"/>
+                          </label>
+                        </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--three-line choose-invoice">
+                        <span class="item-second choose-invoice-left">
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height choose-invoice-text">
+                            退还无忧
+                            </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-2">
+                            <input type="checkbox" id="list-switch-2" class="mdl-switch__input"/>
+                          </label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <form action="pay/success" method="post">
+            <input type="hidden" name="address_id" value="${address.address_id}"></input>
+            <input type="hidden" name="user_id" value="${user.user_id}"></input>
+            <footer class="mdl-mini-footer my-footer-container">
+                    <div class="mdl-mini-footer__left-section footer-text">
+                        <ul class="mdl-mini-footer__link-list">
+                            <span class="total-text">
+                                <label class="footer-font">实付款：<label>￥$goods.real_price</label></label>
+                            </span>
+                        </ul>
+                    </div>
+                    <div class="item-pay">
+                        <button type="submit" class="item-pay-btn">立即支付</button>
+                    </div>
+            </footer>
+        </form>
+    </div>
+</body>
+
+</html>

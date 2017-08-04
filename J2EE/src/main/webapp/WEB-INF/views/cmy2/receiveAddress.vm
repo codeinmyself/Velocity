@@ -1,0 +1,57 @@
+
+#tiles_insertTemplate({"template":"../layout/cmy2/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+  
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/cmy2/header.vm")
+  	#end
+  	
+	#tiles_putAttribute({"name":"body"})
+	
+	<div class="basic">
+		<div class="windows">
+			<div class="mainTop">
+				#set($turnuserInfo="/userinfo/userInfo?user_id="+$user_id)
+				<a href="userInfo?user_id=1" style="float:left;height:10px;margin-top:5px;margin-left:10px;color:white;text-decoration:none;">
+				首页
+				</a>
+				<br/>
+				收货地址
+				<a href="#" onClick="javascript :history.back(-1);" style="float:right;height:10px;margin-top:-30px;margin-right:10px;color:white;text-decoration:none;">
+				返回
+				</a>
+			</div>
+				#foreach($address in $useraddress)
+					<div class="body1">
+						#set($turnupdateAddress="/userinfo/address_id="+$address.getAddress_id())
+						<a href="updateAddress?address_id=$address.getAddress_id()" style="float:left;margin-left:10px;margin-top:10px;margin-right:10px;text-decoration:none;height:30px">
+							<div style="margin-left:0px;margin-top:0px;margin-right:10px;text-decoration:none;height:30px">
+								<td>收件人: $address.getConsignee()</td>&nbsp;&nbsp;&nbsp;
+								<td>电话: $address.getTelephone()</td><br/>
+								<td>邮编: $address.getZipcode()</td>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+								<td>地址: $address.getCountry()国$address.getProvince()省$address.getCity()市$address.getDistrict()区</td><br/>
+								<td>详细: $address.getDetail()</td>
+							</div>
+						</a>
+						#if($address.isIs_default())
+							<img src="#springUrl('/resources/image/cmy/13.png')" style="height=30px;float:right;">
+						#end
+						<br/><br/><br/><br/>
+						<HR style="border: 6 groove #ff0033" align=center width="100%" >
+					</div>
+				#end
+				<div class="body1">
+					#set($turnupdateAddress="/userinfo/updateAddress?address_id=0")
+					<a href="updateAddress?address_id=0">
+						<img src="#springUrl('/resources/image/cmy/14.png')" style="height:30px;margin-top:50px;margin-left:10px;float:left;">
+					</a>
+					<br/><br/><br/><br/>
+					<HR style="border: 6 groove #ff0033" align=center width="100%" >
+				</div>
+		</div>
+	</div>
+	#end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/cmy2/footer.vm")
+  #end
+#end

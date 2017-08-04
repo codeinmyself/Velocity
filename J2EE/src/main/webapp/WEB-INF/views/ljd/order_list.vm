@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>我的订单</title>
+
+		<!-- Bootstrap -->
+		<link href="#springUrl('/resources/css/ljd/bootstrap.css')" rel="stylesheet">
+    	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" href="#springUrl('/resources/css/ljd/amazeui.min.css')" />
+		<link rel="stylesheet" href="#springUrl('/resources/css/ljd/style.css')" />
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/jquery.min.js')" ></script>
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/amazeui.min.js')" ></script>
+
+	</head>
+
+	<body>
+		<!-- 导航条-->
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#springUrl('/user/index')">返回</a>
+	    	</div>	
+		</nav>
+		
+ 		<ul class="order-style">
+	    	<li class="current"><a href="#springUrl('/user/order_list')">全部订单</a></li>
+	    	<li><a href="#springUrl('/user/unpaid_order')">待付款</a></li>
+	    	<li><a href="#springUrl('/user/unshipped_order')">待发货</a></li>
+	    	<li><a href="#springUrl('/user/unreceivied_order')">待收货</a></li>
+	    	<li><a href="#springUrl('/user/receipt_order')">已收货</a></li>
+	    </ul>		
+		
+
+
+ 		#if($show_order_list)
+			#foreach($orderItem in $show_order_list)
+	    	<div class="c-comment">
+				<span class="c-comment-num">订单编号：$orderItem.order_sn</span>
+				<span class="c-comment-suc">订单状态：$orderItem.order_status</span>
+			</div>
+			<div class="c-comment-list" style="border: 0;">
+				#foreach($goods in $orderItem.GoodsList)
+				<a class="o-con" href="">
+            		<!--  <div class="o-con-img"><img src="images/detail.png"></div>-->
+               		 <div class="o-con-txt">
+                		<p>商品名称：$goods.name</p>
+                		<p>价格：$goods.price</p>
+               		 </div>
+            		<!-- <div class="o-con-much"> <h4>x2</h4></div> -->
+            	
+            	</a>
+            	#end
+            	<div class="c-com-money">金额：<span>￥$orderItem.order_price</span></div>
+			</div>
+			<!--
+			<div class="c-com-btn">
+				<a href="">立即支付</a>
+				<a href="">取消订单</a>
+			</div>
+			-->
+			<div class="clear"></div>	
+			#end
+		#end
+
+
+	
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script type="text/javascript" src="#springUrl('/resources/js/ljd/bootstrap.min.js')"></script>
+
+	</body>
+
+</html>

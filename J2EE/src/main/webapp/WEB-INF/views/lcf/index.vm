@@ -1,0 +1,244 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商城主页"})#end
+#tiles_putAttribute({"name":"body"})
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport"
+	  content="width=device-width, initial-scale=1">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+<meta name="msapplication-TileColor" content="#0e90d2">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/assets/css/amazeui.min.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/assets/css/app.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcf/base.css')">
+
+<header>首页
+    <div class="pcbtn"></div>
+</header>
+<!--侧边栏-->
+<nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas>
+    <a href="javascript: void(0)" class="am-menu-toggle">
+        <!--<i class="am-menu-toggle-icon am-icon-bars"></i>-->
+        <div class="filterbtn"></div>
+    </a>
+
+    <div class="am-offcanvas" >
+        <div class="am-offcanvas-bar">
+            <div class="searchbar">
+                <input type="text" id="searchtext" class="am-form-field am-round" placeholder="模糊搜索商品名称"/>
+                <div class="searchicon"></div>
+            </div>
+            <div class="filterbar">
+                <div>
+                    <label>已选择</label>
+                    <div class="showlist" id="choosedbar">
+                    </div>
+                </div>
+                <div id="addcategory">
+                    <label>商品品类</label>
+                    <div class="showlist">
+                    #if($categoryList)
+                        <label class="choosedbar chooseall" id="categoryall">全部</label>
+                        #foreach($category in $categoryList)
+                            <label id="$category.id" class="choosingbar">$category.name</label>
+                        #*<label class="choosingbar">食物类</label>
+                        <label class="choosingbar">书籍类</label>
+                        <label class="choosingbar">服装类</label>*#
+                        #end
+                    #end
+                    </div>
+                </div>
+                <div id="addbrand">
+                    <label>商品品牌</label>
+                    <div class="showlist">
+                    #if($brandList)
+                        <label class="choosedbar chooseall" id="brandall">全部</label>
+                        #foreach($brand in $brandList)
+                            <label class="choosingbar" id="$brand.id">$brand.name</label>
+                        #*<label class="choosingbar">C</label>
+                        <label class="choosingbar">PHP</label>
+                        <label class="choosingbar">Python</label>*#
+                        #end
+                    #end
+                    </div>
+                </div>
+            </div>
+            <div class="btnbar">
+                <div class="resetbtn">重置</div>
+                <div class="donebtn">完成</div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!--侧边栏结束-->
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
+        <a title="">
+            <i class="am-gotop-icon am-icon-hand-o-up"></i>
+        </a>
+        <a href="#top" class="am-gotop-default topbar">
+            <button class="topbtn" title="top"></button>
+        </a>
+    </div>
+
+    <!--<div class="searchbar">
+        <button class="searchbtn" title="search"></button>
+    </div>-->
+    <ul class="am-tabs-nav am-cf">
+        <li class="infostyle">选择排序方式：</li>
+        <li class="am-active"><a href="[data-tab-panel-0]" onclick="orderByPreSaleNumber()">按销量</a></li>
+        <li class=""><a href="[data-tab-panel-1]" onclick="orderByRealPrice('0')">按价格</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+            <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+  am-avg-md-3 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+			#if($goodsList)
+                <input type="hidden" id="hiddenGoodsListLength" value="${goodsList.size()}"/>
+				#foreach($goods in $goodsList)
+                    <li>
+                        <div class="am-gallery-item goodsItem">
+							#set($hrefGoodsSerialCode="/index/goodsDetail/"+$goods.id)
+                            <a href="#springUrl($hrefGoodsSerialCode)" class="">
+                                <img src="#springUrl($goods.image_path)"  alt="$goods.description" style="max-height: 300px;"/>
+                                <h3 class="am-gallery-title">$goods.name</h3>
+                                <span class="goleft">￥$goods.real_price</span>
+                                <div class="goright">
+                                    <div class="cartbtn"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                #end
+            #end
+            </ul>
+
+        </div>
+        <div data-tab-panel-1 class="am-tab-panel "></div>
+    </div>
+    <div class="gocart">
+        <div class="bigcartbtn"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="#springUrl('/resources/js/lcf/jquery-1.8.3.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/css/lcf/assets/js/amazeui.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/zjh/search.js')"></script>
+<script type="text/javascript">
+    function refresh() {
+        var search=$('#searchtext').val();
+        var category=$('#addcategory .choosedbar').text();
+        var brand=$('#addbrand .choosedbar').text();
+        alert("搜索字段:"+search+"\n"+"品牌:"+category+"\n"+"品类:"+brand+"\n");
+        $.ajax({
+            type: 'post',
+            url: '',
+            dataType: 'json',
+            contentType:'json',
+            data: {
+                "category": category,
+                "brand":brand,
+            },
+            success: function (data) {
+                /*成功将数据返回之后写入排序那个部分*/
+            },
+        })
+    }
+    $('#addcategory>div>label').bind("click",function () {
+        $(this).removeClass("choosingbar").siblings().addClass("choosingbar");
+        $(this).addClass("choosedbar").siblings().removeClass("choosedbar");
+        if ($(this).hasClass("chooseall")) {
+            $("#choosecategory").remove();
+        }
+        else {
+            var state=$(this);
+            var choose=$(this).text();
+            var copyThisA = $(this).clone();
+            copyThisA=copyThisA.removeClass("choosedbar");
+            copyThisA=copyThisA.addClass("topchoosedbar");
+            copyThisA.html("<div class=\"delete\"></div>"+choose);
+            var content="<div class=\"delete\"></div>"+choose;
+            if ($("#choosecategory").length > 0) {
+                $("#choosecategory").html(content);
+                refresh();
+            } else {
+                $("#choosedbar").append(copyThisA.attr("id", "choosecategory"));
+                refresh();
+            }
+        }
+        $('#choosecategory').click(function () {
+            $("#choosecategory").remove();
+            state.removeClass("choosedbar");
+            state.addClass("choosingbar");
+            $('#categoryall').removeClass("choosingbar");
+            $('#categoryall').addClass("choosedbar");
+            refresh();
+        })
+    })
+    $('#addbrand>div>label').bind("click",function () {
+        $(this).removeClass("choosingbar").siblings().addClass("choosingbar");
+        $(this).addClass("choosedbar").siblings().removeClass("choosedbar");
+        if ($(this).hasClass("chooseall")) {
+            $("#choosebrand").remove();
+        }
+        else {
+            var state=$(this);
+            var choose=$(this).text();
+            var copyThisA = $(this).clone();
+            copyThisA=copyThisA.removeClass("choosedbar");
+            copyThisA=copyThisA.addClass("topchoosedbar");
+            copyThisA.html("<div class=\"delete\"></div>"+choose);
+            var content="<div class=\"delete\"></div>"+choose;
+            if ($("#choosebrand").length > 0) {
+                $("#choosebrand").html(content);
+                refresh();
+            } else {
+                $("#choosedbar").append(copyThisA.attr("id", "choosebrand"));
+                refresh();
+            }
+        }
+        $('#choosebrand').click(function () {
+            $("#choosebrand").remove();
+            state.removeClass("choosedbar");
+            state.addClass("choosingbar");
+            $('#brandall').removeClass("choosingbar");
+            $('#brandall').addClass("choosedbar");
+            refresh();
+        })
+    })
+    $('.searchicon').click(function () {
+        refresh();
+    })
+    $('.resetbtn').click(function () {
+        $('#searchtext').val("");
+        $("#choosebrand").remove();
+        $("#choosecategory").remove();
+        $('.choosedbar').addClass("choosingbar");
+        $('.choosedbar').removeClass("choosedbar");
+        $('#brandall').removeClass("choosingbar");
+        $('#brandall').addClass("choosedbar");
+        $('#categoryall').removeClass("choosingbar");
+        $('#categoryall').addClass("choosedbar");
+        refresh();
+    })
+</script>
+
+	#end
+#end

@@ -1,0 +1,10 @@
+.addposition
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.formstyle span{
+    display: inline-block;
+    margin-left: 10px;
+}

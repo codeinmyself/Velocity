@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>我的收藏</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/commonStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/cartStyle.css">
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header header-color">
+        <div class="mdl-layout__header-row my_header" style="justify-content: center;">
+            <span class="mdl-layout-title" style="text-align: center;margin-left:0;">我的收藏</span>
+            <a href="../user/home" class="mdl-navigation__link">返回</a>
+        </div>
+    </header>
+    
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <ul class="mdl-list cart-list">
+            	#foreach( ${goods} in ${goodsList} )
+                <li class="mdl-list__item mdl-list__item--three-line" style="margin-left:10px;">
+                    <span class="item_img">
+                        <img src="../resources/images/ghz/default.jpg" class="item_img"></image>
+                    </span>
+                    <span class="mdl-list__item-primary-content item-second">
+                        <span class="item_text">${goods.name}</span>
+                        <span class="item_text mdl-list__item-text-body mylist-auto-height">
+                            ${goods.description}
+                        </span>
+                        <span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                            <span class="item-price">价格： ${goods.real_price}</span>
+                            <span>
+                                <button class="mdl-button mdl-js-button item-button">删除</button>
+                            </span>
+                        </span>
+                    </span>
+                </li>
+                #end
+            </ul>
+        </div>
+    </main>
+</div>
+</body>
+</html>

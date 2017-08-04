@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.pay.lhg.mapper.UserMapper">
+	<resultMap type="xmu.mystore.pay.lhg.model.User" id="UserResult">
+		<id column="user_id" property="user_id" />
+		<result column="user_name" property="user_name" />
+		<result column="password" property="password" />
+		<!-- <result column="nickname" property="nickname" /> -->
+		<result column="mobile_phone" property="mobile_phone" />
+		<result column="imagepath" property="imagepath" />
+	</resultMap>
+
+
+	<select id="getUser" resultMap="UserResult" parameterType="xmu.mystore.pay.lhg.model.User">
+		SELECT * FROM main_users WHERE user_id= #{user_id}
+	</select>
+</mapper>

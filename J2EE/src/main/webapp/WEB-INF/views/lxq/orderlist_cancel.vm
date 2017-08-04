@@ -1,0 +1,66 @@
+#tiles_insertTemplate({"template":"../layout/lxq/user_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "订单信息页"})#end
+	#tiles_putAttribute({"name":"body"})
+	</br>
+	<div class = "container">
+			<div class = "row">
+			<div class = "col-md-2">
+			<a class="btn btn-default" href="#springUrl('/user/home')" role="button">返回</a>
+			</div>
+	</div>
+	</br>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a   class="navbar-brand " href="#springUrl('/user/orderlist')">全部订单</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="#springUrl('/user/wait_pay')">待付款</a></li>
+            <li><a href="#springUrl('/user/wait_re')">待收货</a></li>
+            <li><a href="#springUrl('/user/al_re')">已收货</a></li>
+            <li  class="active"><a href="#springUrl('/user/cancel')">已取消</a></li>
+
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<table class="table table-striped">
+  <caption>JD</caption>
+  <thead>
+    <tr>
+      <th>订单id号</th>
+	<th>收货人</th>
+	<th>地址</th>
+	<th>订单总价</th>
+	<th>备注</th>
+	<th>快递单号</th>
+	<th>是否加急</th>
+
+    </tr>
+  </thead>
+  <tbody>
+	#foreach($Order_info in $orderInfoService)
+	<tr>
+	<td>$Order_info.order_id</td>
+	<td>$Order_info.consignee</td>
+	<td>$Order_info.address</td>
+	<td>$Order_info.order_price</td>
+	<td>$Order_info.remark</td>
+	<td>$Order_info.expressCode</td>
+	<td>
+	#if($Order_info.isUrgency==1)
+	加急
+	#else
+	不加急
+	#end
+	</td>
+	
+	#end
+	</tr>
+  </tbody>
+</table>
+
+#end
+#end

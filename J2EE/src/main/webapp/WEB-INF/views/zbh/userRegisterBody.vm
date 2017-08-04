@@ -1,0 +1,28 @@
+<div>
+	<form action="register">
+		<table id="registerCheck" class="">
+			<tr>
+				<td class="manage_title">填写账号基本信息</td>
+			</tr>
+			
+			<tr>
+				<td class="manage_left">联系电话</td>
+				<td class="manage_right"><input type="text" id="mobilePhone" class="manage_input"  name="mobilePhone"></input></td>
+			</tr>
+			<tr>
+				<td class="manage_left">密码</td>
+				<td class="manage_right"><input type="password" id="password" class="manage_input"  name="password"></input></td>
+			</tr>
+			<tr>
+				<td class="manage_left">确认密码</td>
+				<td class="manage_right"><input type="password" id="passwordCheck" class="manage_input"></input></td>
+			</tr>
+			<tr>
+				<td class="manage_left">昵称</td>
+				<td class="manage_right"><input type="text" id="nickname" class="manage_input"  name="nickname"></input></td>
+			</tr>
+		</table>
+		
+		<input type="submit" class="button" name="注册" onClick="return loginCheck()"></input>
+	</form>
+</div>

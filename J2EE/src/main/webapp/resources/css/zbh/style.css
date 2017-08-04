@@ -1,0 +1,126 @@
+input{
+	border:0;
+	border-bottom:1px solid #AFB5BB;
+	background: #F7F7F7;
+	font-size:.98em;
+	outline:none;
+	padding-left:10px;
+}
+select{
+	width:130px;
+	border:0;
+	border-bottom:1px solid #AFB5BB;
+	background: #F7F7F7;
+	font-size:.97em;
+	outline:none;
+}
+.basic_div{
+	font-family:"Microsoft YaHei",微软雅黑;
+	background:#F7F7F7;
+}
+.order_table{
+	background: #F7F7F7;
+	border:1px solid #808080;
+	width:93%;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align:center;
+}
+.manage{
+	background: #F7F7F7;
+	width:70%;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-top:5px;
+}
+.manage_left{
+	width:20%;
+}
+.manage_right{
+	width:80%;
+}
+.manage_input{
+	padding:2px;
+	width:100%;
+}
+.manage_title{
+	font-size:18px;
+	color:#135480;
+}
+.button{
+	margin-top:20px;
+	margin-left:15%;
+	margin-bottom:60px;
+	width:100px;
+	background: #135480;
+  	color: white;
+  	font-size: 0.5em;
+  	padding: 0.6em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+}
+.button:hover{
+	background: #C0C0C0;
+}
+.table_button{
+	width:50px;
+	background: #135480;
+  	color:white;
+  	font-size: 0.5em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+}
+.table_button:hover{
+	background: #C0C0C0;
+}
+.table_button_gray{
+	width:50px;
+	background: #C0C0C0;
+  	color:white;
+  	font-size: 0.5em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+}
+.table_button_gray:hover{
+	background: #C0C0C0;
+}
+.goods_table{
+	width:500%;
+	text-align:center;
+	border:1px solid #AFB5BB;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.goods_total{
+	text-align:right;
+	padding-right:30px;
+}

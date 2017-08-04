@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.lhg.pay.lhg.dao.OrderInfoDao">
+    <resultMap type="xmu.mystore.pay.lhg.model.OrderInfo" id="OrderInfoResult">
+        <id column="id" property="id"/>
+        <result column="order_sn" property="order_sn"/>
+        <result column="user_id" property="user_id"/>
+        <result column="order_status" property="order_status"/>
+        <result column="consignee" property="consignee"/>
+        <result column="address" property="address"/>
+        <result column="zipcode" property="zipcode"/>
+        <result column="telephone" property="telephone"/>
+        <result column="email" property="email"/>
+        <result column="goods_price" property="goods_price"/>
+        <result column="order_price" property="order_price"/>
+        <result column="remark" property="remark"/>
+        <result column="total_weight" property="total_weight"/>
+        <result column="signature_characters" property="signature_characters"/>
+        <result column="add_time" property="add_time"/>
+        <result column="pay_time" property="pay_time"/>
+        <result column="make_time" property="make_time"/>
+        <result column="shipped_time" property="shipped_time"/>
+        <result column="receive_time" property="receive_time"/>
+        <result column="cancel_time" property="cancel_time"/>
+        <result column="expressCode" property="express_code"/>
+        <result column="isUrgency" property="is_urgency"/>
+    </resultMap>
+
+    <insert id="add" parameterType="xmu.mystore.pay.lhg.model.OrderInfo">
+        INSERT INTO
+            main_order_info (user_id, order_status, consignee, address, zipcode, telephone, email, goods_price, order_price,
+                        remark, total_weight, signature_characters, add_time, pay_time, make_time, shipped_time, receive_time,
+                        cancel_time, expressCode, isUrgency)
+        VALUES
+            (#{user_id}, #{order_status}, #{consignee}, #{address}, #{zipcode}, #{telephone}, #{email}, #{goods_price},
+                         #{order_price}, #{remark}, #{total_weight}, #{signature_characters}, #{add_time}, #{pay_time},
+             #{make_time}, #{shipped_time}, #{receive_time}, #{cancel_time}, #{express_code}, #{is_urgency})
+    </insert>
+
+    <delete id="delete" parameterType="xmu.mystore.pay.lhg.model.OrderInfo">
+        DELETE FROM
+            main_order_info
+        WHERE
+            order_id = #{id}
+    </delete>
+
+    <update id="update" parameterType="xmu.mystore.pay.lhg.model.OrderInfo">
+        UPDATE main_order_info
+        SET
+            user_id              = #{user_id},
+            order_status         = #{order_status},
+            consignee            = #{consignee},
+            address              = #{address},
+            zipcode              = #{zipcode},
+            telephone            = #{telephone},
+            email                = #{email},
+            goods_price          = #{goods_price},
+            order_price          = #{order_price},
+            remark               = #{remark},
+            total_weight         = #{total_weight},
+            signature_characters = #{signature_characters},
+            add_time             = #{add_time},
+            pay_time             = #{pay_time},
+            make_time            = #{make_time},
+            shipped_time         = #{shipped_time},
+            receive_time         = #{receive_time},
+            cancel_time          = #{cancel_time},
+            expressCode          = #{express_code},
+            isUrgency            = #{is_urgency}
+        WHERE
+            order_id = #{id}
+    </update>
+
+    <select id="select" resultMap="OrderInfoResult"
+            parameterType="xmu.mystore.pay.lhg.model.OrderInfo">
+        SELECT *
+        FROM main_order_info
+        WHERE order_id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="OrderInfoResult">
+        <choose>
+            <when test="isShowable==1">
+                SELECT * FROM main_order_info WHERE order_status=1
+            </when>
+            <when test="isShowable==2">
+                SELECT * FROM main_order_info WHERE order_status=2
+            </when>
+            <when test="isShowable==3">
+                SELECT * FROM main_order_info WHERE order_status=3
+            </when>
+            <when test="isShowable==4">
+                SELECT * FROM main_order_info WHERE order_status=4
+            </when>
+            <when test="isShowable==5">
+                SELECT * FROM main_order_info WHERE order_status=5
+            </when>
+            <otherwise>
+                SELECT * FROM main_order_info
+            </otherwise>
+        </choose>
+    </select>
+</mapper>

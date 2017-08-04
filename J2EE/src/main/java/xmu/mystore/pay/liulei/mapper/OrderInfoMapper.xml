@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.pay.liulei.mapper.OrderInfoMapper">
+	<resultMap type="xmu.mystore.pay.liulei.model.OrderInfo" id="OrderInfoResult">
+		<id column="id" property="id" />
+		<result column="order_sn" property="order_sn" />
+		<result column="user_id" property="user_id" />
+		<result column="order_status" property="order_status" />
+		<result column="consignee" property="consignee" />
+		<result column="address" property="address" />
+		<result column="zipcode" property="zipcode" />
+		<result column="telephone" property="telephone" />
+		<result column="email" property="email" />
+		<result column="goods_price" property="goods_price" />
+		<result column="order_price" property="order_price" />
+		<result column="remark" property="remark" />
+		<result column="total_weight" property="total_weight" />
+		<result column="signature_characters" property="signature_characters" />
+		<result column="add_time" property="add_time" />
+		<result column="pay_time" property="pay_time" />
+		<result column="make_time" property="make_time" />
+		<result column="shipped_time" property="shipped_time" />
+		<result column="receive_time" property="receive_time" />
+		<result column="cancel_time" property="cancel_time" />
+		<result column="expressCode" property="expressCode" />
+		<result column="isUrgency" property="isUrgency" />
+	</resultMap>
+
+	<insert id="add" parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		insert into
+		142550_order_info(user_id,order_status,consignee,address,zipcode,telephone,email,goods_price,order_price,remark,total_weight,signature_characters,add_time,pay_time,make_time,shipped_time,receive_time,cancel_time,expressCode,isUrgency)
+		values(#{user_id},#{order_status},#{consignee},#{address},#{zipcode},#{telephone},#{email},#{goods_price},#{order_price},#{remark},#{total_weight},#{signature_characters},#{add_time},#{pay_time},#{make_time},#{shipped_time},#{receive_time},#{cancel_time},#{expressCode},#{isUrgency})
+	</insert>
+
+	<delete id="delete" parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		delete from
+		142550_order_info where
+		id=#{id}
+	</delete>
+
+	<update id="update" parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		update 142550_order_info
+		set
+		user_id=#{user_id},
+		order_status=#{order_status},
+		consignee=#{consignee},
+		address=#{address},
+		zipcode=#{zipcode},
+		telephone=#{telephone},
+		email=#{email},
+		goods_price=#{goods_price},
+		order_price=#{order_price},
+		remark=#{remark},
+		total_weight=#{total_weight},
+		signature_characters=#{signature_characters},
+		add_time=#{add_time},
+		pay_time=#{pay_time},
+		make_time=#{make_time},
+		shipped_time=#{shipped_time},
+		receive_time=#{receive_time},
+		cancel_time=#{cancel_time},
+		expressCode=#{expressCode},
+		isUrgency=#{isUrgency}
+		where
+		id=#{id}
+	</update>
+
+	<select id="select" resultMap="OrderInfoResult"
+		parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		SELECT * FROM 142550_order_info WHERE id= #{id}
+	</select>
+
+	<select id="selectAll" resultMap="OrderInfoResult">
+		<choose>
+			<when test="isShowable==1">
+				SELECT * FROM 142550_order_info WHERE type=1
+			</when>
+			<when test="isShowable==2">
+				SELECT * FROM 142550_order_info WHERE type=2
+			</when>
+			<when test="isShowable==3">
+				SELECT * FROM 142550_order_info WHERE type=3
+			</when>
+			<when test="isShowable==4">
+				SELECT * FROM 142550_order_info WHERE type=4
+			</when>
+			<when test="isShowable==5">
+				SELECT * FROM 142550_order_info WHERE type=5
+			</when>
+			<otherwise>
+				SELECT * FROM 142550_order_info
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getOrderInfo" resultMap="OrderInfoResult" parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		SELECT * FROM 142550_order_info WHERE id= #{id}
+	</select>
+	
+	<update id="setOrderStatus" parameterType="xmu.mystore.pay.liulei.model.OrderInfo">
+		update 142550_order_info set order_status= #{order_status} where order_id= #{order_id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.ordersmgt.zf.mapper.Order_goodsMapper" >
+	<resultMap type="xmu.mystore.ordersmgt.zf.model.Order_goods" id="goodsResult">
+		<id column="id" property="id"/>
+		<result column="order_id" property="order_id"/>
+		<result column="goods_id" property="goods_id"/>
+		<result column="goods_name" property="goods_name"/>
+		<result column="goods_number" property="goods_number"/>
+		<result column="goods_price" property="goods_price"/>
+		<association property="image" javaType="String" column="goods_id" select="xmu.mystore.ordersmgt.zf.mapper.GoodsMapper.getGoodsImageById"/>
+	</resultMap>
+
+	<select id="get" resultMap="goodsResult" parameterType="long">
+		SELECT * FROM 142560_order_goods WHERE order_id=#{id}
+	</select>
+</mapper>

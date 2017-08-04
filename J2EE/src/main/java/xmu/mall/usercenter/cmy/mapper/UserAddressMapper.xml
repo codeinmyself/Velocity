@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mall.usercenter.cmy.mapper.UserAddressMapper">
+
+	<!-- 属性id表示resultMap的表示,type表示你需要你需要映射的POJO -->
+	<resultMap id="UserAddressDataMap" type="xmu.mall.usercenter.cmy.entity.User_address">
+
+		<!-- property表示POJO的属性名称，column表示数据库SQL的列名，id对应对象的主键 -->
+
+
+		<id column="address_id" property="address_id" jdbcType="INTEGER" />
+		<result column="user_id" property="user_id" jdbcType="INTEGER" />
+		<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
+		<result column="country" property="country" jdbcType="INTEGER" />
+		<result column="province" property="province" jdbcType="INTEGER" />
+		<result column="city" property="city" jdbcType="INTEGER" />
+		<result column="district" property="district" jdbcType="INTEGER" />
+		<result column="detail" property="detail" jdbcType="VARCHAR" />
+		<result column="is_default" property="is_default" jdbcType="VARCHAR" />
+		
+	</resultMap>
+
+	<select id="getAllAddress" resultMap="UserAddressDataMap">
+		SELECT  *
+		 FROM 142407_user_address where user_id=${user_id}
+	</select>
+
+	<select id="getAddressByAddressID" resultMap="UserAddressDataMap">
+		SELECT  *
+		 FROM 142407_user_address where address_id=${address_id}
+	</select>
+	
+	<update parameterType="xmu.mall.usercenter.cmy.entity.User_address"
+		id="updateAddress">
+		update 142407_user_address set
+		district=#{district},
+		telephone=#{telephone},
+		consignee=#{consignee},
+		detail=#{detail},
+		is_default=#{is_default}
+		where address_id=#{address_id}
+	</update>
+
+</mapper>

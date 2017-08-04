@@ -1,0 +1,51 @@
+#tiles_insertTemplate({"template":"../layout/zlt/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "修改角色信息"})#end #tiles_putAttribute({"name":"body"})
+
+<form id="form" class="col s12" action="modifyRole" method="post">
+  <input type="hidden" name="role_id" value="$roleInfo.role_id">
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">修改角色信息</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div class="row">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" required="required" 
+          id="role_name" name="role_name" value="$roleInfo.role_name">
+          <label class="mdl-textfield__label" for="serial_code">角色名称</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" maxlength="40" 
+            	required="required" id="description" name="description" value="$roleInfo.description">
+            <label class="mdl-textfield__label" for="name">角色描述</label>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <button type="button" onclick="modifyRole();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        修改
+      </button>
+      <button type="button" onclick="deleteRole();" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        删除
+      </button>
+      <script type="text/javascript">
+        function deleteRole() {
+          document.getElementById("form").action = "deleteRole";
+          document.getElementById("form").submit();
+        }
+        
+        function modifyRole() {
+          document.getElementById("form").action = "modifyRole";
+          document.getElementById("form").submit();
+        }
+        
+      </script>
+    </div>
+  </div>
+</form>
+#end #end

@@ -1,0 +1,43 @@
+#tiles_insertTemplate({"template":"../layout/lxq/user_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "我的收藏"})#end
+	#tiles_putAttribute({"name":"body"})
+	</br>
+	<div class = "container">
+			<div class = "row">
+			<div class = "col-md-2">
+			<a class="btn btn-default" href="#springUrl('/user/home')" role="button">返回</a>
+			</div>
+	</div>
+	</br>
+
+
+<table class="table table-striped">
+  <caption>我的收藏</caption>
+  <thead>
+    <tr>
+      <th>商品名称</th>
+	<th>商品图片</th>
+	<th>商品价格</th>
+	<th>删除？</th>
+	
+    </tr>
+  </thead>
+  <tbody>
+	#foreach($goods in $myCollectService)
+	<tr>
+	<td>
+	#set($hrefGoodsSerialCode="/index/goodsDetail/"+$goods.id)
+	<a href="#springUrl($hrefGoodsSerialCode)">$goods.name</a></td>
+	<td><img src="#springUrl($goods.image_path)" width="150" height="150"></td>
+	<td>$goods.real_price</td>
+	
+	<td>
+	 #set($hrefGoodsSerialCode="/user/collection/delete/"+$goods.id)
+	<a class="btn btn-default" href="#springUrl($hrefGoodsSerialCode)" role="button">删除</a></td>
+	#end
+	</tr>
+  </tbody>
+</table>
+
+#end
+#end

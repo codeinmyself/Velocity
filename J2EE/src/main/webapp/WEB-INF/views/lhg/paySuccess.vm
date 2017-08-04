@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>成功支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="#springUrl('/resources/js/liulei/material.min.js')"></script>
+    <script src="#springUrl('/resources/js/liulei/myCart.js')"></script>
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/liulei/balanceStyle.css')">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href=""><img src="#springUrl('/resources/images/liulei/ic_arrow_back.png')" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">支付成功</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        
+        <main class="mdl-layout__content">
+			<br/><br/><br/><br/>
+            <div class="page-content" style="text-align:center" >
+                <ul class="mdl-list cart-list">
+					<span>
+                           <img src="#springUrl('/resources/images/liulei/success.png')" ></image>
+                    </span>
+                </ul>
+            </div>
+        </main>
+		
+		
+        <form action="/JavaEE" method="post">
+            <input type="hidden" name="address_id" value="${address.address_id}"></input>
+            <input type="hidden" name="user_id" value="${user.user_id}"></input>
+            <footer class="mdl-mini-footer my-footer-container">
+                    <div class="mdl-mini-footer__left-section footer-text">
+                        <ul class="mdl-mini-footer__link-list">
+                            <span class="total-text">
+                                <label class="footer-font"></label></label>
+                            </span>
+                        </ul>
+                    </div>
+                    <div class="item-pay">
+                        <button type="submit" class="item-pay-btn">返回商城</button>
+                    </div>
+            </footer>
+        </form>
+    </div>
+</body>
+
+</html>

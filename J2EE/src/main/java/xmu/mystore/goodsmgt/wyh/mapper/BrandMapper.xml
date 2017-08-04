@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xmu.mystore.goodsmgt.wyh.mapper.BrandMapper">
+	<resultMap id="brandMapper" type="xmu.mystore.goodsmgt.wyh.model.Brand">
+		<id property="brandId" column="id" />
+		<result property="name" column="name" />
+		<result property="website" column="website" />
+		<result property="description" column="description" />
+		<result property="type" column="type" />
+	</resultMap>
+	
+	<select id="getBrandById" parameterType="java.lang.String" resultMap="brandMapper">
+		select * from main_brand where id=#{param1}   
+	</select>
+	
+	<select id="getAllBrand" resultMap="brandMapper">
+		select * from main_brand 
+	</select>
+	
+	<insert id="insertBrand" parameterType="xmu.mystore.goodsmgt.wyh.model.Brand">
+		insert into main_brand(id,name,website,description,type)
+		values(#{brand.brandId},#{brand.name},#{brand.website},#{brand.description}
+		,#{brand.type})
+	</insert>
+	
+	<select id="getBrandIdByName" parameterType="java.lang.String" resultMap="brandMapper">
+		select * from main_brand where name=#{param1}   
+	</select>
+	
+	<update id="updateBrandById" parameterType="xmu.mystore.goodsmgt.wyh.model.Brand">
+		update main_brand set name=#{brand.name},website=#{brand.website}
+		,description=#{brand.description} where id=#{brand.brandId}
+	</update>
+	<delete id="deleteBrandById" parameterType="java.lang.String">
+		delete from main_brand where id=#{brandId}
+	</delete>
+</mapper>

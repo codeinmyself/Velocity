@@ -1,0 +1,75 @@
+/**
+标题和最高的两级div
+ */
+#title
+{
+    width: 72%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 5% 14% 0 14%;
+    border-radius: 3px;
+}
+.content
+{
+    width: 72%;
+    background-color: white;
+    box-shadow:7px 7px 7px #aaaaaa;
+    margin: 20px 14% 0 14%;
+    border-radius: 3px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+.container
+{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/**
+    详细信息的标题行和一般行
+ */
+.detail-title
+{
+    border-bottom: solid 2px #aaaaaa;
+    color: #135480;
+    font-family: "Microsoft YaHei UI";
+    font-weight: bold;
+    margin-top: 40px;
+    font-size: 18px;
+}
+.detail-normal
+{
+    font-family: "Microsoft YaHei UI";
+    font-weight: bold;
+    font-size: 18px;
+}
+.detail-normal p
+{
+    float: left;
+    margin: 0;
+}
+.detail-normal-head
+{
+    color: #aaaaaa;
+    padding: 16px 0 0 20px;
+    width: 240px;
+}
+.detail-normal-body
+{
+    color: gray;
+    font-weight: bold;
+    padding: 16px 0 0 20px;
+    width: 500px;
+}
+.price-head
+{
+    color: #aaaaaa;
+    padding: 16px 0 0 20px;
+    width: 200px;
+}
+.price-body
+{
+    color: gray;
+    padding: 16px 0 0 20px;
+    width: 200px;
+}

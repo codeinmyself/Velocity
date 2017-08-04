@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderSearch">
+
+    <!--根据信息搜索符合条件的订单-->
+    <select id="searchone" parameterType="xmu.mystore.ordersmgt.zjq.model.SearchObject" resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info WHERE order_sn=#{ordersn} OR (add_time BETWEEN #{addtimebegin} AND #{addtimeend}) OR consignee=#{consignee} OR isUrgency=#{isUrgency} OR order_status=#{orderstatus}
+    </select>
+    <!--根据信息搜索符合条件的订单商品对应关系-->
+    <select id="searchorderandgood" parameterType="xmu.mystore.ordersmgt.zjq.model.SearchObject" resultType="xmu.mystore.ordersmgt.zjq.model.Order_goods">
+        SELECT * FROM 142550_order_goods WHERE goods_name=#{goodsname}
+    </select>
+    <!--给予订单id列表获取所有订单-->
+    <select id="searchorderbylist" parameterType="xmu.mystore.ordersmgt.zjq.model.Order_goods" resultType="xmu.mystore.ordersmgt.zjq.model.Order_info">
+        SELECT * FROM 142550_order_info
+        <where>
+            order_id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">
+                #{item.order_id}
+            </foreach>
+        </where>
+    </select>
+
+
+
+
+</mapper>

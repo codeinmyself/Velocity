@@ -1,0 +1,42 @@
+#tiles_insertTemplate({"template":"../layout/lcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品管理"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/base.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/bootstrap.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/tablestyle.css')">
+<link rel="stylesheet" href="#springUrl('/resources/css/lcfgm/goods-manage.css')">
+
+<div class="maincontainer">
+    <div class="rightcontainer modalstyle">
+        <form action="modifyStand" method="post">
+            <input type="hidden" name="id" value="$stand.id">
+            <div class="modify-body positioncontrol">
+                <div class="standcontrol">
+                    <label for="up_time">上架时间</label>
+                    <input class="form-control" type="date" required="required" id="on_market_time" name="on_market_time" value="$stand.on_market_time">
+                </div>
+                <div>
+                    <label for="down_time">下架时间</label>
+                    <input class="form-control" type="date" required="required" id="off_market_time" name="off_market_time" value="$stand.off_market_time">
+                </div>
+                <div class="pull-right standbutton">
+                    <button type="button" class="btn btn-default" onclick="window.history.back();">返回</button>
+                    <button type="submit" id="updateSubmit" class="btn btn-default">确认修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="leftnav">
+        <div class="logo"> </div>
+        <ul>
+            <li class="listyle"><a href="/Goods">商品资料管理</a></li>
+            <li class="active listyle"><a href="/Stand">商品上下架管理</a></li>
+            <li class="listyle"><a href="/Brand" >商品品牌管理</a></li>
+            <li class="listyle"><a href="/Category">商品品类管理</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<script type="text/javascript" src="#springUrl('/resources/js/lcfgm/jquery-3.1.1.min.js')"></script>
+#end
+#end

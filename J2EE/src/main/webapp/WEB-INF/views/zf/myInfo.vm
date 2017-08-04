@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/myinfo.css">
+</head>
+
+<body>
+    <header id="header" class="info_header">
+        <div class="base_info">
+			<!-- 用户头像 -->
+            <button type="button" class="info_setting_btn" onclick="window.location.href='userInfo?uid=${user.user_id}'">
+                <img src="resources/images/zf/${user.imagepath}" class="user_head"></img>
+                <!-- <label class="user_name"> ${user.user_name} </label> -->
+            </button>
+        </div>
+        <div class="my_nav_bar">
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?uid=${user.user_id}&stat=pay'">
+                <img src="resources/images/zf/order_01.png"></img>
+                <label>待付款</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?uid=${user.user_id}&stat=receive'">
+                <img src="resources/images/zf/order_02.png"></img>
+                <label>待收货</label>
+            </button>
+            <button type="button" class="nav_bar_btn">
+                <img src="resources/images/zf/order_03.png"></img>
+                <label>待评价</label>
+            </button>
+            <button type="button" class="nav_bar_btn">
+                <img src="resources/images/zf/order_04.png"></img>
+                <label>退换/售后</label>
+            </button>
+            <button type="button" class="nav_bar_btn" onclick="window.location.href='orderList?uid=${user.user_id}&stat=all'">
+                <img src="resources/images/zf/order_05.png"></img>
+                <label>我的订单</label>
+            </button>
+        </div>
+    </header>
+    <main class="mdl-layout__content body_container">
+        <div class="page-content">
+            <ul class="mdl-list btn_list">
+                <hr/>
+                <li class="setting_li">
+                    <div class="address_info">
+                        <button type="button" class="li_btn" onclick="window.location.href='checkCollection?uid=${user.user_id}'">
+                            <div class="left_container">
+                                <img class="ic_left" src="resources/images/zf/likes.png"></img>
+                                <label>我的收藏</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div class="address_info">
+                        <button type="button" class="li_btn" onclick="window.location.href='userSetting?uid=${user.user_id}'">
+                            <div class="left_container">
+                                <img class="ic_left" src="resources/images/zf/settings.png"></img>
+                                <label>用户设置</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div class="address_info">
+                        <button type="button" class="li_btn">
+                            <div class="left_container">
+                                <img class="ic_left" src="resources/images/zf/tools3.png"></img>
+                                <label>必备工具</label>
+                            </div>
+                            <div class="right_container">
+                                <label>查看全部工具</label>
+                                <img class="ic_arrow" src="resources/images/zf/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <hr/>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

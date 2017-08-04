@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="resources/js/zf/material.min.js"></script>
+    <link rel="stylesheet" href="resources/css/zf/material.min.css">
+    <link rel="stylesheet" href="resources/css/zf/commonStyle.css">
+    <link rel="stylesheet" href="resources/css/zf/manageAddress.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="javascript:history.go(-1);">
+                        <img src="resources/images/zf/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">管理收货地址</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                    #foreach($address in ${addresses})
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <label>$address.consignee</label>
+                            </div>
+							<div class="right_container">
+								<label>$address.telephone</label>
+                            </div>
+                        </div>
+                        <li class="address-spacer"></li>
+						<div class="li_box">
+                            <div class="add_container">
+                                <label>$address.province_name$address.city_name$address.district_name$address.detail</label>
+                            </div>
+                        </div>
+                    </li>
+					<li class="add-line"></li>
+					<li>
+                        <div class="li_box">
+							#if($address.is_default)
+                                <button class="default-button">
+    								<input type="checkbox" class="default-radio" name="$address.address_id" checked/>
+    								<label class="address-label default-label">默认地址</label>
+                                </button>
+							#else
+								<button class="default-button">
+    								<input type="checkbox" class="default-radio" name="$address.address_id"/>
+    								<label class="address-label">设为默认</label>
+                                </button>
+							#end
+                            <div class="right_container">
+								<button class="ic_delete" onclick="window.location.href='editAddress?aid=$address.address_id'">
+									<img src="resources/images/zf/order_05.png">
+									<label>编辑</label>
+								</button>
+								<button class="ic_delete" onclick="window.location.href='deleteAddress?uid=${uid}&aid=$address.address_id'">
+									<img src="resources/images/zf/ic_delete.png">
+									<label>删除</label>
+								</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="line-spacer"></li>
+					#end
+                </ul>
+            </div>
+        </main>
+		
+		<footer>
+            <div class="item-choose">
+                <button class="item-pay-btn item-choose-btn" onclick="window.location.href='newAddress?uid=${uid}'">新增收货地址</button>
+            </div>
+        </footer>
+    </div>
+    <script src="resources/js/zf/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".default-button").click(function () {
+                var check = $('input:checkbox:checked');
+                var clik = $(this).find('.default-radio');
+                var uid = clik.attr("name");
+                $.post("changeDefault",{uid:uid},function(result){
+                    if(result == "success"){
+                        //alert("Success");
+                        check.parent().find(".address-label").html("设为默认");
+                        check.parent().find(".address-label").removeClass("default-label");
+                        $("input:checkbox").prop("checked",false);
+                        clik.prop("checked", true);
+                        clik.parent().find('.address-label').html("默认地址");
+                        clik.parent().find('.address-label').addClass("default-label");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

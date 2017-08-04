@@ -1,0 +1,4 @@
+<div style="top:0px;height:33%;position:absolute;" class="template">
+	<span align="center" class="span1"><a href="user_info_body?user_id=$user.getUser_id()"><img src="#springUrl($user.getImagepath())" class="circle head"/></a></span>
+</div>
+<br/><br/>

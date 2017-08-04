@@ -1,0 +1,58 @@
+table{
+    border-color: #ffffff;
+}
+th{
+    font-weight: 400;
+    border-bottom: 2px solid #fff;
+}
+tr,td
+{
+    text-align: center;
+    vertical-align:middle;
+    font-size: 14px;
+    border-bottom: 1px solid #fff;
+}
+.modalstyle
+{
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+.positioncontrol
+{
+    display: inline-block;
+}
+.standcontrol input{
+    float: right;
+}
+.standbutton
+{
+    margin-top: 20px;
+}
+.modalstyle label{
+    width: 100px;
+    font-weight: 400;
+}
+.modalstyle p{
+    text-align: right;
+}
+.modalstyle input[type="text"],.modalstyle select
+{
+    display: inline-block;
+    width: 250px;
+    margin: 5px auto;
+}
+.radiostyle input[type="radio"]
+{
+    margin-right: 20px;
+}
+.smallselect select
+{
+    width: 100px;
+}
+.vstyle
+{
+    display: inline-block;
+    width: 23%;
+    text-align: center;
+}

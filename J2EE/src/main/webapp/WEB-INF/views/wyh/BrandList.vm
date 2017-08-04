@@ -1,0 +1,25 @@
+<div  style=" position:relative; left:2%; top:40px; width:96%; height:auto; padding:0; background-color:white; border:0; margin:0;">
+           <table style="width:100%; border-color:black; border: none; border-collapse:collapse;" >
+              <tr style="background-color:rgb(0,51,255); text-align:left; font-size:20px;
+              height:40px;">
+                <th id="first">品牌名称</th>
+                <th>品牌网址</th>
+                <th>品牌描述</th>
+                <th>是否显示</th>
+                <th>操作</th>
+              </tr>
+              #foreach (${brand} in ${brands})           
+              <tr style=" border-top:outset;text-align:left; font-size:18px;
+              height:40px;">
+                <th id="first">${brand.name}</th>
+                <th>${brand.website}</th>
+                <th>${brand.description}</th>
+                <th style=" font-weight:bold; font-size:26px; color:green; position:relative; left:10px;">√</th>
+                <th>
+                	<a href="BrandUpdate?brandId=${brand.brandId}"><span>修改</span></a>&nbsp;|
+                	<a href="BrandDelete?brandId=${brand.brandId}"><span>删除</span></a>
+                </th>
+              </tr>
+             #end
+            </table>
+       	</div> 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="resources/js/zbh/page.js"></script>
+		<title>#tiles_insertAttribute({"name":"title"})#end</title>
+		
+		<link href="resources/css/zbh/style.css" rel="stylesheet" type="text/css" media="all" />
+	</head>
+	<header>
+		#tiles_insertAttribute({"name":"header"})#end
+	</header>	
+	<body class="basic_div" onLoad="goPage(1,10);">
+		#tiles_insertAttribute({"name":"body"})#end
+	</body>
+	<footer>
+		#tiles_insertAttribute({"name":"footer"})#end
+	</footer>
+</html>

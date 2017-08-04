@@ -1,0 +1,145 @@
+.basic{
+	font-family:"΢���ź�";font-weight:bold;
+	background:#DBDBDB;
+}
+.windows{
+	width:30%; 
+	height:100%;
+	color: #000000; 
+	border:1px solid #FF0000;
+	overflow:hidden;
+	position:absolute;
+	left:15%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%); 
+	transform: translate(-50%, -50%);
+	background:#FFFFFF;
+}
+
+.top{
+	
+	height:30%;
+	background: #CD3333;
+	text-align:center;
+}
+.image{
+	-webkit-border-radius:50em;
+	-moz-border-radius:50em;
+	border-radius:50em;
+	max-width: 100%;
+	background:#FFFFFF;
+}
+.imgSize{
+	height:40%;
+	margin-top:16%;
+}
+
+.head{
+	background:#00FFFF;
+	height:3%;
+	display:inline;
+}
+.image2{
+	height:30px;
+	margin-left:10px;
+}
+.image3{
+	height:30px;
+	display:block;
+}
+
+.body1{
+	height:16.6%;
+	margin:0 1px;
+}
+.color1{
+	background:#76EE76;
+}
+
+.foot1{
+	height:10%;
+	background:#76EE76;
+	margin-top:-9px;
+}
+.foot2{
+	height:10%;
+	background:#76EE76;
+	margin-top:-9px;
+}
+.foot3{
+	height:10%;
+	background:#76EE76;
+	margin-top:-9px;
+}
+
+.mainTop{
+	height:20%;
+	background: #CD3333;
+	text-align:center;
+	font-size:26px;
+}
+
+.buy{
+	text-decoration:none;
+	float:right;
+	margin-right:20px;
+}
+.delete{
+	text-decoration:none;
+	float:right;
+	margin-right:20px;
+}
+.order1{
+	overflow:scroll;
+}
+.button_text{
+	margin-top:20px;
+	margin-left:15%;
+	margin-bottom:60px;
+	width:100px;
+	background: #139480;
+  	color: #FFF;
+  	font-size: 1em;
+  	padding: 0.6em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	height:30px;
+  	text-decoration:none;
+}
+
+.button{
+	margin-left:15px;
+	margin-bottom:60px;
+	width:60px;
+	background: #139480;
+  	color: #FFF;
+  	font-size: 1em;
+  	padding: 0.3em 1em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	height:30px;
+  	text-decoration:none;
+}
+
+.imgSize2{
+	float:right;
+	margin-left:50px;
+	margin-top:-1em;
+	height:3em;
+}

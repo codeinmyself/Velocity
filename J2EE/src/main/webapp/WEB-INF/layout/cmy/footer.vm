@@ -1,0 +1,7 @@
+<div style="position:fixed;left:250px;bottom:0px;width:65%;height:40px;
+line-height:40px;text-align:center;color:white;background:#135480;">
+厦门大学 24320142202407 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  陈明言
+</div>
+<img src="#springUrl('/resources/images/cmy/2.jpg')" alt="花边" style="position:fixed;height:40px;bottom:0px;"></img>
+<img src="#springUrl('/resources/images/cmy/2.jpg')" alt="花边" style="position:fixed;height:40px;bottom:0px;right:0px;width:20%;"></img>

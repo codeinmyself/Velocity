@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/commonStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/updateInfo.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="home">
+                        <img src="../resources/images/ghz/ic_arrow_back.png" class="back-arrow"></images>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">个人信息</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list my_list">
+                    <hr/>
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <label>头像</label>
+                            </div>
+                            <div class="right_container">
+                                <img class="user_header" src="../resources/images/ghz/default.jpg"></img>
+                                <img class="ic_arrow" src="../resources/images/ghz/ic_arrow_right.png"></img>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li>
+                        <div class="li_box">
+                            <div class="left_container">
+                                <label>用户名</label>
+                            </div>
+                            <div class="right_container">
+                                <label>${user.user_name}</label>
+                                <div class="ic_arrow"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li>
+                        <button class="li_box" onclick="window.location.href='updateName'">
+                            <div class="left_container">
+                                <label>昵称</label>
+                            </div>
+                            <div class="right_container">
+                                <label>${user.nickname}</label>
+                                <img class="ic_arrow" src="../resources/images/ghz/ic_arrow_right.png"></img>
+                            </div>
+                        </button>
+                    </li>
+                    <hr/>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

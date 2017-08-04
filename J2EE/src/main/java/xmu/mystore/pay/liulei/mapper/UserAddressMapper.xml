@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.pay.liulei.mapper.UserAddressMapper">
+	<resultMap type="xmu.mystore.pay.liulei.model.UserAddress" id="UserAddressSResult">
+		<id column="address_id" property="address_id" />
+		<result column="user_id" property="user_id" />
+		<result column="consignee" property="consignee" />
+		<result column="zipcode" property="zipcode" />
+		<result column="telephone" property="telephone" />
+		<result column="country" property="country" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="district" property="district" />
+		<result column="detail" property="detail" />
+		<result column="isdefault" property="isdefault" />
+	</resultMap>
+
+	<insert id="add" parameterType="xmu.mystore.pay.liulei.model.UserAddress">
+		insert into
+		142550_user_address(user_id,consignee,zipcode,telephone,country,province,city,district,detail,isdefault)
+		values(#{user_id},#{consignee},#{zipcode},#{telephone},#{country},#{province},#{city},#{district},#{detail},#{isdefault})
+	</insert>
+
+	<delete id="delete" parameterType="xmu.mystore.pay.liulei.model.UserAddress">
+		delete from
+		142550_user_address where
+		address_id=#{address_id}
+	</delete>
+
+	<update id="update" parameterType="xmu.mystore.pay.liulei.model.UserAddress">
+		update 142550_user_address
+		set
+		user_id=#{user_id},
+		consignee=#{consignee},
+		zipcode=#{zipcode},
+		telephone=#{telephone},
+		country=#{country},
+		province=#{province},
+		city=#{city},
+		district=#{district},
+		detail=#{detail},
+		isdefault=#{isdefault}
+		where user_id=#{user_id}
+	</update>
+
+	<select id="select" resultMap="UserAddressSResult"
+		parameterType="xmu.mystore.pay.liulei.model.UserAddress">
+		SELECT * FROM 142550_user_address WHERE address_id=
+		#{address_id}
+	</select>
+
+	<select id="selectAll" resultMap="UserAddressSResult">
+		SELECT *
+		FROM 142550_user_address WHERE
+		user_id= #{user_id}
+	</select>
+</mapper>

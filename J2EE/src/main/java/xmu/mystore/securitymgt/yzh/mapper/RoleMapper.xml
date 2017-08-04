@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.securitymgt.yzh.mapper.RoleMapper" >
+	
+	<select id="getRoleTypeByID" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+        SELECT * FROM 142528_role_info 
+        WHERE role_id = #{role_id}
+    </select>
+	
+	<select id="getRoleInfoById" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+        SELECT * FROM 142528_role_info 
+        WHERE role_id = #{role_id}
+    </select>
+	
+	<select id="getAllRoleInfoByUserId" parameterType="long" resultType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+        select 	role_info.role_id as role_id, 
+        		role_info.role_name as role_name, 
+        		role_info.organization_id as organization_id, 
+        		role_info.description as description
+		from 142528_role_info role_info,  
+			142528_user_role user_role
+		where role_info.role_id=user_role.role_id AND 
+      			user_role.user_id=#{user_id}
+    </select>
+    
+	<select id="getAllRole" resultType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+        SELECT * FROM 142528_role_info 
+    </select>
+    
+	<select id="getAllPermissionByRoleId" parameterType="Long" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission, 
+			142528_role role
+		where role.role_id = #{role_id} and
+      		permission.permission_id = role.permission_id
+    </select>
+   
+   <select id="getAllNotExistintPermissionByRoleId" parameterType="Long" resultType="xmu.mystore.securitymgt.yzh.model.Permission">
+        select 
+            permission.permission_id as permission_id, 
+            permission.permission as permission, 
+            permission.permission_name as permission_name, 
+            permission.permission_description as permission_description
+		from 142528_permission permission
+		where permission.permission_id not in(
+			select permission2.permission_id 
+			from 142528_permission permission2, 
+				142528_role role
+			where role.role_id=#{role_id} AND
+				permission2.permission_id=role.permission_id)
+    </select>
+    
+    <update id="saveRoleInfo" parameterType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+		update 142528_role_info
+		set
+		role_name=#{role_name},
+		description=#{description}
+		where
+		role_id=#{role_id}
+	</update>
+	
+	<update id="deleteRoleInfoByRoleId" parameterType="Long">
+		delete 
+		from 142528_role_info
+		where
+		role_id=#{role_id}
+	</update>
+	
+	<update id="addRoleInfo" parameterType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+		insert 
+		into 142528_role_info (organization_id, role_name, description)
+		values(#{organization_id},#{role_name}, #{description})
+	</update>
+	
+	<update id="addRole" parameterType="xmu.mystore.securitymgt.yzh.model.Role">
+		insert 
+		into 142528_role (role_id, organization_id, permission_id)
+		values(#{role_id}, #{organization_id},#{permission_id})
+	</update>
+	
+	<delete id="deleteRole" parameterType="xmu.mystore.securitymgt.yzh.model.Role">
+		delete 
+		from 142528_role
+		where role_id=#{role_id} and permission_id=#{permission_id}
+	</delete>
+	
+	<delete id="deleteUserRole" parameterType="xmu.mystore.securitymgt.yzh.model.UserRole">
+		delete 
+		from 142528_user_role
+		where role_id=#{role_id} and user_id=#{user_id}
+	</delete>
+	
+	<insert id="addUserRole" parameterType="xmu.mystore.securitymgt.yzh.model.UserRole">
+		insert
+		into 142528_user_role(user_id, role_id) 
+		values(#{user_id}, #{role_id})
+	</insert>
+	
+   <select id="getAllNotExistintRoleInfoByUserId" parameterType="Long" resultType="xmu.mystore.securitymgt.yzh.model.RoleInfo">
+        select *
+		from 142528_role_info role_info
+		where role_info.role_id not in(
+			select user_role.role_id
+  			from 142528_user_role user_role
+  			where user_role.user_id=#{user_id}
+		)
+    </select>
+</mapper>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新建收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="../resources/js/ghz/material.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/ghz/material.min.css">
+    <link rel="stylesheet" href="../resources/css/ghz/commonStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/balanceStyle.css">
+    <link rel="stylesheet" href="../resources/css/ghz/addressStyle.css">
+</head>
+
+<body>
+    <form action="addNewAddress" method="post">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header header-color">
+                <div class="mdl-layout__header-row my_header">
+                    <nav class="my-back">
+                        <a class="mdl-navigation__link" href="deliveryAddress"><img src="../resources/images/ghz/ic_arrow_back.png" class="back-arrow"></images>
+                        </a>
+                    </nav>
+                    <!-- Title -->
+                    <span class="mdl-layout-title">新建收货地址</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                </div>
+            </header>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <ul class="mdl-list cart-list">
+                        <li class="info-list">
+                            <div class="input-block">
+                                <label>收货人：</label>
+                                <input type="text" name="consignee" class="input-text"></input>
+                            </div>
+                        </li>
+                        <li class="info-list">
+                            <div class="input-block">
+                                <label>手机号码：</label>
+                                <input type="text" name="telephone" class="input-text"></input>
+                            </div>
+                        </li>
+                        <li class="info-list">
+                            <div class="input-block">
+                                <label>邮政编码：</label>
+                                <input type="text" name="zipcode" class="input-text"></input>
+                            </div>
+                        </li>
+                        <li class="info-list">
+                            <div class="input-block textarea-block">
+                                <label>详细地址：</label>
+                                <div name="address" id="address_detail" class="input-textarea" contenteditable="true"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+            <input type="hidden" id="detail" name="detail" />
+            <footer>
+                <div class="item-choose">
+                    <button type="submit" class="item-pay-btn item-choose-btn" onclick="setDetail();">保存并使用</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+    <script>
+    function setDetail() {
+        var detail = document.getElementById('address_detail').innerHTML;
+        document.getElementById('detail').value = detail;
+    }
+    </script>
+</body>
+
+</html>

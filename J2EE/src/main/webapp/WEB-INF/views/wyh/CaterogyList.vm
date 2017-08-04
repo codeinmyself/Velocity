@@ -1,0 +1,39 @@
+<style type="text/css">
+	#first{
+		position:relative;
+		left:10px;
+		}
+</style>
+<div  style=" position:relative; left:2%; top:40px; width:96%; height:auto; padding:0; background-color:white; border:0; margin:0;">
+           <table style="width:100%; border-color:black; border: none; border-collapse:collapse;" >
+              <tr style="background-color:rgb(0,51,255); text-align:left; font-size:20px;
+              height:40px;">
+                <th id="first">品类名称</th>
+                <th>商品数量</th>
+                <th>是否显示</th>
+                <th>操作</th>
+              </tr>
+              #foreach (${category} in ${categorys})
+              <tr style=" border-top:outset;text-align:left; font-size:18px;
+              height:40px;">
+                <th id="first">${category.name}</th>
+                <th>
+                	#set($i = 0)
+                	#foreach(${good} in ${goods})
+                		#if(${good.categoryId} == ${category.id})
+                			#set($i = $i + 1)
+                		#end
+                	#end
+                	${i}
+				</th>
+                <th style="font-weight:bold; font-size:26px; color:green;">√</th>
+                <th>
+                	<a href="CategoryUpdate?categoryId=${category.id}"><span>修改</span></a>&nbsp;|
+                	<a href="CategoryDelete?categoryId=${category.id}"><span>删除</span></a>
+                </th>
+              </tr>
+             #end
+
+              
+            </table>
+       	</div> 

@@ -1,0 +1,51 @@
+#tiles_insertTemplate({"template":"../layout/cwh/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "个人中心"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/cwh/user_center_header.vm")#end
+#tiles_putAttribute({"name":"body"})
+<div class="div2">
+	<p>
+		<img src="#springUrl('/resources/images/cwh/myorder.png')" class="icon"/>
+		<span class="fontC">我的订单</span>
+		<span class="fontC" style="margin-left:20%;">
+			<a href="all_orders_body?user_id=$user.getUser_id()">查看所有订单></a>
+		</span>
+	</p>
+	<hr/>
+		<div class="div3">
+			<a href="all_orders_body?user_id=$user.getUser_id()&order_status=0"><img src="#springUrl('/resources/images/cwh/unpaied.png')"/></a>
+			<a href="all_orders_body?user_id=$user.getUser_id()&order_status=321"><img src="#springUrl('/resources/images/cwh/unreceive.png')"/></a>
+			<a href="all_orders_body?user_id=$user.getUser_id()&order_status=4"><img src="#springUrl('/resources/images/cwh/receive.png')"/></a>
+			<a href="all_orders_body?user_id=$user.getUser_id()&order_status=5"><img src="#springUrl('/resources/images/cwh/cancel.png')"/></a>
+			<a href="all_orders_body?user_id=$user.getUser_id()&order_status=4"><img src="#springUrl('/resources/images/cwh/sale.png')"/></a>	
+		</div>
+		<div class="div3">
+			<span class="fontC"><a href="all_order_body?user_id=$user.getUser_id()&order_status=0">待付款</a></span>
+			<span class="fontC"><a href="all_order_body?user_id=$user.getUser_id()&order_status=123">待收货</a></span>
+			<span class="fontC"><a href="all_order_body?user_id=$user.getUser_id()&order_status=4">已收货</a></span>
+			<span class="fontC"><a href="all_order_body?user_id=$user.getUser_id()&order_status=5">已取消</a></span>
+			<span class="fontC"><a href="all_order_body?user_id=$user.getUser_id()&order_status=4">售后</a></span>
+		</div>
+	<hr/>
+	<div class="div2" onClick="gotoCollect($user.getUser_id())">
+		<img src="#springUrl('/resources/images/cwh/collect.png')" class="icon"/>
+		<span class="fontC">我的收藏</span>
+		<span class="fontC" style="margin-left:49%;">></span>
+	</div>
+	<hr/>
+	<div class="div2" onClick="gotoAddress($user.getUser_id())">
+		<img src="#springUrl('/resources/images/cwh/shipAddress.png')" class="icon"/>
+		<span class="fontC">收货地址</span>
+		<span class="fontC" style="margin-left:49%;">></span>
+	</div>
+	<hr/>
+	<div class="div2" onClick="gotoUserInfo($user.getUser_id())">
+		<img src="#springUrl('/resources/images/cwh/user_config.png')" class="icon"/>
+		<span class="fontC">用户设置</span>
+		<span class="fontC" style="margin-left:49%;">></span>
+	</div>
+	<hr/>
+	<br/><br/><br/>
+</div>
+#end
+#tiles_putAttribute({"name":"footer"})#parse("../layout/cwh/footer.vm") #end
+#end

@@ -1,0 +1,4 @@
+<div class="addressTitle">
+	<span style="float:left;"><a href="user_center_body?user_id=$user_id"><</a></span>
+	<span style="float:left;margin-left:33%">收货地址</span>
+</div>

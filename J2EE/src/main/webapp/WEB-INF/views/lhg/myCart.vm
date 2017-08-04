@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="/resources/js/material.min.js"></script>
+    <script src="/resources/js/myCart.js"></script>
+    <link rel="stylesheet" href="/resources/css/material.min.css">
+    <link rel="stylesheet" href="/resources/css/commonStyle.css">
+    <link rel="stylesheet" href="/resources/css/cartStyle.css">
+</head>
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header header-color">
+        <div class="mdl-layout__header-row my_header">
+        <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Title -->
+            <span class="mdl-layout-title">购物车</span>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">编辑</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <ul class="mdl-list cart-list">
+                <li class="mdl-list__item mdl-list__item--three-line">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect my-checkbox" for="checkbox-1">
+                        <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                    </label>
+                    <span class="item_img">
+                        <img src="../images/default.jpg" class="item_img"></image>
+                    </span>
+                    <span class="mdl-list__item-primary-content item-second">
+                        <span class="item_text">商品</span>
+                        <span class="item_text mdl-list__item-text-body mylist-auto-height">
+                            这里是商品介绍
+                        </span>
+                        <span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                            <span class="item-price">price</span>
+                            <span>
+                                <button class="mdl-button mdl-js-button item-button">删除</button>
+                            </span>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer class="mdl-mini-footer my-footer-container">
+        <div class="mdl-mini-footer__left-section footer-text">
+            <ul class="mdl-mini-footer__link-list">
+                <span>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect my-checkbox">
+                        <input type="checkbox" id="checkbox-all" class="mdl-checkbox__input" onchange="select_all(this)">
+                    </label>
+                    全选
+                </span>
+                <span class="total-text">
+                    <b class="footer-font">合计：<label>￥77.70</label></b>
+                </span>
+            </ul>
+        </div>
+        <div class="item-pay">
+            <button class="item-pay-btn">去结算</button>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

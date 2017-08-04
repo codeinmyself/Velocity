@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xmu.mystore.wx.zbh2.mappers.UserMapper"> 
+	<resultMap id="UserBaseMap" type="xmu.mystore.wx.zbh2.model.User">
+        <id column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="reg_time" property="regTime" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR"/>
+    </resultMap>
+       
+    <select id="getUserByOpenid" parameterType="String" resultMap="UserBaseMap">
+        SELECT * FROM 142537_user WHERE openid=#{openid};
+    </select>
+    
+    <select id="showAllUser" resultMap="UserBaseMap">
+		SELECT * FROM 142537_user
+	</select>
+	
+	<update id="insertUser" parameterType="xmu.mystore.wx.zbh2.model.User">
+       
+        insert into 142537_user(openid,user_name,real_name,mobile_phone, address) values(#{openid}, #{userName}, #{realName}, #{mobilePhone}, #{address})
+    </update>
+</mapper>
